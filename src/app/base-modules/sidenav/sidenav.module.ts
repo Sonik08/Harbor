@@ -6,13 +6,7 @@ import { SidenavComponent } from './sidenav.component';
 
 @NgModule({
   declarations: [SidenavComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    RouterModule
-  ],
-  exports: [
-    SidenavComponent
-  ]
+  imports: [CommonModule, MaterialModule, RouterModule],
+  exports: [SidenavComponent]
 })
-export class SidenavModule { }
+export class SidenavModule {}
