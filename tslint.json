@@ -9,9 +9,7 @@
     "class-name": true,
     "forin": true,
     "import-blacklist": [
-      true,
-      "rxjs",
-      "rxjs/Rx"
+      true
     ],
     "interface-over-type-literal": true,
     "label-position": true,

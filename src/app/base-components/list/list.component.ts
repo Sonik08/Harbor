@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { IListitem } from '../models/list-item';
 
 @Component({
@@ -7,9 +8,9 @@ import { IListitem } from '../models/list-item';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() listItems: IListitem[];
+  @Input() listItems: Observable<IListitem[]>;
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    console.log(this.listItems);
   }
 }

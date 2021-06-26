@@ -1,5 +1,5 @@
 <mat-list>
-  <mat-list-item *ngFor="let listItem of listItems">
+  <mat-list-item *ngFor="let listItem of listItems | async">
     <mat-icon matListIcon> {{ listItem.icon }}</mat-icon>
     <p matLine>
       <span> {{ listItem.title }} </span>

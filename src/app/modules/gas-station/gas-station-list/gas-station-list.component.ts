@@ -9,12 +9,13 @@ import { GasStation } from '../../models/gas-station';
   styleUrls: ['./gas-station-list.component.scss']
 })
 export class GasStationListComponent implements OnInit {
-  tableData: Observable<GasStation[]> = of([]);
-  tableColumns: Observable<string[]> = of([]);
+  tableData: Observable<GasStation[]>;
+  tableColumns: Observable<string[]>;
   url = '/overview';
   constructor(private _mockSrv: MockService) {}
 
   ngOnInit(): void {
+    console.log(this._mockSrv.getGasStations());
     this.tableData = of(this._mockSrv.getGasStations());
     this.tableColumns = of(this._mockSrv.getGasStationTableColumns());
   }

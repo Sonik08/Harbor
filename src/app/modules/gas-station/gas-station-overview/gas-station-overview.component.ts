@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { MockService } from 'src/app/base-components/services/mock-serice';
 
 @Component({
@@ -7,11 +8,11 @@ import { MockService } from 'src/app/base-components/services/mock-serice';
   styleUrls: ['./gas-station-overview.component.scss']
 })
 export class GasStationOverviewComponent implements OnInit {
-  listItems: any[] = [];
+  listItems: Observable<any[]> = of([]);
 
   constructor(private mockService: MockService) {}
 
   ngOnInit(): void {
-    this.listItems = this.mockService.getGasStationListItems();
+    this.listItems = of(this.mockService.getGasStationListItems());
   }
 }

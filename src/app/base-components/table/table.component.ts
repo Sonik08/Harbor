@@ -3,7 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { Model } from './../models/model';
 
 @Component({
@@ -16,9 +17,9 @@ export class TableComponent<TModel extends Model> implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  @Input() dataObjects: Observable<TModel[]> = of([]);
+  @Input() dataObjects: Observable<TModel[]>;
 
-  @Input() tableColumns: Observable<string[]> = of([]);
+  @Input() tableColumns: Observable<string[]>;
 
   @Input() url: string;
 
@@ -29,7 +30,10 @@ export class TableComponent<TModel extends Model> implements OnInit {
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {}
 
   ngOnInit(): void {
-    this.dataObjects.subscribe(data => {
+    console.log('I init');
+    console.log(this.dataObjects);
+    this.dataObjects.pipe(filter(values => !!values)).subscribe(data => {
+      console.log(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

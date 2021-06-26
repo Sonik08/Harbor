@@ -5,6 +5,7 @@ import { GasStationOverviewComponent } from './gas-station-overview.component';
 
 @NgModule({
   declarations: [GasStationOverviewComponent],
-  imports: [CommonModule, ListModule]
+  imports: [CommonModule, ListModule],
+  exports: [GasStationOverviewComponent]
 })
 export class GasStationOverviewModule {}
