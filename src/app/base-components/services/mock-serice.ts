@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { GasStation } from 'src/app/modules/models/gas-station';
 
 @Injectable({ providedIn: 'root' })
 export class MockService {
-  getGasStations() {
+  getGasStations(): GasStation[] {
     return [
       {
         id: '123',
@@ -23,7 +24,21 @@ export class MockService {
     ];
   }
 
-  getGasStationTableColumns() {
+  getGasStationTableColumns(): string[] {
     return ['id', 'name'];
+  }
+
+  getGasStationListItems(): any[] {
+    return [
+      {
+        title: 'Income',
+        icon: 'euro',
+        url: '',
+        subListItems: [
+          { title: 'Income per shift', icon: 'person', url: './' },
+          { title: 'Income per day', icon: 'group', url: './' }
+        ]
+      }
+    ];
   }
 }
