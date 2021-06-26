@@ -1,10 +1,10 @@
-import { Model } from './../models/model';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { GasStation } from 'src/app/modules/models/gas-station';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { Model } from './../models/model';
 
 @Component({
   selector: 'material-table',
@@ -12,15 +12,21 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent<TModel extends Model> implements OnInit {
-  dataSource: MatTableDataSource<TModel>;
-  isLoadingData: boolean = true;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
   @Input() dataObjects: Observable<TModel[]> = of([]);
 
   @Input() tableColumns: Observable<string[]> = of([]);
 
-  @ViewChild(MatSort) sort: MatSort;
+  @Input() url: string;
 
-  constructor() {}
+  dataSource: MatTableDataSource<TModel>;
+
+  isLoadingData = true;
+
+  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {}
 
   ngOnInit(): void {
     this.dataObjects.subscribe(data => {
@@ -31,9 +37,7 @@ export class TableComponent<TModel extends Model> implements OnInit {
     });
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -42,24 +46,8 @@ export class TableComponent<TModel extends Model> implements OnInit {
     }
   }
 
-  stations: GasStation[] = [
-    {
-      id: '123',
-      name: 'hello world'
-    },
-    {
-      id: '121321',
-      name: 'BP'
-    },
-    {
-      id: '3242',
-      name: 'fdsfdsf'
-    },
-    {
-      id: '111',
-      name: 'eteka'
-    }
-  ];
-
-  columnsToDisplay = ['id', 'name'];
+  onSelect(row: TModel): void {
+    console.log(row);
+    this._router.navigate([row.id + this.url], { relativeTo: this._activatedRoute });
+  }
 }

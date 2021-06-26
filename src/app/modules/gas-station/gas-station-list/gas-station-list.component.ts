@@ -11,6 +11,7 @@ import { GasStation } from '../../models/gas-station';
 export class GasStationListComponent implements OnInit {
   tableData: Observable<GasStation[]> = of([]);
   tableColumns: Observable<string[]> = of([]);
+  url = '/overview';
   constructor(private _mockSrv: MockService) {}
 
   ngOnInit(): void {

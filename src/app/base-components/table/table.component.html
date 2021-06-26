@@ -3,8 +3,8 @@
   <input matInput (keyup)="applyFilter($event)" #input />
 </mat-form-field>
 
-<div class="example-container mat-elevation-z8">
-  <div class="example-loading-shade" *ngIf="isLoadingData">
+<div class="container mat-elevation-z8">
+  <div class="loading-shade" *ngIf="isLoadingData">
     <mat-spinner *ngIf="isLoadingData"></mat-spinner>
   </div>
 
@@ -21,7 +21,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns | async"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableColumns | async"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns | async" (click)="onSelect(row)"></tr>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
