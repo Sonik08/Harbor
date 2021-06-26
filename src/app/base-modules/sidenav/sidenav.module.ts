@@ -1,7 +1,7 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './../material.module';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SidenavComponent } from './sidenav.component';
 
 @NgModule({

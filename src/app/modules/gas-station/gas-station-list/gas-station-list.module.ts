@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GasStationListComponent } from './gas-station-list.component';
+import { NgModule } from '@angular/core';
 import { TableModule } from 'src/app/base-components/table/table.module';
+import { GasStationListComponent } from './gas-station-list.component';
 
 @NgModule({
   declarations: [GasStationListComponent],

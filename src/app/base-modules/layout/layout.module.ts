@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout.component';
+import { NgModule } from '@angular/core';
 import { SidenavModule } from '../sidenav/sidenav.module';
+import { LayoutComponent } from './layout.component';
 
 @NgModule({
   declarations: [LayoutComponent],

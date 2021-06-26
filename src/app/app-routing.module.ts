@@ -1,8 +1,7 @@
-import { DashboardComponent } from './base-modules/dashboard/dashboard.component';
-import { SidenavComponent } from './base-modules/sidenav/sidenav.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './base-modules/layout/layout.component';
+import { SidenavComponent } from './base-modules/sidenav/sidenav.component';
 
 const routes: Routes = [
   {

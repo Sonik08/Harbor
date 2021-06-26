@@ -1,6 +1,6 @@
-import { GasStationComponent } from './gas-station-form.component';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { GasStationComponent } from './gas-station-form.component';
 
 @NgModule({
   declarations: [GasStationComponent],
