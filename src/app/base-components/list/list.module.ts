@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseListComponent } from './base-list.component';
+import { NgModule } from '@angular/core';
 import { MaterialModule } from 'src/app/base-modules/material.module';
+import { ListComponent } from './list.component';
 
 @NgModule({
-  declarations: [BaseListComponent],
+  declarations: [ListComponent],
   imports: [CommonModule, MaterialModule]
 })
-export class BaseListModule {}
+export class ListModule {}
