@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TableModule } from 'src/app/base-components/table/table.module';
+import { MaterialTableModule } from 'src/app/base-modules/material-table/material-table.module';
 import { GasStationListComponent } from './gas-station-list.component';
 
 @NgModule({
   declarations: [GasStationListComponent],
-  imports: [CommonModule, TableModule],
+  imports: [CommonModule, MaterialTableModule],
   exports: [GasStationListComponent]
 })
 export class GasStationListModule {}

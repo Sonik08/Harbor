@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { MockService } from 'src/app/base-components/services/mock-serice';
+import { IListItem } from 'src/app/base-modules/models/list-item';
+import { MockService } from 'src/app/base-modules/services/mock-serice';
 
 @Component({
   selector: 'gas-station-overview',
@@ -8,11 +9,14 @@ import { MockService } from 'src/app/base-components/services/mock-serice';
   styleUrls: ['./gas-station-overview.component.scss']
 })
 export class GasStationOverviewComponent implements OnInit {
-  listItems: Observable<any[]> = of([]);
+  listItems: Observable<IListItem[]> = of([]);
 
-  constructor(private mockService: MockService) {}
+  constructor(private mockService: MockService) {
+    console.log('Overview is constructed');
+  }
 
   ngOnInit(): void {
+    console.log('overview');
     this.listItems = of(this.mockService.getGasStationListItems());
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { GasStation } from 'src/app/modules/models/gas-station';
+import { GasStation } from 'src/app/app-modules/models/gas-station';
+import { IListItem } from 'src/app/base-modules/models/list-item';
 
 @Injectable({ providedIn: 'root' })
 export class MockService {
@@ -28,15 +29,15 @@ export class MockService {
     return ['id', 'name'];
   }
 
-  getGasStationListItems(): any[] {
+  getGasStationListItems(): IListItem[] {
     return [
       {
         title: 'Income',
         icon: 'euro',
         url: '',
         subListItems: [
-          { title: 'Income per shift', icon: 'person', url: './' },
-          { title: 'Income per day', icon: 'group', url: './' }
+          { title: 'Income per shift', icon: 'person', url: './' } as IListItem,
+          { title: 'Income per day', icon: 'group', url: './' } as IListItem
         ]
       }
     ];

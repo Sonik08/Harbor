@@ -5,14 +5,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Model } from './../models/model';
+import { Model } from '../models/model';
 
 @Component({
   selector: 'material-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  templateUrl: './material-table.component.html',
+  styleUrls: ['./material-table.component.scss']
 })
-export class TableComponent<TModel extends Model> implements OnInit {
+export class MaterialTableComponent<TModel extends Model> implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

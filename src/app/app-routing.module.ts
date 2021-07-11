@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: 'gas-stations',
-        loadChildren: () => import('./modules/gas-station/gas-station.module').then(m => m.GasStationModule)
+        loadChildren: () => import('./app-modules/gas-station/gas-station.module').then(m => m.GasStationModule)
       },
       {
         path: '',
