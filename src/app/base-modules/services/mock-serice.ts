@@ -31,15 +31,15 @@ export class MockService {
 
   getGasStationListItems(): IListItem[] {
     return [
-      {
-        title: 'Income',
-        icon: 'euro',
-        url: '',
-        subListItems: [
-          { title: 'Income per shift', icon: 'person', url: './' } as IListItem,
-          { title: 'Income per day', icon: 'group', url: './' } as IListItem
-        ]
-      }
+      { title: 'Income', icon: 'euro', url: ''},
+      { title: 'Income per shift', icon: 'person', url: './' },
+      { title: 'Income per day', icon: 'group', url: './' }
     ];
+  }
+
+  getExpantionPanelItems(){
+    return [
+      
+    ]
   }
 }

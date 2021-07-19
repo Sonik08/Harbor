@@ -30,8 +30,6 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {}
 
   ngOnInit(): void {
-    console.log('I init');
-    console.log(this.dataObjects);
     this.dataObjects.pipe(filter(values => !!values)).subscribe(data => {
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
@@ -51,7 +49,6 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   }
 
   onSelect(row: TModel): void {
-    console.log(row);
     this._router.navigate([row.id + this.url], { relativeTo: this._activatedRoute });
   }
 }

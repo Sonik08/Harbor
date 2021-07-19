@@ -3,12 +3,6 @@
     <mat-icon matListIcon> {{ listItem.icon }}</mat-icon>
     <p matLine>
       <span> {{ listItem.title }} </span>
-      <mat-list-item *ngFor="let subListitem of listItem.subListItems" class="subitem">
-        <mat-icon matListIcon> {{ subListitem.icon }}</mat-icon>
-        <p matLine>
-          <span> {{ subListitem.title }} </span>
-        </p>
-      </mat-list-item>
     </p>
   </mat-list-item>
 </mat-list>
