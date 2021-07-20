@@ -15,8 +15,8 @@ export class MaterialCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.icon)
-    
   }
+
+
 
 }

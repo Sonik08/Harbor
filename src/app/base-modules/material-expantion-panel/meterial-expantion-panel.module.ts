@@ -6,11 +6,11 @@ import { MaterialModule } from 'src/app/core/material.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [MaterialExpantionPanelComponent],
   imports: [
     CommonModule,
-    MaterialExpantionPanelComponent,
     MaterialModule
-  ]
+  ],
+  exports: [MaterialExpantionPanelComponent]
 })
 export class MeterialExpantionPanelModule { }
