@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { MockService } from 'src/app/base-modules/services/mock-serice';
+import { MockService } from 'src/app/core/services/mock-service';
 import { GasStation } from '../../models/gas-station';
 
 @Component({

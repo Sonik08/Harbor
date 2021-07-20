@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IListItem } from 'src/app/base-modules/models/list-item';
-import { MockService } from 'src/app/base-modules/services/mock-serice';
-import { Data } from 'src/app/core/models/data';
+import { IExpantionPanelItem } from 'src/app/core/models/expantion-panel-item';
+import { IListItem } from 'src/app/core/models/list-item';
+import { MockService } from 'src/app/core/services/mock-service';
+import { Data } from 'src/app/pages/models/data';
 import { GasStation } from '../../models/gas-station';
 
 @Component({
@@ -13,7 +14,7 @@ import { GasStation } from '../../models/gas-station';
   styleUrls: ['./gas-station-overview.component.scss']
 })
 export class GasStationOverviewComponent implements OnInit {
-  listItems: Observable<IListItem[]> = of([]);
+  expantionPanel: Observable<IExpantionPanelItem> = of();
   gasStation: Observable<GasStation>;
   constructor(
     private mockService: MockService,
@@ -24,7 +25,7 @@ export class GasStationOverviewComponent implements OnInit {
     .pipe(
       map(resolvedData => resolvedData.data)
     );
-    
-    this.listItems = of(this.mockService.getGasStationListItems());
+
+    this.expantionPanel = of(this.mockService.getExpantionPanelItem());
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MockService } from 'src/app/base-modules/services/mock-serice';
+import { MockService } from 'src/app/core/services/mock-service';
 import { GasStation } from '../models/gas-station';
 
 @Injectable({ providedIn: 'root' })

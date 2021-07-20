@@ -6,5 +6,5 @@ export interface IExpantionPanelItem {
     icon: string;
     url: string;
 
-    expandedItems: IListItem[]
+    listItems: IListItem[]
 }

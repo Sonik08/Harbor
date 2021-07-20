@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialExpantionPanelComponent } from './material-expantion-panel.component';
-import { MaterialModule } from 'src/app/core/material.module';
+import { MaterialModule } from 'src/app/pages/material.module';
+import { MaterialListModule } from '../material-list/material-list.module';
 
 
 
@@ -9,7 +10,8 @@ import { MaterialModule } from 'src/app/core/material.module';
   declarations: [MaterialExpantionPanelComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    MaterialListModule
   ],
   exports: [MaterialExpantionPanelComponent]
 })

@@ -1,17 +1,17 @@
 <mat-accordion class="example-headers-align" multi>
 
-  <mat-expansion-panel *ngFor="let item of expantionPanelItems | async">
+  <mat-expansion-panel >
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ item.title }}
+        {{ (epxantionPanelItem | async).title }}
       </mat-panel-title>
       <mat-panel-description>
-        <ng-template></ng-template>
-        <!-- {{ item.description }}
-        <mat-icon>{{ item.icon }}</mat-icon> -->
+        {{ (epxantionPanelItem | async).description }}
+        <mat-icon>{{ (epxantionPanelItem | async).icon }}</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
 
+    <material-list [listItems]="listItems"></material-list>
     <!-- All expanded content goes here -->
     
   </mat-expansion-panel>

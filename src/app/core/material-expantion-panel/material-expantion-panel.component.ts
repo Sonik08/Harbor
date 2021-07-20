@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IExpantionPanelItem } from '../models/expantion-panel-item';
+import { IListItem } from '../models/list-item';
 
 @Component({
   selector: 'material-expantion-panel',
@@ -9,11 +11,17 @@ import { IExpantionPanelItem } from '../models/expantion-panel-item';
 })
 export class MaterialExpantionPanelComponent implements OnInit {
 
-  @Input() expantionPanelItems: Observable<IExpantionPanelItem>;
+  listItems: Observable<IListItem[]> = of([]);
+  @Input() epxantionPanelItem: Observable<IExpantionPanelItem>;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.listItems = this.epxantionPanelItem.pipe(
+      map(expantionItems => expantionItems.listItems)
+    )
   }
+
+
 
 }

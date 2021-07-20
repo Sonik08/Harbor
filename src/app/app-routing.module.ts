@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './core/layout/layout.component';
-import { SidenavComponent } from './core/sidenav/sidenav.component';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { SidenavComponent } from './pages/sidenav/sidenav.component';
 
 const routes: Routes = [
   {
     path: 'index.html',
     component: LayoutComponent,
-    loadChildren: () => import('./core/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '',
@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        loadChildren: () => import('./core/dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
       }
     ]
   }

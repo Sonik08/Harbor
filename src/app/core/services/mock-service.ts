@@ -6,7 +6,8 @@ import { FuelType } from 'src/app/app-modules/models/fuel-type';
 import { GasStation } from 'src/app/app-modules/models/gas-station';
 import { Shift } from 'src/app/app-modules/models/shift';
 import { ShiftType } from 'src/app/app-modules/models/shift-type';
-import { IListItem } from 'src/app/base-modules/models/list-item';
+import { IListItem } from 'src/app/core/models/list-item';
+import { IExpantionPanelItem } from '../models/expantion-panel-item';
 
 @Injectable({ providedIn: 'root' })
 export class MockService {
@@ -167,9 +168,13 @@ export class MockService {
       .filter(gasStation => gasStation.id === id)[0]);
   }
 
-  getExpantionPanelItems(){
-    return [
-      
-    ]
+  getExpantionPanelItem(): IExpantionPanelItem{
+    return {
+      title: "title",
+      description: "descriiption",
+      icon:"person",
+      url: "./",
+      listItems: this.getGasStationListItems()
+    }
   }
 }

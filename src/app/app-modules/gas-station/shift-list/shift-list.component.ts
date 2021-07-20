@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MockService } from 'src/app/base-modules/services/mock-serice';
+import { MockService } from 'src/app/core/services/mock-service';
 import { Shift } from '../../models/shift';
 
 @Component({
@@ -18,7 +18,7 @@ export class ShiftListComponent implements OnInit {
   ngOnInit(): void {
     this.tableData = this._mockSrv.getShifts();
     this.tableColumns = this._mockSrv.getShiftsTableColumns();
-    
+
   }
 
 }

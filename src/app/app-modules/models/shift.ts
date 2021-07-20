@@ -1,4 +1,4 @@
-import { Model } from "src/app/base-modules/models/model";
+import { Model } from "src/app/core/models/model";
 import { ExpenseItem } from "./expense-item";
 import { FuelLevel } from "./fuel-level";
 import { Resupply } from "./resupply";

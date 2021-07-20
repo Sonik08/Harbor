@@ -1,4 +1,4 @@
-import { Model } from "src/app/base-modules/models/model";
+import { Model } from "src/app/core/models/model";
 import { ExpenseType } from "./expense-type";
 
 export class ExpenseItem extends Model {
