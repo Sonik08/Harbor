@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { GasStationListComponent } from './gas-station-list/gas-station-list.component';
 import { GasStationOverviewComponent } from './gas-station-overview/gas-station-overview.component';
 import { GasStationResolver } from './gas-station.resolver';
+import { ShiftFormComponent } from './shift-form/shift-form.component';
+import { ShiftListComponent } from './shift-list/shift-list.component';
 
 const routes: Routes = [
   {
@@ -12,7 +14,21 @@ const routes: Routes = [
   {
     path: ':id/overview',
     component: GasStationOverviewComponent,
-    resolve: { data: GasStationResolver}
+    resolve: { data: GasStationResolver},
+    children: [
+      {
+        path: 'shifts',
+        component: ShiftListComponent
+      },
+      {
+        path: 'shifts/:id',
+        component: ShiftFormComponent
+      },
+      {
+        path: 'shifts/new',
+        component: ShiftFormComponent
+      }
+    ]
   }
 ];
 

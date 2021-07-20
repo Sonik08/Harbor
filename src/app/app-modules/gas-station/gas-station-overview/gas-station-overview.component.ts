@@ -24,8 +24,7 @@ export class GasStationOverviewComponent implements OnInit {
     .pipe(
       map(resolvedData => resolvedData.data)
     );
-
-    this.gasStation.subscribe(val => console.log(val))
+    
     this.listItems = of(this.mockService.getGasStationListItems());
   }
 }
