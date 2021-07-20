@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GasStationListComponent } from './gas-station-list/gas-station-list.component';
 import { GasStationOverviewComponent } from './gas-station-overview/gas-station-overview.component';
+import { GasStationResolver } from './gas-station.resolver';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: ':id/overview',
-    component: GasStationOverviewComponent
+    component: GasStationOverviewComponent,
+    resolve: { data: GasStationResolver}
   }
 ];
 
