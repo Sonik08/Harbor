@@ -12,22 +12,4 @@ export class InputComponent extends Control{
   type = "text";
   @Input()
   min = 0;
-
-  @Output()
-  focusChanged = new EventEmitter<any>();
-
-  @Output()
-  focus = new EventEmitter<any>();
-
-  @Output()
-  focusout = new EventEmitter<any>();
-
-  onFocus(event: any) {
-    this.focus.emit(event);
-  }
-
-  onFocusOutEvent(event: any) {
-    this.focus.emit(event);
-  }
-
 }

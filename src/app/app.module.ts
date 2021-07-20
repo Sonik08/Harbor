@@ -4,9 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './pages/layout/layout.module';
-import { ControlDirective } from './core/controls/control.directive';
 @NgModule({
-  declarations: [AppComponent, ControlDirective],
+  declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule],
   providers: [],
   bootstrap: [AppComponent]

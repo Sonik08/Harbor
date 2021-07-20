@@ -7,9 +7,6 @@
       [required]="required"
       formControlName="{{ name }}"
       matInput
-      emptyToNull
-      (focus)="onFocus($event)"
-      (focusout)="onFocusOutEvent($event)"
     />
     <mat-error class="error-message" *ngFor="let message of validationMessages">
       {{ message }}</mat-error
