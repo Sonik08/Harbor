@@ -1,0 +1,18 @@
+<mat-form-field fxFlex [formGroup]="form">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      [min]="min"
+      type="{{ type }}"
+      [readonly]="readonly"
+      [required]="required"
+      formControlName="{{ name }}"
+      matInput
+      emptyToNull
+      (focus)="onFocus($event)"
+      (focusout)="onFocusOutEvent($event)"
+    />
+    <mat-error class="error-message" *ngFor="let message of validationMessages">
+      {{ message }}</mat-error
+    >
+  </mat-form-field>
+  
