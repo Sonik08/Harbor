@@ -1,5 +1,6 @@
 export enum ShiftType {
-    Morning,
-    Evening,
-    Night
+    Morning = "Morning",
+    Evening = "Evening",
+    Night = "Night",
+    Unknown = ""
 }

@@ -1,5 +1,5 @@
 export enum ExpenseType {
-    Miscellaneous,
-    Salary,
-    Unknown
+    Miscellaneous = "Miscellaneous",
+    Salary = "Salary",
+    Unknown = ""
 }
