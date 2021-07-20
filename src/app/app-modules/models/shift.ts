@@ -11,4 +11,11 @@ export class Shift extends Model {
     expenseItems: ExpenseItem[] = [];
     fuelLevels: FuelLevel[] = [];
     resupplies: Resupply[] = [];
+
+    gasStationId: string = null;
+
+
+    get profit(): number{
+        return this.income - this.expenseItems.reduce((accumulator, current) => accumulator + current.amount, 0);
+    }
 }
