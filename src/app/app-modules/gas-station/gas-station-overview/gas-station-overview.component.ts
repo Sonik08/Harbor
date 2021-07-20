@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, of, pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IListItem } from 'src/app/base-modules/models/list-item';
 import { MockService } from 'src/app/base-modules/services/mock-serice';
+import { Data } from 'src/app/core/models/data';
+import { GasStation } from '../../models/gas-station';
 
 @Component({
   selector: 'gas-station-overview',
@@ -10,13 +14,18 @@ import { MockService } from 'src/app/base-modules/services/mock-serice';
 })
 export class GasStationOverviewComponent implements OnInit {
   listItems: Observable<IListItem[]> = of([]);
-
-  constructor(private mockService: MockService) {
-    console.log('Overview is constructed');
-  }
+  gasStation: Observable<GasStation>;
+  constructor(
+    private mockService: MockService,
+    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    console.log('overview');
+    this.gasStation =  (this.route.data as Observable<Data<GasStation>>)
+    .pipe(
+      map(resolvedData => resolvedData.data)
+    );
+
+    this.gasStation.subscribe(val => console.log(val))
     this.listItems = of(this.mockService.getGasStationListItems());
   }
 }
