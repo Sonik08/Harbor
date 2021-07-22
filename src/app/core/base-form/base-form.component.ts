@@ -8,12 +8,14 @@ import { BaseFormVM } from '../vm/form.vm';
   templateUrl: './base-form.component.html',
   styleUrls: ['./base-form.component.scss']
 })
-export class BaseFormComponent<TModel extends Model> {
+export class BaseFormComponent<TModel extends Model, TRelatedData> {
 
   @Input()saveable: boolean;
   @Input()model: TModel;
   @Input()form: FormGroup;
-  @Input()vm: BaseFormVM<TModel>
+  @Input()vm: BaseFormVM<TModel,TRelatedData>
 
-  onSubmit(){}
+  onSubmit(){
+    this.vm.submit();
+  }
 }

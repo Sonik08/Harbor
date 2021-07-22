@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseFormComponent } from './base-form.component';
 import { MaterialModule } from 'src/app/pages/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -9,7 +10,8 @@ import { MaterialModule } from 'src/app/pages/material.module';
   declarations: [BaseFormComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   exports: [BaseFormComponent]
 })

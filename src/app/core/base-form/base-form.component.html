@@ -1,10 +1,13 @@
-<ng-content>
-
-</ng-content>
-      <button
-        type="submit"
-        mat-raised-button
-        color="primary"
-      >
-        Αποθήκευση
-      </button>
+<div fxFill fxLayout="column" fxLayoutAlign="center">
+  <ng-content>
+  </ng-content>
+  <div fxLayoutAlign="center center" >
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()">
+      Αποθήκευση
+    </button>
+  </div>
+</div>
