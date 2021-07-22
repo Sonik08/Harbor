@@ -8,7 +8,7 @@ import { GasStationFormComponent } from './gas-station-form.component';
 
 @NgModule({
   declarations: [GasStationFormComponent],
-  imports: [CommonModule,FormControlsModule,BaseFormModule, MatFormFieldModule, FormRowModule],
+  imports: [CommonModule,FormControlsModule,BaseFormModule,FormRowModule],
   exports: [GasStationFormComponent]
 })
 export class GasStationFormModule {}
