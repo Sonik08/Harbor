@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, pipe } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IExpantionPanelItem } from 'src/app/core/models/expantion-panel-item';
-import { IListItem } from 'src/app/core/models/list-item';
 import { MockService } from 'src/app/core/services/mock-service';
 import { Data } from 'src/app/pages/models/data';
 import { GasStation } from '../../models/gas-station';
@@ -17,15 +16,15 @@ export class GasStationOverviewComponent implements OnInit {
   expantionPanel: Observable<IExpantionPanelItem> = of();
   gasStation: Observable<GasStation>;
   constructor(
-    private mockService: MockService,
-    private route: ActivatedRoute) {}
+    private _mockService: MockService,
+    private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.gasStation =  (this.route.data as Observable<Data<GasStation>>)
+    this.gasStation =  (this._route.data as Observable<Data<GasStation>>)
     .pipe(
       map(resolvedData => resolvedData.data)
     );
 
-    this.expantionPanel = of(this.mockService.getExpantionPanelItem());
+    this.expantionPanel = of(this._mockService.getExpantionPanelItem());
   }
 }
