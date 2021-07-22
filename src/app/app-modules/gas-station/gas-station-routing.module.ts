@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { GasStationFormComponent } from './gas-station-form/gas-station-form.component';
 import { GasStationListComponent } from './gas-station-list/gas-station-list.component';
 import { GasStationOverviewComponent } from './gas-station-overview/gas-station-overview.component';
-import { GasStationResolver } from './gas-station.resolver';
+import { GasStationResolver } from './resolvers/gas-station.resolver';
+import { ShiftResolver } from './resolvers/shift.resolver';
 import { ShiftFormComponent } from './shift-form/shift-form.component';
 import { ShiftListComponent } from './shift-list/shift-list.component';
 
@@ -13,8 +14,9 @@ const routes: Routes = [
     component: GasStationFormComponent
   },
   {
-    path: 'id/edit',
-    component: GasStationFormComponent
+    path: ':id/edit',
+    component: GasStationFormComponent,
+    resolve: { data: GasStationResolver}
   },
   {
     path: '',
@@ -30,12 +32,14 @@ const routes: Routes = [
         component: ShiftListComponent
       },
       {
-        path: 'shifts/:id',
-        component: ShiftFormComponent
+        path: 'shifts/:id/edit',
+        component: ShiftFormComponent,
+        resolve: { data:ShiftResolver },
       },
       {
         path: 'shifts/new',
-        component: ShiftFormComponent
+        component: ShiftFormComponent,
+        resolve: { data: ShiftResolver }
       }
     ]
   }
