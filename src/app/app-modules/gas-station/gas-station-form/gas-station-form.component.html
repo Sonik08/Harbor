@@ -1,1 +1,23 @@
-<p>gas-station works!</p>
+<base-form 
+[model]="vm.model"
+ [saveable]="vm.saveable"
+ [vm]="vm">
+<form-row>
+    <input-control
+    [form] = "vm.form"
+    [required]="true"
+    type="text"
+    label="Όνομα"
+    name="name"
+    ></input-control>
+</form-row>
+<form-row>
+    <input-control
+    [form] = "vm.form"
+    [required]="true"
+    type="text"
+    label="Διεύθυνση"
+    name="adress"
+    ></input-control>
+</form-row>
+</base-form>
