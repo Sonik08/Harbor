@@ -3,9 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Model } from '../models/model';
+import { UIAction } from '../models/ui-action';
 
 @Component({
   selector: 'material-table',
@@ -23,20 +24,47 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
 
   @Input() url: string;
 
+  @Input() addUrl: string;
+
   dataSource: MatTableDataSource<TModel>;
+
+  actions: UIAction<TModel>[] = [];
 
   isLoadingData = true;
 
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {}
 
   ngOnInit(): void {
-    this.dataObjects.pipe(filter(values => !!values)).subscribe(data => {
-      console.log(data);
+    this.actions = this.getActions();
+    this.dataObjects.pipe(
+      filter(values => !!values)).subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.isLoadingData = false;
     });
+  }
+
+  getActions(): UIAction<TModel>[] {
+    return [
+      {
+        name: "Επεξεργασία",
+        isAction: true,
+        actionFn: item => true,
+        showFn$: item => of(true)
+      },
+      {
+        name: "Διαγραφή",
+        isAction: true,
+        actionFn: item => true,
+        showFn$: item => of(true)
+      }
+    ];
+  }
+
+  addNew(){
+    console.log(this.addUrl, this._activatedRoute)
+    this._router.navigate([this.addUrl], { relativeTo: this._activatedRoute })
   }
 
   applyFilter(event: Event): void {
@@ -49,6 +77,7 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   }
 
   onSelect(row: TModel): void {
+    console.log(this.url, this._activatedRoute)
     this._router.navigate([row.id + this.url], { relativeTo: this._activatedRoute });
   }
 }

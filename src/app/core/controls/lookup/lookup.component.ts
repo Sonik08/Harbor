@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lookup',
+  selector: 'lookup-control',
   templateUrl: './lookup.component.html',
   styleUrls: ['./lookup.component.scss']
 })

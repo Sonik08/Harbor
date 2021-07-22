@@ -1,8 +1,14 @@
-<mat-form-field class="filter">
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" #input />
-</mat-form-field>
 
+
+<div class="filterAndActionsRow">
+  <mat-form-field class="filter">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+  <button mat-mini-fab color="primary" aria-label="Προσθήκη" class="actionButton" (click)="addNew()">
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+</div>
 <div class="container mat-elevation-z8">
   <div class="loading-shade" *ngIf="isLoadingData">
     <mat-spinner *ngIf="isLoadingData"></mat-spinner>
@@ -14,10 +20,81 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           {{ column | titlecase }}
         </th>
-        <td mat-cell *matCellDef="let profile">
-          {{ profile[column] }}
-        </td>
+        <div *ngIf="column=='action'; then actions else dataCell"></div>
+        <ng-template #actions>
+          <td mat-cell *matCellDef="let profile">
+            <td *matCellDef="let profile" class="actions-cell" mat-cell>
+              <button
+                type="button"
+                mat-icon-button
+                [matMenuTriggerFor]="actionsMenu"
+                (click)="$event.stopPropagation()"
+              >
+                <mat-icon>more_horiz</mat-icon>
+                Hello World
+              </button>
+              <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">
+                <!-- <ng-container *ngFor="let action of actions">
+                  <button
+                    *ngIf="action.showFn && action.showFn(profile)"
+                    (click)="action.actionFn(profile)"
+                    mat-menu-item>
+                    <span>{{ action.name }}</span>
+                  </button>
+                  <button
+                    *ngIf="action.showFn$ && (action.showFn$(profile) | async)"
+                    (click)="action.actionFn(profile)"
+                    mat-menu-item
+                  >
+                    {{ action.name }}
+                  </button>
+                </ng-container> -->
+              </mat-menu>
+            </td>
+        </ng-template>
+        <ng-template #dataCell>
+          <td mat-cell *matCellDef="let profile">
+            {{ profile[column] }}
+          </td>
+        </ng-template>
+        
       </ng-container>
+
+      <!-- <th
+        *matHeaderCellDef
+        class="actions-cell"
+        mat-header-cell
+        mat-sort-header
+      ></th>
+      <td *matCellDef="let profile" class="actions-cell" mat-cell>
+        <button
+          type="button"
+          mat-icon-button
+          [matMenuTriggerFor]="actionsMenu"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon>more_horiz</mat-icon>
+          Hello World
+        </button>
+        <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">
+          <ng-container *ngFor="let action of actions">
+            <button
+              *ngIf="action.showFn && action.showFn(profile)"
+              (click)="action.actionFn(profile)"
+              mat-menu-item
+            >
+              <span>{{ action.name }}</span>
+            </button>
+            <button
+              *ngIf="action.showFn$ && (action.showFn$(profile) | async)"
+              (click)="action.actionFn(profile)"
+              mat-menu-item
+            >
+              {{ action.name }}
+            </button>
+          </ng-container>
+        </mat-menu>
+      </td> -->
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableColumns | async"></tr>
