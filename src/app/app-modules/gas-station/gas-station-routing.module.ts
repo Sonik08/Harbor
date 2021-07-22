@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GasStationFormComponent } from './gas-station-form/gas-station-form.component';
 import { GasStationListComponent } from './gas-station-list/gas-station-list.component';
 import { GasStationOverviewComponent } from './gas-station-overview/gas-station-overview.component';
 import { GasStationResolver } from './gas-station.resolver';
@@ -7,6 +8,14 @@ import { ShiftFormComponent } from './shift-form/shift-form.component';
 import { ShiftListComponent } from './shift-list/shift-list.component';
 
 const routes: Routes = [
+  {
+    path: 'new',
+    component: GasStationFormComponent
+  },
+  {
+    path: 'id/edit',
+    component: GasStationFormComponent
+  },
   {
     path: '',
     component: GasStationListComponent
