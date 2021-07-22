@@ -12,6 +12,7 @@ export class GasStationListComponent implements OnInit {
   tableData: Observable<GasStation[]>;
   tableColumns: Observable<string[]>;
   url = '/overview';
+  addUrl = 'new';
   constructor(private _mockSrv: MockService) {}
 
   ngOnInit(): void {
