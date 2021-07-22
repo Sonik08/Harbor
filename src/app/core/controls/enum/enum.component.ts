@@ -3,7 +3,7 @@ import { Enum } from '../../models/enum';
 import { Control } from '../control.directive';
 
 @Component({
-  selector: 'enum',
+  selector: 'enum-control',
   templateUrl: './enum.component.html',
   styleUrls: ['./enum.component.scss']
 })

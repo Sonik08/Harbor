@@ -3,7 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Control } from '../control.directive';
 
 @Component({
-  selector: 'input',
+  selector: 'input-control',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
