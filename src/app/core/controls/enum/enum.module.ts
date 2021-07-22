@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatOptionModule,
     MatSelectModule,
     ReactiveFormsModule
-  ]
+  ],
+  exports: [EnumComponent]
 })
 export class EnumModule { }

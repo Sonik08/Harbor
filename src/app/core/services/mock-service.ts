@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ExpenseItem } from 'src/app/app-modules/models/expense-item';
 import { ExpenseType } from 'src/app/app-modules/models/expense-type';
 import { FuelType } from 'src/app/app-modules/models/fuel-type';
 import { GasStation } from 'src/app/app-modules/models/gas-station';
@@ -39,11 +38,13 @@ export class MockService {
     }
   ];
   gasStationsTableColumns : string[]  = ['id', 'name'];
+
   gasStationListItems: IListItem[] = [
     { title: 'Fuel Tank Levels', icon: 'euro', url: ''},
     { title: 'New Shift', icon: 'person', url: 'shifts/new' },
     { title: 'Shifts', icon: 'groups', url: 'shifts'}
   ];
+
 
   getGasStations(): GasStation[] {
     return this.gasStations;
@@ -177,4 +178,6 @@ export class MockService {
       listItems: this.getGasStationListItems()
     }
   }
+
+  shiftType: ShiftType[] = [ShiftType.Evening, ShiftType.Evening, ShiftType.Night, ShiftType.Unknown]
 }
