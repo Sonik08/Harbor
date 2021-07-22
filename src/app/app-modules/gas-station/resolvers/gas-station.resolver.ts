@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MockService } from 'src/app/core/services/mock-service';
-import { GasStation } from '../models/gas-station';
+import { GasStation } from '../../models/gas-station';
 
 @Injectable({ providedIn: 'root' })
 export class GasStationResolver implements Resolve<GasStation> {
