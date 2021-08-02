@@ -1,20 +1,18 @@
 <base-form
-[model]="vm.model"
-[saveable]="vm.saveable"
-[vm]="vm"
-[form]="vm.form">
-<form-row>
+  [model]="vm.model"
+  [saveable]="vm.saveable"
+  [vm]="vm"
+  [form]="vm.form"
+>
+  <form-row>
     <input-control
-    [form]="vm.form"
-    [required]="true"
-    name="income"
-    type="number"
-    label="Έσοδα">
+      [form]="vm.form"
+      [required]="true"
+      name="income"
+      type="number"
+      label="Έσοδα"
+    >
     </input-control>
-    <enum-control
-    [form]="vm.form"
-    [required]="true"
-    name="type"
-    [items]="vm.types"></enum-control>
-</form-row>
+    <!-- <enum-control [form]="vm.form" [required]="true" name="type" [items]="vm.types"></enum-control> -->
+  </form-row>
 </base-form>

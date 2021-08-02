@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Model } from '../models/model';
 import { BaseFormVM } from '../vm/form.vm';
@@ -9,13 +9,12 @@ import { BaseFormVM } from '../vm/form.vm';
   styleUrls: ['./base-form.component.scss']
 })
 export class BaseFormComponent<TModel extends Model, TRelatedData> {
+  @Input() saveable: boolean;
+  @Input() model: TModel;
+  @Input() form: FormGroup;
+  @Input() vm: BaseFormVM<TModel, TRelatedData>;
 
-  @Input()saveable: boolean;
-  @Input()model: TModel;
-  @Input()form: FormGroup;
-  @Input()vm: BaseFormVM<TModel,TRelatedData>
-
-  onSubmit(){
+  onSubmit() {
     this.vm.submit();
   }
 }

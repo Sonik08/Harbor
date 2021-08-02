@@ -1,5 +1,8 @@
 <mat-list>
-  <mat-list-item *ngFor="let listItem of listItems | async" (click)="onSelect(listItem)">
+  <mat-list-item
+    *ngFor="let listItem of listItems | async"
+    (click)="onSelect(listItem)"
+  >
     <mat-icon matListIcon> {{ listItem.icon }}</mat-icon>
     <p matLine>
       <span> {{ listItem.title }} </span>

@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: 'index.html',
     component: LayoutComponent,
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () =>
+      import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '',
@@ -15,11 +16,17 @@ const routes: Routes = [
     children: [
       {
         path: 'gas-stations',
-        loadChildren: () => import('./app-modules/gas-station/gas-station.module').then(m => m.GasStationModule)
+        loadChildren: () =>
+          import('./app-modules/gas-station/gas-station.module').then(
+            m => m.GasStationModule
+          )
       },
       {
         path: '',
-        loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () =>
+          import('./pages/dashboard/dashboard.module').then(
+            m => m.DashboardModule
+          )
       }
     ]
   }

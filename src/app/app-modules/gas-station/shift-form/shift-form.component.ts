@@ -8,10 +8,8 @@ import { ShiftFormVM } from '../vm/shift-form.vm';
   providers: [ShiftFormVM]
 })
 export class ShiftFormComponent implements OnInit {
-  constructor(public vm: ShiftFormVM) {
-  }
+  constructor(public vm: ShiftFormVM) {}
   ngOnInit(): void {
     this.vm.onInit();
   }
-
 }

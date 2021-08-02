@@ -32,12 +32,14 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
 
   isLoadingData = true;
 
-  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {}
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.actions = this.getActions();
-    this.dataObjects.pipe(
-      filter(values => !!values)).subscribe(data => {
+    this.dataObjects.pipe(filter(values => !!values)).subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -48,13 +50,13 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   getActions(): UIAction<TModel>[] {
     return [
       {
-        name: "Επεξεργασία",
+        name: 'Επεξεργασία',
         isAction: true,
         actionFn: item => true,
         showFn$: item => of(true)
       },
       {
-        name: "Διαγραφή",
+        name: 'Διαγραφή',
         isAction: true,
         actionFn: item => true,
         showFn$: item => of(true)
@@ -62,9 +64,9 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
     ];
   }
 
-  addNew(){
-    console.log(this.addUrl, this._activatedRoute)
-    this._router.navigate([this.addUrl], { relativeTo: this._activatedRoute })
+  addNew() {
+    console.log(this.addUrl, this._activatedRoute);
+    this._router.navigate([this.addUrl], { relativeTo: this._activatedRoute });
   }
 
   applyFilter(event: Event): void {
@@ -77,7 +79,9 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   }
 
   onSelect(row: TModel): void {
-    console.log(this.url, this._activatedRoute)
-    this._router.navigate([row.id + this.url], { relativeTo: this._activatedRoute });
+    console.log(this.url, this._activatedRoute);
+    this._router.navigate([row.id + this.url], {
+      relativeTo: this._activatedRoute
+    });
   }
 }

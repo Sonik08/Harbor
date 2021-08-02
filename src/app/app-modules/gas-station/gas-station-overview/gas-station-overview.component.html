@@ -1,9 +1,11 @@
-<material-card 
-[title]="(gasStation | async).name"
-[description]="(gasStation | async).adress"
+<material-card
+  [title]="(gasStation | async).name"
+  [description]="(gasStation | async).adress"
 ></material-card>
 
-<material-expantion-panel [epxantionPanelItem]="expantionPanel" ></material-expantion-panel>
+<material-expantion-panel
+  [epxantionPanelItem]="expantionPanel"
+></material-expantion-panel>
 <!-- <material-list [listItems]="listItems"></material-list> -->
 
 <router-outlet></router-outlet>

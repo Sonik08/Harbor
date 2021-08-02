@@ -17,11 +17,11 @@ export class GasStationOverviewComponent implements OnInit {
   gasStation: Observable<GasStation>;
   constructor(
     private _mockService: MockService,
-    private _route: ActivatedRoute) {}
+    private _route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.gasStation =  (this._route.data as Observable<Data<GasStation>>)
-    .pipe(
+    this.gasStation = (this._route.data as Observable<Data<GasStation>>).pipe(
       map(resolvedData => resolvedData.data)
     );
 

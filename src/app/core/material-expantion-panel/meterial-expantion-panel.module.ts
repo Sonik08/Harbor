@@ -1,18 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialExpantionPanelComponent } from './material-expantion-panel.component';
+import { NgModule } from '@angular/core';
 import { MaterialModule } from 'src/app/pages/material.module';
 import { MaterialListModule } from '../material-list/material-list.module';
-
-
+import { MaterialExpantionPanelComponent } from './material-expantion-panel.component';
 
 @NgModule({
   declarations: [MaterialExpantionPanelComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    MaterialListModule
-  ],
+  imports: [CommonModule, MaterialModule, MaterialListModule],
   exports: [MaterialExpantionPanelComponent]
 })
-export class MeterialExpantionPanelModule { }
+export class MeterialExpantionPanelModule {}

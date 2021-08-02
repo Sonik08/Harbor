@@ -1,24 +1,25 @@
-<base-form 
-[model]="vm.model"
- [saveable]="vm.saveable"
- [vm]="vm"
- [form]="vm.form">
-<form-row>
+<base-form
+  [model]="vm.model"
+  [saveable]="vm.saveable"
+  [vm]="vm"
+  [form]="vm.form"
+>
+  <form-row>
     <input-control
-    [form] = "vm.form"
-    [required]="true"
-    type="text"
-    label="Όνομα"
-    name="name"
+      [form]="vm.form"
+      [required]="true"
+      type="text"
+      label="Όνομα"
+      name="name"
     ></input-control>
-</form-row>
-<form-row>
+  </form-row>
+  <form-row>
     <input-control
-    [form] = "vm.form"
-    [required]="true"
-    type="text"
-    label="Διεύθυνση"
-    name="adress"
+      [form]="vm.form"
+      [required]="true"
+      type="text"
+      label="Διεύθυνση"
+      name="adress"
     ></input-control>
-</form-row>
+  </form-row>
 </base-form>

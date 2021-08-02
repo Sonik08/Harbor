@@ -7,7 +7,13 @@ import { MaterialListModule } from 'src/app/core/material-list/material-list.mod
 import { GasStationOverviewComponent } from './gas-station-overview.component';
 
 @NgModule({
-  imports: [CommonModule, MaterialListModule, MaterialCardModule, RouterModule, MeterialExpantionPanelModule],
+  imports: [
+    CommonModule,
+    MaterialListModule,
+    MaterialCardModule,
+    RouterModule,
+    MeterialExpantionPanelModule
+  ],
   declarations: [GasStationOverviewComponent]
 })
 export class GasStationOverviewModule {}

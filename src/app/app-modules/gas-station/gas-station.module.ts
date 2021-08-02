@@ -8,6 +8,13 @@ import { ShiftListModule } from './shift-list/shift-list.module';
 
 @NgModule({
   declarations: [],
-  imports: [GasStationListModule, GasStationOverviewModule, GasStationRoutingModule, ShiftFormModule, ShiftListModule, GasStationFormModule]
+  imports: [
+    GasStationListModule,
+    GasStationOverviewModule,
+    GasStationRoutingModule,
+    ShiftFormModule,
+    ShiftListModule,
+    GasStationFormModule
+  ]
 })
 export class GasStationModule {}

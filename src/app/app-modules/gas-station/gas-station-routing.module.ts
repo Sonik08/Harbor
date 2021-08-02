@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: ':id/edit',
     component: GasStationFormComponent,
-    resolve: { data: GasStationResolver}
+    resolve: { data: GasStationResolver }
   },
   {
     path: '',
@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: ':id/overview',
     component: GasStationOverviewComponent,
-    resolve: { data: GasStationResolver},
+    resolve: { data: GasStationResolver },
     children: [
       {
         path: 'shifts',
@@ -34,7 +34,7 @@ const routes: Routes = [
       {
         path: 'shifts/:id/edit',
         component: ShiftFormComponent,
-        resolve: { data:ShiftResolver },
+        resolve: { data: ShiftResolver }
       },
       {
         path: 'shifts/new',

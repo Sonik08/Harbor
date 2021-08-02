@@ -1,4 +1,4 @@
-export class ResolvedData<TModel, TRelatedData>{
-    model: TModel;
-    relatedData: TRelatedData;
+export class ResolvedData<TModel, TRelatedData> {
+  model: TModel;
+  relatedData: TRelatedData;
 }

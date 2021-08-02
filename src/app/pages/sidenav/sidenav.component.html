@@ -1,9 +1,20 @@
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="true">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport (click)="drawer.toggle()" [mode]="'push'">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    (click)="drawer.toggle()"
+    [mode]="'push'"
+  >
     <mat-toolbar>Διαχείριση</mat-toolbar>
     <mat-nav-list>
       <div>
-        <a routerLink="/gas-stations" routerLinkActive="active" mat-list-item route>
+        <a
+          routerLink="/gas-stations"
+          routerLinkActive="active"
+          mat-list-item
+          route
+        >
           <mat-icon>local_gas_station</mat-icon>
           Πρατήρια
         </a>
@@ -12,11 +23,16 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span routerLink="./">Harbor</span>
     </mat-toolbar>
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

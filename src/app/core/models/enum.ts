@@ -1,5 +1,4 @@
 export class Enum {
-    display: string;
-    value: string;
-  }
-  
+  display: string;
+  value: string;
+}

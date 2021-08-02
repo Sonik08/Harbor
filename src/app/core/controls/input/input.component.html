@@ -1,15 +1,14 @@
 <mat-form-field fxFlex [formGroup]="form" appearance="outline">
-    <mat-label>{{ label }}</mat-label>
-    <input
-      [min]="min"
-      type="{{ type }}"
-      [readonly]="readonly"
-      [required]="required"
-      formControlName="{{ name }}"
-      matInput
-    />
-    <mat-error class="error-message" *ngFor="let message of validationMessages">
-      {{ message }}</mat-error
-    >
-  </mat-form-field>
-  
+  <mat-label>{{ label }}</mat-label>
+  <input
+    [min]="min"
+    type="{{ type }}"
+    [readonly]="readonly"
+    [required]="required"
+    formControlName="{{ name }}"
+    matInput
+  />
+  <mat-error class="error-message" *ngFor="let message of validationMessages">
+    {{ message }}</mat-error
+  >
+</mat-form-field>

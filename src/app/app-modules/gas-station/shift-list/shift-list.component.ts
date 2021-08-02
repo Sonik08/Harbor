@@ -9,16 +9,13 @@ import { Shift } from '../../models/shift';
   styleUrls: ['./shift-list.component.scss']
 })
 export class ShiftListComponent implements OnInit {
-
   tableData: Observable<Shift[]>;
-  tableColumns: Observable<string[]>
-  url = "";
-  constructor(private _mockSrv: MockService) { }
+  tableColumns: Observable<string[]>;
+  url = '';
+  constructor(private _mockSrv: MockService) {}
 
   ngOnInit(): void {
     this.tableData = this._mockSrv.getShifts();
     this.tableColumns = this._mockSrv.getShiftsTableColumns();
-
   }
-
 }

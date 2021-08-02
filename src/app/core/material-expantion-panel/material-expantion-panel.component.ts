@@ -10,18 +10,14 @@ import { IListItem } from '../models/list-item';
   styleUrls: ['./material-expantion-panel.component.scss']
 })
 export class MaterialExpantionPanelComponent implements OnInit {
-
   listItems: Observable<IListItem[]> = of([]);
   @Input() epxantionPanelItem: Observable<IExpantionPanelItem>;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.listItems = this.epxantionPanelItem.pipe(
       map(expantionItems => expantionItems.listItems)
-    )
+    );
   }
-
-
-
 }

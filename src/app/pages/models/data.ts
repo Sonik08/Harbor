@@ -1,3 +1,3 @@
 export class Data<TModel> {
-    data: TModel
+  data: TModel;
 }

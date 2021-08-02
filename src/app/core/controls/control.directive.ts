@@ -1,12 +1,12 @@
-import { Directive, Input } from "@angular/core";
-import { Validators, FormGroup, FormControl } from "@angular/forms";
+import { Directive, Input } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Directive()
 export abstract class Control {
   validations = [
     {
       type: Validators.pattern.name,
-      message: "Λανθασμένη μορφή"
+      message: 'Λανθασμένη μορφή'
     }
   ];
 

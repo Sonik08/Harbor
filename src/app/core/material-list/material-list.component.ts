@@ -16,11 +16,12 @@ export class MaterialListComponent {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _mockSrv: MockService,
-    private _router: Router) {
+    private _router: Router
+  ) {
     this.listItems = of(_mockSrv.getGasStationListItems());
   }
 
-  onSelect(listItem: IListItem){
+  onSelect(listItem: IListItem) {
     this._router.navigate([listItem.url], { relativeTo: this._activatedRoute });
   }
 }

@@ -5,9 +5,9 @@ import { InputModule } from './input/input.module';
 import { LookupModule } from './lookup/lookup.module';
 
 @NgModule({
-    imports: [InputModule, DateModule, EnumModule, LookupModule],
-    exports: [InputModule, DateModule, EnumModule, LookupModule],
-    declarations: [],
-    providers: [],
+  imports: [InputModule, DateModule, EnumModule, LookupModule],
+  exports: [InputModule, DateModule, EnumModule, LookupModule],
+  declarations: [],
+  providers: []
 })
-export class FormControlsModule { }
+export class FormControlsModule {}

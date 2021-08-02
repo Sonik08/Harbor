@@ -8,8 +8,7 @@ import { GasStationVM } from '../vm/gas-station-form.vm';
   providers: [GasStationVM]
 })
 export class GasStationFormComponent implements OnInit {
-  constructor(public vm: GasStationVM) {
-  }
+  constructor(public vm: GasStationVM) {}
   ngOnInit(): void {
     this.vm.onInit();
   }
