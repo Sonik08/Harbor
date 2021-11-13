@@ -1,0 +1,22 @@
+1. Βαρδιες
+
+Πεδία:
+    -Κατάστημα
+        α. Πλυσίματα (double)
+        β. Αξεσουάρ (double)
+    -Καύσιμα
+        a.Diesel
+            -Λίτρα (double)
+            -Τιμή (float)
+        b.Unleaded
+            -Λίτρα  (double)
+            -Τιμή (float)
+        c.Unleaded 100
+            -Λίτρα (double)
+            -Τιμή (float)
+        d.LPG
+            -Λίτρα (double)
+            -Τιμή (float)
+    -Ταμείο (double)
+
+
