@@ -11,6 +11,6 @@ export class GasStationResolver implements Resolve<GasStation> {
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<GasStation> | Promise<GasStation> | GasStation {
-    return this._mockSrv.getGasStationById(route.paramMap.get('id'));
+    return this._mockSrv.getGasStationById(route.paramMap.get('gasStationId'));
   }
 }

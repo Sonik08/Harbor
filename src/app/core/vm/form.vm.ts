@@ -41,7 +41,6 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   protected abstract isNew(): boolean;
 
   protected updateInitialControlValues(): void {
-    console.log('form before', this.form);
     this.route.data
       .pipe(
         map(resolvedData => {

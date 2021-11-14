@@ -176,14 +176,14 @@ export class MockService {
     return of(this.shifts.filter(gasStation => gasStation.id === id)[0]);
   }
 
-  getExpantionPanelItem(): IExpantionPanelItem {
-    return {
+  getExpantionPanelItem(): Observable<IExpantionPanelItem> {
+    return of({
       title: 'title',
       description: 'descriiption',
       icon: 'person',
       url: './',
       listItems: this.getGasStationListItems()
-    };
+    });
   }
 
   getShiftTypes(): Observable<ShiftType[]> {

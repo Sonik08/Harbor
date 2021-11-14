@@ -25,6 +25,6 @@ export class GasStationOverviewComponent implements OnInit {
       map(resolvedData => resolvedData.data)
     );
 
-    this.expantionPanel = of(this._mockService.getExpantionPanelItem());
+    this.expantionPanel = this._mockService.getExpantionPanelItem();
   }
 }
