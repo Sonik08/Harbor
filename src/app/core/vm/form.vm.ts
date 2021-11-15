@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, single } from 'rxjs/operators';
 import { Data } from 'src/app/pages/models/data';
+import { Enum } from '../models/enum';
 import { Model } from '../models/model';
 import { ResolvedData } from '../models/resolved-data';
 

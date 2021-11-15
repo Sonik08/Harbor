@@ -5,6 +5,23 @@
   [form]="vm.form"
 >
   <form-row>
+    <enum-control
+      [form]="vm.form"
+      [enums]="vm.types"
+      [required]="true"
+      name="type"
+      label="Type"
+    >
+    </enum-control>
+  <date-control
+      [form]="vm.form"
+      [required]="true"
+      name="date"
+      label="Ημερομηνία"
+    >
+    </date-control>
+  </form-row>
+  <form-row>
     <input-control
       [form]="vm.form"
       [required]="true"
@@ -13,6 +30,5 @@
       label="Έσοδα"
     >
     </input-control>
-    <!-- <enum-control [form]="vm.form" [required]="true" name="type" [items]="vm.types"></enum-control> -->
   </form-row>
 </base-form>

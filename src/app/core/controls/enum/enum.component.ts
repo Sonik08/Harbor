@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Enum } from '../../models/enum';
 import { Control } from '../control.directive';
 
 @Component({
@@ -9,9 +8,9 @@ import { Control } from '../control.directive';
 })
 export class EnumComponent extends Control {
   @Input()
-  items: Enum[] = [];
+  enums: any[] = [];
 
-  @Output() itemSelected = new EventEmitter<Enum>();
+  @Output() itemSelected = new EventEmitter<any>();
 
   onChangeValue(event: any) {
     this.itemSelected.emit(event);

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { DateComponent } from './date.component';
@@ -12,9 +12,10 @@ import { DateComponent } from './date.component';
     CommonModule,
     MatDatepickerModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatNativeDateModule
   ],
   exports: [DateComponent],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'el-GR' }]
+  providers: [MatDatepickerModule]
 })
 export class DateModule {}
