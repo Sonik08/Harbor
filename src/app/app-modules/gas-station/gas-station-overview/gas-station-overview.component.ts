@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { IExpantionPanelItem } from 'src/app/core/models/expantion-panel-item';
 import { MockService } from 'src/app/core/services/mock-service';
 import { Data } from 'src/app/pages/models/data';
-import { GasStation } from '../../models/gas-station';
+import { GasStation } from '../../entities/models/gas-station';
 
 @Component({
   selector: 'gas-station-overview',

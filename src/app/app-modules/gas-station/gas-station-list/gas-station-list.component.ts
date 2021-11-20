@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { MockService } from 'src/app/core/services/mock-service';
-import { GasStation } from '../../models/gas-station';
+import { GasStation } from '../../entities/models/gas-station';
 
 @Component({
   selector: 'gas-station-list',

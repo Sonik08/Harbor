@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
 import { MockService } from 'src/app/core/services/mock-service';
-import { Shift } from '../../models/shift';
+import { Shift } from '../../entities/models/shift';
 import { ShiftRelatedData } from './resolve-models/shift-related-data';
 
 @Injectable({ providedIn: 'root' })

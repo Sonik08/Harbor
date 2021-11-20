@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MockService } from 'src/app/core/services/mock-service';
-import { Shift } from '../../models/shift';
+import { Shift } from '../../entities/models/shift';
 
 @Component({
   selector: 'shift-list',

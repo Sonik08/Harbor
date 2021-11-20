@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseFormVM } from 'src/app/core/vm/form.vm';
-import { GasStation } from '../../models/gas-station';
+import { GasStation } from '../../entities/models/gas-station';
 import { GasStationRelatedData } from '../resolvers/resolve-models/gas-station-related-data';
 
 @Injectable()

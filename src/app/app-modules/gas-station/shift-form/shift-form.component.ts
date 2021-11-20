@@ -4,7 +4,7 @@ import { ShiftFormVM } from '../vm/shift-form.vm';
 @Component({
   selector: 'shift-form',
   templateUrl: './shift-form.component.html',
-  styleUrls: ['./shift-form.component.scss'],
+  styles: [],
   providers: [ShiftFormVM]
 })
 export class ShiftFormComponent implements OnInit {
