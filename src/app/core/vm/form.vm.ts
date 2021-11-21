@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, single } from 'rxjs/operators';
 import { Data } from 'src/app/pages/models/data';
-import { Enum } from '../models/enum';
 import { Model } from '../models/model';
 import { ResolvedData } from '../models/resolved-data';
 
@@ -49,6 +48,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
           for (const property in model) {
             this.form.controls[property].patchValue(model[property]);
           }
+          console.log(this.form);
         })
       )
       .subscribe();

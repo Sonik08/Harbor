@@ -13,7 +13,7 @@
       label="Type"
     >
     </enum-control>
-  <date-control
+    <date-control
       [form]="vm.form"
       [required]="true"
       name="date"
@@ -21,6 +21,29 @@
     >
     </date-control>
   </form-row>
+  <form-row>
+    <input-control
+      [form]="vm.form"
+      [required]="true"
+      name="washes"
+      type="number"
+      label="Πλυσίματα"
+    >
+    </input-control>
+    <input-control
+      [form]="vm.form"
+      [required]="true"
+      name="accesories"
+      type="number"
+      label="Αξεσουαρ"
+    >
+    </input-control>
+  </form-row>
+  <!-- <form-row>
+    <li *ngFor="let item of items; index as i; trackBy: trackByFn">
+      <shift-fuel-form [shiftFuel]="" [form]=""> </shift-fuel-form>
+    </li>
+  </form-row>             -->
   <form-row>
     <input-control
       [form]="vm.form"

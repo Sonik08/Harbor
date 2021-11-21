@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseFormVM } from 'src/app/core/vm/form.vm';
+import { ShiftFuel } from '../../entities/models/shift-fuel';
 import { ShiftType } from '../../entities/enums/shift-type';
-import { Shift } from '../../entities/models/shift';
-import { ShiftRelatedData } from '../resolvers/resolve-models/shift-related-data';
+import { ShiftFuelRelatedData } from '../resolvers/resolve-models/shift-fuel-related-data';
 
 @Injectable()
-export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
+export class ShiftFuelFormVM extends BaseFormVM<
+  ShiftFuel,
+  ShiftFuelRelatedData
+> {
   types: ShiftType[] = [ShiftType.Evening, ShiftType.Morning, ShiftType.Night];
 
   constructor(
@@ -21,7 +24,7 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
   }
 
   protected initializeModel(): void {
-    this.model = new Shift();
+    this.model = new ShiftFuel();
   }
   protected isNew(): boolean {
     return !this._router.url.includes('edit');

@@ -1,4 +1,4 @@
-<mat-form-field fxFlex [formGroup]="form">
+<mat-form-field fxFlex [formGroup]="form" appearance="standard">
   <mat-label>{{ label }}</mat-label>
   <mat-select
     (selectionChange)="onChangeValue($event)"
@@ -9,13 +9,4 @@
       enum
     }}</mat-option>
   </mat-select>
-  <button
-    *ngIf="control.value && !readonly"
-    type="button"
-    mat-icon-button
-    (click)="control.reset()"
-    matSuffix
-  >
-    <mat-icon>close</mat-icon>
-  </button>
 </mat-form-field>
