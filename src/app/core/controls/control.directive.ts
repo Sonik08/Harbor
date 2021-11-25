@@ -2,7 +2,7 @@ import { Directive, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Directive()
-export abstract class Control {
+export abstract class ControlDirective {
   validations = [
     {
       type: Validators.pattern.name,

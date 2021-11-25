@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseFormVM } from 'src/app/core/vm/form.vm';
+import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
 import { ShiftFuel } from '../../entities/models/shift-fuel';
 import { ShiftType } from '../../entities/enums/shift-type';
 import { ShiftFuelRelatedData } from '../resolvers/resolve-models/shift-fuel-related-data';

@@ -1,12 +1,12 @@
 <base-form
-  [model]="vm.model"
+  [model]="vm.model$ | async"
   [saveable]="vm.saveable"
   [vm]="vm"
-  [form]="vm.form"
+  [form]="vm.form$ | async"
 >
   <form-row>
     <input-control
-      [form]="vm.form"
+      [form]="vm.form$ | async"
       [required]="true"
       type="text"
       label="Όνομα"
@@ -15,7 +15,7 @@
   </form-row>
   <form-row>
     <input-control
-      [form]="vm.form"
+      [form]="vm.form$ | async"
       [required]="true"
       type="text"
       label="Διεύθυνση"

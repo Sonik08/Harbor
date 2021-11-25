@@ -5,7 +5,7 @@
     [disabled]="readonly"
     formControlName="{{ name }}"
   >
-    <mat-option *ngFor="let enum of enums" value="{{ enum }}">{{
+    <mat-option *ngFor="let enum of enums | async" value="{{ enum }}">{{
       enum
     }}</mat-option>
   </mat-select>

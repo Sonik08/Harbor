@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
 import { MockService } from 'src/app/core/services/mock-service';
 import { Shift } from '../../entities/models/shift';
@@ -20,20 +20,25 @@ export class ShiftResolver
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<ResolvedData<Shift, ShiftRelatedData>>
-    | Promise<ResolvedData<Shift, ShiftRelatedData>>
-    | ResolvedData<Shift, ShiftRelatedData> {
-    let gasStationId = route.parent.paramMap.get('gasStationId');
+  ): Observable<ResolvedData<Shift, ShiftRelatedData>> {
+    const gasStationId = route.parent.paramMap.get('gasStationId');
 
-    return this._mockService.getShiftTypes().pipe(
-      map(shiftTypes => {
-        return {
-          model: new Shift(),
-          relatedData: {
-            types: shiftTypes
-          }
-        } as ResolvedData<Shift, ShiftRelatedData>;
+    const tanks$ = this._mockService.getGasStationTanks(gasStationId);
+    const types$ = this._mockService.getShiftTypes();
+
+    return tanks$.pipe(
+      switchMap(tanks => {
+        return types$.pipe(
+          map(types => {
+            return {
+              model: new Shift(),
+              relatedData: {
+                tanks: tanks,
+                types: types
+              }
+            };
+          })
+        );
       })
     );
   }

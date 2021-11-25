@@ -1,20 +1,20 @@
 <base-form
-  [model]="vm.model"
+  [model]="vm.model$ | async"
   [saveable]="vm.saveable"
   [vm]="vm"
-  [form]="vm.form"
+  [form]="vm.form$ | async"
 >
   <form-row>
     <enum-control
-      [form]="vm.form"
-      [enums]="vm.types"
+      [form]="vm.form$ | async"
+      [enums]="vm.types$"
       [required]="true"
       name="type"
       label="Type"
     >
     </enum-control>
     <date-control
-      [form]="vm.form"
+      [form]="vm.form$ | async"
       [required]="true"
       name="date"
       label="Ημερομηνία"
@@ -23,7 +23,7 @@
   </form-row>
   <form-row>
     <input-control
-      [form]="vm.form"
+      [form]="vm.form$ | async"
       [required]="true"
       name="washes"
       type="number"
@@ -31,7 +31,7 @@
     >
     </input-control>
     <input-control
-      [form]="vm.form"
+      [form]="vm.form$ | async"
       [required]="true"
       name="accesories"
       type="number"
@@ -46,7 +46,7 @@
   </form-row>             -->
   <form-row>
     <input-control
-      [form]="vm.form"
+      [form]="vm.form$ | async"
       [required]="true"
       name="income"
       type="number"

@@ -12,7 +12,7 @@ export class Shift extends Model {
   // expenseItems: ExpenseItem[] = [];
   // fuelLevels: FuelLevel[] = [];
   // resupplies: Resupply[] = [];
-  fuelConsumption: ShiftFuel[] = [];
+  tanks: ShiftFuel[] = [];
 
   gasStationId: string = null;
 

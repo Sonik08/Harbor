@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ShiftType } from 'src/app/app-modules/entities/enums/shift-type';
 import { TankType } from 'src/app/app-modules/entities/enums/tank-type';
+import { FuelType } from 'src/app/app-modules/entities/models/fuel-type';
 import { GasStation } from 'src/app/app-modules/entities/models/gas-station';
 import { Shift } from 'src/app/app-modules/entities/models/shift';
 import { Tank } from 'src/app/app-modules/entities/models/tank';
@@ -49,49 +50,49 @@ export class MockService {
       id: '1',
       name: 'Tank Diesel 1',
       gasStationId: '1',
-      tankType: TankType.Diesel
+      fuelType: FuelType.Diesel
     },
     {
       id: '2',
       name: 'Tank LPG 1',
       gasStationId: '1',
-      tankType: TankType.LPG
+      fuelType: FuelType.LPG
     },
     {
       id: '3',
       name: 'Tank Super 1',
       gasStationId: '1',
-      tankType: TankType.Super
+      fuelType: FuelType.Ultimate
     },
     {
       id: '4',
       name: 'Tank Unleaded 1',
       gasStationId: '1',
-      tankType: TankType.Unleaded
+      fuelType: FuelType.Unleaded
     },
     {
       id: '5',
       name: 'Tank LPG 1',
       gasStationId: '2',
-      tankType: TankType.LPG
+      fuelType: FuelType.LPG
     },
     {
       id: '6',
       name: 'Tank Diesel 1',
       gasStationId: '2',
-      tankType: TankType.Diesel
+      fuelType: FuelType.Diesel
     },
     {
       id: '7',
       name: 'Tank Unleaded 1',
       gasStationId: '2',
-      tankType: TankType.Unleaded
+      fuelType: FuelType.Unleaded
     },
     {
       id: '8',
       name: 'Tank Unleaded 2',
       gasStationId: '2',
-      tankType: TankType.Unleaded
+      fuelType: FuelType.Unleaded
     }
   ];
 
@@ -193,10 +194,9 @@ export class MockService {
   shiftsTableColumns: string[] = ['type', 'profit', 'date', 'gasStationId'];
 
   shiftTypes: ShiftType[] = [
+    ShiftType.Morning,
     ShiftType.Evening,
-    ShiftType.Evening,
-    ShiftType.Night,
-    ShiftType.Unknown
+    ShiftType.Night
   ];
 
   getGasStations(): GasStation[] {

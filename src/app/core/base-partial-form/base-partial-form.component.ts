@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Model } from '../models/model';
-import { BaseFormVM } from '../vm/form.vm';
+import { BaseFormVM } from '../vm/base-form.vm';
 
 @Component({
   selector: 'base-partial-form',
