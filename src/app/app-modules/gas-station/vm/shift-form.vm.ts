@@ -75,7 +75,6 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
   public getShiftFuelForm(index: number): Observable<FormGroup> {
     return this.form$.pipe(
       map(formGroup => {
-        console.log(formGroup);
         const x = formGroup.get('tanks') as FormArray;
         return x.at(index) as FormGroup;
       }),

@@ -10,4 +10,8 @@ import { ShiftFuel } from '../../entities/models/shift-fuel';
 export class ShiftFuelFormComponent {
   @Input() shiftFuel: ShiftFuel;
   @Input() form: FormGroup;
+
+public tankFuelInCurrency(): number {
+    return this.form.get('litres').value * this.form.get('price').value;
+  }
 }

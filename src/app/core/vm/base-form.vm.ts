@@ -31,7 +31,9 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   }
 
   submit(): void {
-    // this.form.getRawValue();
+    this.form$.pipe(map(form => {
+      form.getRawValue();
+    }));
   }
 
   protected abstract loadResolvedData(): void;
@@ -92,7 +94,6 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
                   form.addControl(property, control);
                 }
               }
-              console.log(form);
               return form;
             })
           );

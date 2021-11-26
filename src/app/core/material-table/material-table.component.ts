@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Model } from '../models/model';
-import { UIAction } from '../models/ui-action';
+import { UIAction } from '../models/UI/ui-action';
 
 @Component({
   selector: 'material-table',
@@ -65,7 +65,6 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   }
 
   addNew() {
-    console.log(this.addUrl, this._activatedRoute);
     this._router.navigate([this.addUrl], { relativeTo: this._activatedRoute });
   }
 
@@ -79,7 +78,6 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   }
 
   onSelect(row: TModel): void {
-    console.log(this.url, this._activatedRoute);
     this._router.navigate([row.id + this.url], {
       relativeTo: this._activatedRoute
     });

@@ -11,4 +11,6 @@ export class InputComponent extends ControlDirective {
   type = 'text';
   @Input()
   min = 0;
+  @Input()
+  max = 0;
 }

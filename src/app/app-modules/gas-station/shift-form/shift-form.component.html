@@ -39,15 +39,15 @@
     >
     </input-control>
   </form-row>
-  <form-row>
-    <div *ngFor="let shiftFuel of vm.getShiftFuels() | async; index as i">
+  <div *ngFor="let shiftFuel of vm.getShiftFuels() | async; index as i">
+    <form-row>
       <shift-fuel-form
         [shiftFuel]="shiftFuel"
         [form]="vm.getShiftFuelForm(i) | async"
       >
       </shift-fuel-form>
-    </div>
-  </form-row>
+    </form-row>
+  </div>
   <form-row>
     <input-control
       [form]="vm.form$ | async"

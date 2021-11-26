@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatInputModule } from '@angular/material/input';
 import { BaseFormModule } from 'src/app/core/base-form/base-form.module';
 import { FormControlsModule } from 'src/app/core/controls/form-controls.module';
 import { ShiftFuelFormComponent } from './shift-fuel-form.component';
@@ -11,7 +12,8 @@ import { ShiftFuelFormComponent } from './shift-fuel-form.component';
     CommonModule,
     FormControlsModule,
     BaseFormModule,
-    MatFormFieldModule
+    FlexLayoutModule,
+    MatInputModule
   ],
   exports: [ShiftFuelFormComponent]
 })

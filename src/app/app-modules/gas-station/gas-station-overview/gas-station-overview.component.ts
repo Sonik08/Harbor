@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IExpantionPanelItem } from 'src/app/core/models/expantion-panel-item';
+import { IExpantionPanelItem } from 'src/app/core/models/UI/expantion-panel-item';
 import { MockService } from 'src/app/core/services/mock-service';
 import { Data } from 'src/app/pages/models/data';
 import { GasStation } from '../../entities/models/gas-station';

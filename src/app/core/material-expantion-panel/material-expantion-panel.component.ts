@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IExpantionPanelItem } from '../models/expantion-panel-item';
-import { IListItem } from '../models/list-item';
+import { IExpantionPanelItem } from '../models/UI/expantion-panel-item';
+import { IListItem } from '../models/UI/list-item';
 
 @Component({
   selector: 'material-expantion-panel',

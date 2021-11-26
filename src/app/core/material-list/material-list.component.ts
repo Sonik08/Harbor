@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { MockService } from 'src/app/core/services/mock-service';
-import { IListItem } from '../models/list-item';
+import { IListItem } from '../models/UI/list-item';
 
 @Component({
   selector: 'material-list',

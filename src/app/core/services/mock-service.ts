@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ShiftType } from 'src/app/app-modules/entities/enums/shift-type';
-import { TankType } from 'src/app/app-modules/entities/enums/tank-type';
 import { FuelType } from 'src/app/app-modules/entities/models/fuel-type';
 import { GasStation } from 'src/app/app-modules/entities/models/gas-station';
 import { Shift } from 'src/app/app-modules/entities/models/shift';
 import { Tank } from 'src/app/app-modules/entities/models/tank';
-import { IListItem } from 'src/app/core/models/list-item';
-import { IExpantionPanelItem } from '../models/expantion-panel-item';
+import { IListItem } from 'src/app/core/models/UI/list-item';
+import { IExpantionPanelItem } from '../models/UI/expantion-panel-item';
 
 @Injectable({ providedIn: 'root' })
 export class MockService {
@@ -50,49 +49,57 @@ export class MockService {
       id: '1',
       name: 'Tank Diesel 1',
       gasStationId: '1',
-      fuelType: FuelType.Diesel
+      fuelType: FuelType.Diesel,
+      maxLitres: 7000
     },
     {
       id: '2',
       name: 'Tank LPG 1',
       gasStationId: '1',
-      fuelType: FuelType.LPG
+      fuelType: FuelType.LPG,
+      maxLitres: 4500
     },
     {
       id: '3',
       name: 'Tank Super 1',
       gasStationId: '1',
-      fuelType: FuelType.Ultimate
+      fuelType: FuelType.Ultimate,
+      maxLitres: 5000
     },
     {
       id: '4',
       name: 'Tank Unleaded 1',
       gasStationId: '1',
-      fuelType: FuelType.Unleaded
+      fuelType: FuelType.Unleaded,
+      maxLitres: 5000
     },
     {
       id: '5',
       name: 'Tank LPG 1',
       gasStationId: '2',
-      fuelType: FuelType.LPG
+      fuelType: FuelType.LPG,
+      maxLitres: 3000
     },
     {
       id: '6',
       name: 'Tank Diesel 1',
       gasStationId: '2',
-      fuelType: FuelType.Diesel
+      fuelType: FuelType.Diesel,
+      maxLitres: 4520
     },
     {
       id: '7',
       name: 'Tank Unleaded 1',
       gasStationId: '2',
-      fuelType: FuelType.Unleaded
+      fuelType: FuelType.Unleaded,
+      maxLitres: 2000
     },
     {
       id: '8',
       name: 'Tank Unleaded 2',
       gasStationId: '2',
-      fuelType: FuelType.Unleaded
+      fuelType: FuelType.Unleaded,
+      maxLitres: 3500
     }
   ];
 
