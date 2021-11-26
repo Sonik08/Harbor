@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
-import { ShiftFuel } from '../../entities/models/shift-fuel';
 import { ShiftType } from '../../entities/enums/shift-type';
+import { ShiftFuel } from '../../entities/models/shift-fuel';
 import { ShiftFuelRelatedData } from '../resolvers/resolve-models/shift-fuel-related-data';
 
 @Injectable()
@@ -29,4 +29,6 @@ export class ShiftFuelFormVM extends BaseFormVM<
   protected isNew(): boolean {
     return !this._router.url.includes('edit');
   }
+
+  protected loadResolvedData(): void {}
 }

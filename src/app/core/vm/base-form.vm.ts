@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, single, switchMap } from 'rxjs/operators';
@@ -48,6 +48,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
             for (const property in model) {
               form.controls[property].patchValue(model[property]);
             }
+            return form;
           })
         );
       })
@@ -68,9 +69,30 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
           return this.form$.pipe(
             map(form => {
               for (const property in model) {
-                const control = new FormControl(model[property]);
-                form.addControl(property, control);
+                if (model[property] instanceof Array) {
+                  const childFormArray = new FormArray([]);
+                  const arrayObjects = Object.keys(model[property]).map(
+                    index => {
+                      return model[property][index];
+                    }
+                  );
+                  for (const child of arrayObjects) {
+                    const childFormGroup = new FormGroup({});
+                    for (const childProperty in child) {
+                      childFormGroup.addControl(
+                        childProperty,
+                        new FormControl(child[childProperty])
+                      );
+                    }
+                    childFormArray.push(childFormGroup);
+                  }
+                  form.addControl(property, childFormArray);
+                } else {
+                  const control = new FormControl(model[property]);
+                  form.addControl(property, control);
+                }
               }
+              console.log(form);
               return form;
             })
           );

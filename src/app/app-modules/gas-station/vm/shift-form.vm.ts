@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, single, switchMap } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
 import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
 import { ShiftType } from '../../entities/enums/shift-type';
@@ -61,5 +62,24 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
         })
       )
       .subscribe();
+  }
+
+  public getShiftFuels(): Observable<ShiftFuel[]> {
+    return this.model$.pipe(
+      map(model => {
+        return model.tanks;
+      })
+    );
+  }
+
+  public getShiftFuelForm(index: number): Observable<FormGroup> {
+    return this.form$.pipe(
+      map(formGroup => {
+        console.log(formGroup);
+        const x = formGroup.get('tanks') as FormArray;
+        return x.at(index) as FormGroup;
+      }),
+      single()
+    );
   }
 }

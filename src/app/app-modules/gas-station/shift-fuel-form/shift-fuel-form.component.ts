@@ -8,7 +8,6 @@ import { ShiftFuel } from '../../entities/models/shift-fuel';
   styles: []
 })
 export class ShiftFuelFormComponent {
-  constructor() {}
   @Input() shiftFuel: ShiftFuel;
   @Input() form: FormGroup;
 }
