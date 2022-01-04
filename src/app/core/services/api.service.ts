@@ -20,6 +20,10 @@ export abstract class ApiService<T extends Model> {
     return this._httpClient.get<ApiResponse<T>>(this.getUrl());
   }
 
+  getById(id: string): Observable<ApiResponse<T>> {
+    return this._httpClient.get<ApiResponse<T>>(this.getUrl() + '/' + id);
+  }
+
   post(entity: T): Observable<ApiResponse<T>> {
     return this._httpClient.post<ApiResponse<T>>(this.getUrl(), entity);
   }

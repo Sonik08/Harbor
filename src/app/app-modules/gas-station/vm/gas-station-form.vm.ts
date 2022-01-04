@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
 import { GasStation } from '../../entities/models/gas-station';
 import { GasStationRelatedData } from '../resolvers/resolve-models/gas-station-related-data';
+import { GasStationAPIService } from '../services/gas-station.api-service';
 
 @Injectable()
 export class GasStationVM extends BaseFormVM<
@@ -12,9 +13,10 @@ export class GasStationVM extends BaseFormVM<
 > {
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _apiService: GasStationAPIService
   ) {
-    super(_activatedRoute);
+    super(_activatedRoute, _apiService);
   }
 
   onInit(): void {
@@ -30,6 +32,6 @@ export class GasStationVM extends BaseFormVM<
   }
 
   loadResolvedData(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
   }
 }

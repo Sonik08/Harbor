@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, single, switchMap } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
+import { ApiService } from 'src/app/core/services/api.service';
 import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
 import { ShiftType } from '../../entities/enums/shift-type';
 import { Shift } from '../../entities/models/shift';
@@ -16,9 +17,10 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _apiService: ApiService<Shift>
   ) {
-    super(_activatedRoute);
+    super(_activatedRoute, _apiService);
   }
 
   onInit() {

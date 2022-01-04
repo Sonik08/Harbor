@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MockService } from 'src/app/core/services/mock-service';
+import { map } from 'rxjs/operators';
 import { GasStation } from '../../entities/models/gas-station';
+import { GasStationAPIService } from '../services/gas-station.api-service';
 
 @Injectable({ providedIn: 'root' })
 export class GasStationResolver implements Resolve<GasStation> {
-  constructor(private _mockSrv: MockService) {}
+  constructor(private _apiService: GasStationAPIService) {}
 
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<GasStation> | Promise<GasStation> | GasStation {
-    return this._mockSrv.getGasStationById(route.paramMap.get('gasStationId'));
+    return this._apiService.getById(route.paramMap.get('gasStationId')).pipe(
+      map(apiResponse => {
+        return apiResponse.data[0];
+      })
+    );
   }
 }

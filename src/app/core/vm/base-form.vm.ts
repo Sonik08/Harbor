@@ -5,6 +5,7 @@ import { map, single, switchMap } from 'rxjs/operators';
 import { Data } from 'src/app/pages/models/data';
 import { Model } from '../models/model';
 import { ResolvedData } from '../models/resolved-data';
+import { ApiService } from '../services/api.service';
 
 export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   form$: Observable<FormGroup> = of(new FormGroup({}));
@@ -14,7 +15,10 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   saveable = true;
   resolvedData: Observable<ResolvedData<TModel, RelatedData>>;
 
-  constructor(public route: ActivatedRoute) {}
+  constructor(
+    public route: ActivatedRoute,
+    public apiService: ApiService<TModel>
+  ) {}
 
   onInit(): void {
     this.initializeModel();
@@ -31,9 +35,14 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   }
 
   submit(): void {
-    this.form$.pipe(map(form => {
-      form.getRawValue();
-    }));
+    this.form$
+      .pipe(
+        switchMap(form => {
+          const formValue = form.getRawValue();
+          return this.apiService.post(formValue);
+        })
+      )
+      .subscribe();
   }
 
   protected abstract loadResolvedData(): void;
