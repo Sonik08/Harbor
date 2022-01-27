@@ -25,9 +25,14 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
 
     //this.getInitialModelState(this.route);
 
-    this.loadResolvedData();
+    // I should return an observable and afterwards to proper handling for a single subscribe
+    // Hot vs cold observables
+    // what should happen here is that  model$ get it's values from model making it give the same value to all the subscribers
+    const modelWithResolvedData = this.loadResolvedData();
 
-    this.addControls();
+    modelWithResolvedData
+      .pipe(switchMap(model => this.addControls(model)))
+      .subscribe();
 
     if (!this.isNew()) {
       this.updateInitialControlValues();
@@ -45,7 +50,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
       .subscribe();
   }
 
-  protected abstract loadResolvedData(): void;
+  protected abstract loadResolvedData(): Observable<any>;
 
   protected abstract initializeModel(): void;
 
@@ -73,42 +78,67 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
     );
   }
 
-  private addControls(): void {
-    this.model$
-      .pipe(
-        switchMap(model => {
-          return this.form$.pipe(
-            map(form => {
-              for (const property in model) {
-                if (model[property] instanceof Array) {
-                  const childFormArray = new FormArray([]);
-                  const arrayObjects = Object.keys(model[property]).map(
-                    index => {
-                      return model[property][index];
-                    }
-                  );
-                  for (const child of arrayObjects) {
-                    const childFormGroup = new FormGroup({});
-                    for (const childProperty in child) {
-                      childFormGroup.addControl(
-                        childProperty,
-                        new FormControl(child[childProperty])
-                      );
-                    }
-                    childFormArray.push(childFormGroup);
-                  }
-                  form.addControl(property, childFormArray);
-                } else {
-                  const control = new FormControl(model[property]);
-                  form.addControl(property, control);
-                }
+  private addControls(model): Observable<any> {
+    return this.form$.pipe(
+      map(form => {
+        for (const property in model) {
+          if (model[property] instanceof Array) {
+            const childFormArray = new FormArray([]);
+            const arrayObjects = Object.keys(model[property]).map(index => {
+              return model[property][index];
+            });
+            for (const child of arrayObjects) {
+              const childFormGroup = new FormGroup({});
+              for (const childProperty in child) {
+                childFormGroup.addControl(
+                  childProperty,
+                  new FormControl(child[childProperty])
+                );
               }
-              return form;
-            })
-          );
-        }),
-        single()
-      )
-      .subscribe();
+              childFormArray.push(childFormGroup);
+            }
+            form.addControl(property, childFormArray);
+          } else {
+            const control = new FormControl(model[property]);
+            form.addControl(property, control);
+          }
+        }
+        console.log(form);
+        return form;
+      })
+    );
+    // return this.model$.pipe(
+    //   switchMap(model => {
+    //     return this.form$.pipe(
+    //       map(form => {
+    //         for (const property in model) {
+    //           if (model[property] instanceof Array) {
+    //             const childFormArray = new FormArray([]);
+    //             const arrayObjects = Object.keys(model[property]).map(index => {
+    //               return model[property][index];
+    //             });
+    //             for (const child of arrayObjects) {
+    //               const childFormGroup = new FormGroup({});
+    //               for (const childProperty in child) {
+    //                 childFormGroup.addControl(
+    //                   childProperty,
+    //                   new FormControl(child[childProperty])
+    //                 );
+    //               }
+    //               childFormArray.push(childFormGroup);
+    //             }
+    //             form.addControl(property, childFormArray);
+    //           } else {
+    //             const control = new FormControl(model[property]);
+    //             form.addControl(property, control);
+    //           }
+    //         }
+    //         console.log(form);
+    //         return form;
+    //       })
+    //     );
+    //   }),
+    //   single()
+    // );
   }
 }

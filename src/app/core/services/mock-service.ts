@@ -246,7 +246,7 @@ export class MockService {
   getExpantionPanelItem(): Observable<IExpantionPanelItem> {
     return of({
       title: 'title',
-      description: 'descriiption',
+      description: 'description',
       icon: 'person',
       url: './',
       listItems: this.getGasStationListItems()

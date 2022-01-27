@@ -8,7 +8,7 @@ import { EnvService } from './env.service';
 @Injectable({ providedIn: 'root' })
 export abstract class ApiService<T extends Model> {
   apiURL: string;
-  private _httpClient: HttpClient;
+  protected _httpClient: HttpClient;
   private _envService: EnvService;
 
   constructor(_httpClient: HttpClient, _envService: EnvService) {
@@ -40,7 +40,6 @@ export abstract class ApiService<T extends Model> {
   }
 
   getUrl(): string {
-    // resolve the url here
     return `${this._envService.baseUrl}/api/${this.apiURL}`;
   }
 }
