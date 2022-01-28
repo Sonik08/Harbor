@@ -27,17 +27,18 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
     super.onInit();
   }
 
-  protected initializeModel(): void {
-    this.model$ = this._activatedRoute.parent.paramMap.pipe(
+  protected initializeModel(): Observable<Shift> {
+    return this._activatedRoute.parent.paramMap.pipe(
       filter(paramsMap => paramsMap.has('gasStationId')),
       map(paramsMap => {
         return paramsMap.get('gasStationId');
       }),
       first(),
       switchMap(gasStaitonId => {
-        const shift = new Shift();
-        shift.gasStationId = gasStaitonId;
-        return of(shift);
+        this.model = new Shift();
+        this.model.gasStationId = gasStaitonId;
+
+        return this.model$;
       })
     );
   }
@@ -47,51 +48,36 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
   }
 
   // I should either be broken into two observables or return a single observable
-  protected loadResolvedData(): Observable<any> {
-    return this._activatedRoute.data.pipe(
+  protected loadResolvedData(model$: Observable<Shift>): Observable<any> {
+    return model$.pipe(
+      switchMap(_ => {
+        return this._activatedRoute.data;
+      }),
       map(resolvedData => {
         this.types$ = of(resolvedData.shifts.relatedData.types);
 
-        return resolvedData.shifts as ResolvedData<Shift, ShiftRelatedData>;
-      }),
-      switchMap(resolvedShiftsData => {
-        return this.model$.pipe(
-          map(model => {
-            for (
-              let i = 0;
-              i < resolvedShiftsData.relatedData.tanks.length;
-              i++
-            ) {
-              const tank = resolvedShiftsData.relatedData.tanks[i];
+        const resolvedShiftsData = resolvedData.shifts as ResolvedData<Shift, ShiftRelatedData>;
 
-              const shiftFuel = new ShiftFuel(
-                tank.id,
-                tank.name,
-                tank.fuelType
-              );
+        for (let i = 0; i < resolvedShiftsData.relatedData.tanks.length; i++) {
+          const tank = resolvedShiftsData.relatedData.tanks[i];
+          
+          this.model.tanks.push(new ShiftFuel(tank.id, tank.name, tank.fuelType));
+        }
 
-              model.tanks.push(shiftFuel);
-            }
-            return model;
-          })
-        );
+        return this.model;
       })
     );
   }
 
   public getShiftFuels(): Observable<ShiftFuel[]> {
     return this.model$.pipe(
-      map(model => {
-        if (model.tanks.length === 0) {
-          return null;
-        }
-
-        return model.tanks;
-      })
+      filter(model => !!model),
+      map(model => model.tanks)
     );
   }
 
   public getShiftFuelForm(index: number): Observable<FormGroup> {
+
     return this.form$.pipe(
       map(formGroup => {
         const x = formGroup.get('tanks') as FormArray;

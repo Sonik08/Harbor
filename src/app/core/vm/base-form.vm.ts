@@ -9,8 +9,11 @@ import { ApiService } from '../services/api.service';
 
 export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   form$: Observable<FormGroup> = of(new FormGroup({}));
-  model: TModel;
-  model$: Observable<TModel> = of(null);
+  model: TModel = null;
+  model$: Observable<TModel> = new Observable(observer => {
+    observer.next(this.model);
+  });
+
   modelInitialized = false;
   saveable = true;
   resolvedData: Observable<ResolvedData<TModel, RelatedData>>;
@@ -21,14 +24,11 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   ) {}
 
   onInit(): void {
-    this.initializeModel();
+    const initialModel = this.initializeModel();
 
     //this.getInitialModelState(this.route);
 
-    // I should return an observable and afterwards to proper handling for a single subscribe
-    // Hot vs cold observables
-    // what should happen here is that  model$ get it's values from model making it give the same value to all the subscribers
-    const modelWithResolvedData = this.loadResolvedData();
+    const modelWithResolvedData = this.loadResolvedData(initialModel);
 
     modelWithResolvedData
       .pipe(switchMap(model => this.addControls(model)))
@@ -50,9 +50,12 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
       .subscribe();
   }
 
-  protected abstract loadResolvedData(): Observable<any>;
+  // eslint-disable-next-line prettier/prettier
+  protected abstract loadResolvedData(
+    model$: Observable<TModel>
+  ): Observable<any>;
 
-  protected abstract initializeModel(): void;
+  protected abstract initializeModel(): Observable<TModel>;
 
   protected abstract isNew(): boolean;
 
@@ -79,6 +82,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   }
 
   private addControls(model): Observable<any> {
+    console.log(model);
     return this.form$.pipe(
       map(form => {
         for (const property in model) {
@@ -107,38 +111,5 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
         return form;
       })
     );
-    // return this.model$.pipe(
-    //   switchMap(model => {
-    //     return this.form$.pipe(
-    //       map(form => {
-    //         for (const property in model) {
-    //           if (model[property] instanceof Array) {
-    //             const childFormArray = new FormArray([]);
-    //             const arrayObjects = Object.keys(model[property]).map(index => {
-    //               return model[property][index];
-    //             });
-    //             for (const child of arrayObjects) {
-    //               const childFormGroup = new FormGroup({});
-    //               for (const childProperty in child) {
-    //                 childFormGroup.addControl(
-    //                   childProperty,
-    //                   new FormControl(child[childProperty])
-    //                 );
-    //               }
-    //               childFormArray.push(childFormGroup);
-    //             }
-    //             form.addControl(property, childFormArray);
-    //           } else {
-    //             const control = new FormControl(model[property]);
-    //             form.addControl(property, control);
-    //           }
-    //         }
-    //         console.log(form);
-    //         return form;
-    //       })
-    //     );
-    //   }),
-    //   single()
-    // );
   }
 }
