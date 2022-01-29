@@ -86,4 +86,8 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
       single()
     );
   }
+
+  public getProfit(){
+    // TODO get profit for each tank plus washes and accessories
+  }
 }

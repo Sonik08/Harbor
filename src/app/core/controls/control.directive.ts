@@ -25,6 +25,14 @@ export abstract class ControlDirective {
   @Input()
   required = false;
 
+  @Input()
+  value;
+  
+  onInit() {
+    if(this.value){
+      this.form.controls[this.name].setValue(this.value);
+    }
+  }
   get control(): FormControl {
     return this.form.controls[this.name] as FormControl;
   }

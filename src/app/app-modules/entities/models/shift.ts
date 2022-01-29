@@ -16,7 +16,7 @@ export class Shift extends Model {
 
   gasStationId: string = null;
 
-  _profit: number;
+  profit = 0;
 
   //get profit(): number {
   // return (

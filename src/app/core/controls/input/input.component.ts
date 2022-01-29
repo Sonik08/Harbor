@@ -13,4 +13,6 @@ export class InputComponent extends ControlDirective {
   min = 0;
   @Input()
   max = 0;
+  @Input()
+  icon = '';
 }

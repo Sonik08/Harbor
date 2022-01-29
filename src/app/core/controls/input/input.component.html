@@ -7,7 +7,9 @@
     [required]="required"
     formControlName="{{ name }}"
     matInput
+    value="{{ value }}"
   />
+    <mat-icon *ngIf="icon"  matSuffix>{{icon}}</mat-icon>
   <mat-error class="error-message" *ngFor="let message of validationMessages">
     {{ message }}</mat-error
   >

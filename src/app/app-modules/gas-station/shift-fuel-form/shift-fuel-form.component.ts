@@ -1,17 +1,26 @@
-import { Component, Input } from "@angular/core";
-import { FormGroup } from "@angular/forms";
-import { ShiftFuel } from "../../entities/models/shift-fuel";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ShiftFuel } from '../../entities/models/shift-fuel';
 
 @Component({
-  selector: "shift-fuel-form",
-  templateUrl: "./shift-fuel-form.component.html",
-  styles: [],
+  selector: 'shift-fuel-form',
+  templateUrl: './shift-fuel-form.component.html',
+  styleUrls: ['./shift-fuel.form.scss']
 })
-export class ShiftFuelFormComponent {
-  @Input() shiftFuel: ShiftFuel;
+export class ShiftFuelFormComponent implements OnInit {
   @Input() form: FormGroup;
+  @Input() shiftFuel: ShiftFuel;
 
-  public tankFuelInCurrency(): number {
-    return this.form.get("litres").value * this.form.get("price").value;
+  ngOnInit(): void {
+    this.form.controls['tankName'].disable();
+  }
+
+  onInputUpdate(): void {
+    this.form.controls['total'].setValue(
+      (
+        Number(this.form.controls['litres'].value) *
+        Number(this.form.controls['price'].value)
+      ).toFixed(2)
+    );
   }
 }

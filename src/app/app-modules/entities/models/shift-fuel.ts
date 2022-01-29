@@ -12,6 +12,7 @@ export class ShiftFuel extends Model {
   fuelType: FuelType = FuelType.Diesel;
   litres = 0;
   price = 0;
+  total = 0;
 
   tankName = '';
   tankId = '';

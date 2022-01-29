@@ -1,10 +1,18 @@
 <div fxFill fxLayout="row" fxLayoutGap="10px">
   <input-control
+  [form]= "form"
+  name="tankName"
+  label="Δεξαμενή"
+  [readonly]=true
+  >
+</input-control>
+<input-control
     [form]="form"
     type="number"
     [required]="true"
     name="litres"
     label="Λίτρα"
+    (input)="onInputUpdate()"
   >
   </input-control>
   <input-control
@@ -13,25 +21,17 @@
     [required]="true"
     name="price"
     label="Τιμή"
+    (input)="onInputUpdate()"
   >
   </input-control>
-  <!-- Maybe I could enter a disabled control in the form 
-  It would not be subbmited in the proccess of save 
-  since it is ignored by the .rawValue() method of a formGroup
-   -->
 
-   
-  <!-- <div
-    *ngIf="form.get('litres').value && form.get('price').value"
-    fxFlex="100px"
-    appearance="standard"
-  >
-    <mat-label>Profit</mat-label>
-    <input
-      type="number"
-      value="{{ tankFuelInCurrency() }}"
-      [readonly]="true"
-      matInput
-    />
-  </div> -->
+  <input-control
+  [form]="form"
+  type="number"
+  name="total"
+  label="Σύνολο"
+  [readonly]="true"
+  matInput
+  icon="euro_symbol"
+  ></input-control>
 </div>
