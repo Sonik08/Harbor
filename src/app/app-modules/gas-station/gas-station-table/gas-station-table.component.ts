@@ -3,14 +3,14 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MockService } from 'src/app/core/services/mock-service';
 import { GasStation } from '../../entities/models/gas-station';
-import { GasStationAPIService } from './../services/gas-station.api-service';
+import { GasStationAPIService } from '../services/gas-station-api.service';
 
 @Component({
   selector: 'gas-station-list',
-  templateUrl: './gas-station-list.component.html',
-  styleUrls: ['./gas-station-list.component.scss']
+  templateUrl: './gas-station-table.component.html',
+  styleUrls: ['./gas-station-table.component.scss']
 })
-export class GasStationListComponent implements OnInit {
+export class GasStationTableComponent implements OnInit {
   tableData: Observable<GasStation[]>;
   tableColumns: Observable<string[]>;
   url = '/overview';

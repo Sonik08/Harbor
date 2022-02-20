@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ControlDirective } from '../control.directive';
 
 @Component({
@@ -8,7 +9,7 @@ import { ControlDirective } from '../control.directive';
 })
 export class DateComponent extends ControlDirective {
   checkDate = (d: Date | null): boolean => {
-    // Here a check needs to be done for wich dates the thing is ok
+    // TODO Here a check needs to be done for wich dates the thing is ok
     return true;
   };
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
 import { GasStation } from '../../entities/models/gas-station';
 import { GasStationRelatedData } from '../resolvers/resolve-models/gas-station-related-data';
-import { GasStationAPIService } from '../services/gas-station.api-service';
+import { GasStationAPIService } from '../services/gas-station-api.service';
 
 @Injectable()
 export class GasStationVM extends BaseFormVM<
@@ -31,10 +31,5 @@ export class GasStationVM extends BaseFormVM<
 
   isNew(): boolean {
     return !this._router.url.includes('edit');
-  }
-
-  loadResolvedData(): Observable<any> {
-    return of([]);
-    //throw new Error('Method not implemented.');
   }
 }

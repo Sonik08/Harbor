@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MaterialTableModule } from 'src/app/core/material-table/material-table.module';
-import { GasStationListComponent } from './gas-station-list.component';
+import { CheckTableComponent } from './check-table.component';
 
 @NgModule({
-  declarations: [GasStationListComponent],
+  declarations: [CheckTableComponent],
   imports: [CommonModule, MaterialTableModule],
-  exports: [GasStationListComponent]
+  exports: [CheckTableComponent]
 })
-export class GasStationListModule {}
+export class CheckTableModule {}

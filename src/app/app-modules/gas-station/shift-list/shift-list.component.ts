@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MockService } from 'src/app/core/services/mock-service';
 import { Shift } from '../../entities/models/shift';
-import { ShiftAPIService } from '../services/shift.api-service';
+import { ShiftAPIService } from '../services/shift-api.service';
 
 @Component({
   selector: 'shift-list',

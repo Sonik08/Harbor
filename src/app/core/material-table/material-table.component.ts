@@ -64,6 +64,10 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
     ];
   }
 
+  isIdColumns(columnName: string): boolean {
+    return columnName === 'id';
+  }
+
   addNew() {
     this._router.navigate([this.addUrl], { relativeTo: this._activatedRoute });
   }

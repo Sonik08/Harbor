@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GasStationFormComponent } from './gas-station-form/gas-station-form.component';
-import { GasStationListComponent } from './gas-station-list/gas-station-list.component';
+import { GasStationTableComponent } from './gas-station-table/gas-station-table.component';
 import { GasStationOverviewComponent } from './gas-station-overview/gas-station-overview.component';
 import { GasStationResolver } from './resolvers/gas-station.resolver';
 import { ShiftResolver } from './resolvers/shift.resolver';
@@ -14,13 +14,13 @@ const routes: Routes = [
     component: GasStationFormComponent
   },
   {
-    path: ':id/edit',
+    path: ':gasStationId/edit',
     component: GasStationFormComponent,
     resolve: { data: GasStationResolver }
   },
   {
     path: '',
-    component: GasStationListComponent
+    component: GasStationTableComponent
   },
   {
     path: ':gasStationId/overview',

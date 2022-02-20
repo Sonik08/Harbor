@@ -1,0 +1,74 @@
+<base-form
+  [model]="vm.model$ | async"
+  [saveable]="vm.saveable"
+  [vm]="vm"
+  [form]="vm.form$ | async"
+>
+  <form-row>
+
+    <date-control
+      [form]="vm.form$ | async"
+      [required]="true"
+      name="acquzitionDate"
+      label="Ημερομηνία Παραλαβής"
+    >
+    </date-control>
+    <input-control
+      [form]="vm.form$ | async"
+      [required]="true"
+      type="text"
+      label="Όνομα παραδίδων"
+      name="sentFrom"
+    ></input-control>
+  </form-row>
+  <form-row>
+      <!-- // TODO check how to handle null values for dates and not submit a form -->
+    <date-control
+      [form]="vm.form$ | async"
+      [required]="true"
+      name="sentWhen"
+      label="Ημερομηνία Αποστολής"
+    >
+    </date-control>
+    <input-control
+      [form]="vm.form$ | async"
+      [required]="true"
+      type="text"
+      label="Όνομα παραλήπτη"
+      name="sentTo"
+    ></input-control>
+    
+  </form-row>
+  <form-row>
+    <enum-control
+    [form]="vm.form$ | async"
+    [enums]="vm.banks$"
+    [required]="false"
+    name="bank"
+    label="Bank">
+  </enum-control>
+  <date-control
+  [form]="vm.form$ | async"
+  [required]="false"
+  name="expirationDate"
+  label="Ημερομηνία Λήξης"
+  >
+  </date-control>
+</form-row>
+<form-row>
+  <input-control
+      [form]="vm.form$ | async"
+      [required]="false"
+      type="text"
+      label="Αριθμός επιταγής"
+      name="checkNumber"
+    ></input-control>
+    <input-control
+    [form]="vm.form$ | async"
+    [required]="false"
+    type="number"
+    label="Ποσό"
+    name="amount"
+  ></input-control>
+</form-row>
+</base-form>

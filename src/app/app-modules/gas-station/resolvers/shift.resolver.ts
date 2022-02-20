@@ -9,8 +9,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
 import { MockService } from 'src/app/core/services/mock-service';
 import { Shift } from '../../entities/models/shift';
-import { ShiftAPIService } from '../services/shift.api-service';
-import { TankAPIService } from '../services/tank.api-service';
+import { ShiftAPIService } from '../services/shift-api.service';
+import { TankAPIService } from '../services/tank-api.service';
 import { ShiftRelatedData } from './resolve-models/shift-related-data';
 
 @Injectable({ providedIn: 'root' })
@@ -43,6 +43,19 @@ export class ShiftResolver
               relatedData: {
                 tanks: tanks,
                 types: types
+              }
+            };
+          })
+        );
+      }),
+      switchMap(resovedData => {
+        return this._shiftService.getById(route.paramMap.get('shiftId')).pipe(
+          map(shiftApiResponse => {
+            return {
+              model: shiftApiResponse.data[0],
+              relatedData: {
+                tanks: resovedData.relatedData.tanks,
+                types: resovedData.relatedData.types
               }
             };
           })

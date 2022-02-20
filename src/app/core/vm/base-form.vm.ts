@@ -19,7 +19,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   resolvedData: Observable<ResolvedData<TModel, RelatedData>>;
 
   constructor(
-    public route: ActivatedRoute,
+    public _route: ActivatedRoute,
     public apiService: ApiService<TModel>
   ) {}
 
@@ -40,30 +40,36 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   }
 
   submit(): void {
-    this.form$
+      this.form$
       .pipe(
         switchMap(form => {
           const formValue = form.getRawValue();
-          return this.apiService.post(formValue);
+          return this.isNew() ?  this.apiService.post(formValue) : this.apiService.put(formValue);
         })
       )
       .subscribe();
+      return;
   }
 
   // eslint-disable-next-line prettier/prettier
-  protected abstract loadResolvedData(
+  protected  loadResolvedData(
     model$: Observable<TModel>
-  ): Observable<any>;
+  ): Observable<any> {
+    return model$;
+  }
 
   protected abstract initializeModel(): Observable<TModel>;
 
   protected abstract isNew(): boolean;
 
   protected updateInitialControlValues(): void {
-    this.route.data.pipe(
-      switchMap(model => {
+    this._route.data.pipe(
+      switchMap(data => {
+        const model = data.data.model;
+        console.log(model);
         return this.form$.pipe(
           map(form => {
+            console.log(form);
             for (const property in model) {
               form.controls[property].patchValue(model[property]);
             }
@@ -71,7 +77,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
           })
         );
       })
-    );
+    ).subscribe();
   }
 
   private getInitialModelState(route: ActivatedRoute) {
@@ -107,7 +113,6 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
             form.addControl(property, control);
           }
         }
-        console.log(form);
         return form;
       })
     );
