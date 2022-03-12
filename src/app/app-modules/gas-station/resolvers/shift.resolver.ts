@@ -4,7 +4,7 @@ import {
   Resolve,
   RouterStateSnapshot
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
 import { MockService } from 'src/app/core/services/mock-service';
@@ -48,16 +48,18 @@ export class ShiftResolver
           })
         );
       }),
-      switchMap(resovedData => {
+      switchMap(resolvedData => {
+        const isEditing = state.url.includes('/edit');
+
+        if(! isEditing){
+          return of(resolvedData);
+        } 
+
         return this._shiftService.getById(route.paramMap.get('shiftId')).pipe(
           map(shiftApiResponse => {
-            return {
-              model: shiftApiResponse.data[0],
-              relatedData: {
-                tanks: resovedData.relatedData.tanks,
-                types: resovedData.relatedData.types
-              }
-            };
+            resolvedData.model = shiftApiResponse.data[0];
+
+            return resolvedData;
           })
         );
       })

@@ -39,7 +39,7 @@ const routes: Routes = [
       {
         path: 'shifts/new',
         component: ShiftFormComponent,
-        resolve: { shifts: ShiftResolver }
+        resolve: { data: ShiftResolver }
       }
     ]
   }

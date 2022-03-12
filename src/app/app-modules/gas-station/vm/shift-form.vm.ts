@@ -54,9 +54,9 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
         return this._activatedRoute.data;
       }),
       map(resolvedData => {
-        this.types$ = of(resolvedData.shifts.relatedData.types);
+        this.types$ = of(resolvedData.data.relatedData.types);
 
-        const resolvedShiftsData = resolvedData.shifts as ResolvedData<Shift, ShiftRelatedData>;
+        const resolvedShiftsData = resolvedData.data as ResolvedData<Shift, ShiftRelatedData>;
 
         for (let i = 0; i < resolvedShiftsData.relatedData.tanks.length; i++) {
           const tank = resolvedShiftsData.relatedData.tanks[i];
