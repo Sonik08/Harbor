@@ -8,30 +8,17 @@
   >
     <mat-toolbar>Διαχείριση</mat-toolbar>
     <mat-nav-list>
-      <div>
+      <div *ngFor="let menuItem of menuItems; index as i; first as isFirst">
         <a
-          routerLink="/gas-stations"
+          routerLink={{menuItem.routerLink}}
           routerLinkActive="active"
           mat-list-item
           route
         >
-          <mat-icon>local_gas_station</mat-icon>
-          Πρατήρια
+          <mat-icon>{{menuItem.icon}}</mat-icon>
+          {{menuItem.label}}
         </a>
       </div>
-
-      <div>
-        <a
-          routerLink="/checks"
-          routerLinkActive="active"
-          mat-list-item
-          route
-        >
-        <mat-icon>account_balance_wallet</mat-icon>
-          Επιταγές
-        </a>
-      </div>
-
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

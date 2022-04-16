@@ -23,71 +23,69 @@ export class MockService {
   gasStationsTableColumns: string[] = ['id', 'name'];
 
   gasStationListItems: IListItem[] = [
-    { title: 'Fuel Tank Levels', icon: 'euro', url: '' },
+    { title: 'Fuel Tank Levels', icon: 'euro', url: 'tanks' },
     { title: 'New Shift', icon: 'person', url: 'shifts/new' },
     { title: 'Shifts', icon: 'groups', url: 'shifts' }
   ];
 
-  gasStationTanks: Tank[] = [
-    {
-      id: '1',
-      name: 'Tank Diesel 1',
-      gasStationId: '1',
-      fuelType: FuelType.Diesel,
-      maxLitres: 7000
-    },
-    {
-      id: '2',
-      name: 'Tank LPG 1',
-      gasStationId: '1',
-      fuelType: FuelType.LPG,
-      maxLitres: 4500
-    },
-    {
-      id: '3',
-      name: 'Tank Super 1',
-      gasStationId: '1',
-      fuelType: FuelType.Ultimate,
-      maxLitres: 5000
-    },
-    {
-      id: '4',
-      name: 'Tank Unleaded 1',
-      gasStationId: '1',
-      fuelType: FuelType.Unleaded,
-      maxLitres: 5000
-    },
-    {
-      id: '5',
-      name: 'Tank LPG 1',
-      gasStationId: '2',
-      fuelType: FuelType.LPG,
-      maxLitres: 3000
-    },
-    {
-      id: '6',
-      name: 'Tank Diesel 1',
-      gasStationId: '2',
-      fuelType: FuelType.Diesel,
-      maxLitres: 4520
-    },
-    {
-      id: '7',
-      name: 'Tank Unleaded 1',
-      gasStationId: '2',
-      fuelType: FuelType.Unleaded,
-      maxLitres: 2000
-    },
-    {
-      id: '8',
-      name: 'Tank Unleaded 2',
-      gasStationId: '2',
-      fuelType: FuelType.Unleaded,
-      maxLitres: 3500
-    }
-  ];
-
-  shiftsTableColumns: string[] = ['type', 'profit', 'date', 'gasStationId'];
+  // gasStationTanks: Tank[] = [
+  //   {
+  //     id: '1',
+  //     name: 'Tank Diesel 1',
+  //     gasStationId: '1',
+  //     fuelType: FuelType.Diesel,
+  //     maxLitres: 7000
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Tank LPG 1',
+  //     gasStationId: '1',
+  //     fuelType: FuelType.LPG,
+  //     maxLitres: 4500
+  //   },
+  //   {
+  //     id: '3',
+  //     name: 'Tank Super 1',
+  //     gasStationId: '1',
+  //     fuelType: FuelType.Ultimate,
+  //     maxLitres: 5000
+  //   },
+  //   {
+  //     id: '4',
+  //     name: 'Tank Unleaded 1',
+  //     gasStationId: '1',
+  //     fuelType: FuelType.Unleaded,
+  //     maxLitres: 5000
+  //   },
+  //   {
+  //     id: '5',
+  //     name: 'Tank LPG 1',
+  //     gasStationId: '2',
+  //     fuelType: FuelType.LPG,
+  //     maxLitres: 3000
+  //   },
+  //   {
+  //     id: '6',
+  //     name: 'Tank Diesel 1',
+  //     gasStationId: '2',
+  //     fuelType: FuelType.Diesel,
+  //     maxLitres: 4520
+  //   },
+  //   {
+  //     id: '7',
+  //     name: 'Tank Unleaded 1',
+  //     gasStationId: '2',
+  //     fuelType: FuelType.Unleaded,
+  //     maxLitres: 2000
+  //   },
+  //   {
+  //     id: '8',
+  //     name: 'Tank Unleaded 2',
+  //     gasStationId: '2',
+  //     fuelType: FuelType.Unleaded,
+  //     maxLitres: 3500
+  //   }
+  // ];
 
   shiftTypes: ShiftType[] = [
     ShiftType.Morning,
@@ -99,11 +97,11 @@ export class MockService {
     return of(this.banks);
   }
 
-  getGasStationTanks(gasStationId: string): Observable<Tank[]> {
-    return of(
-      this.gasStationTanks.filter(tank => tank.gasStationId === gasStationId)
-    );
-  }
+  // getGasStationTanks(gasStationId: string): Observable<Tank[]> {
+  //   return of(
+  //     this.gasStationTanks.filter(tank => tank.gasStationId === gasStationId)
+  //   );
+  // }
 
   getGasStationTableColumns(): string[] {
     return this.gasStationsTableColumns;
@@ -116,10 +114,6 @@ export class MockService {
   getShifts(): Observable<Shift[]> {
     return of([]);
     //return of(this.shifts);
-  }
-
-  getShiftsTableColumns(): Observable<string[]> {
-    return of(this.shiftsTableColumns);
   }
 
   getShiftById(id: string): Observable<Shift> {

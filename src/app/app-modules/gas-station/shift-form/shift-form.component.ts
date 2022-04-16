@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ShiftFormVM } from '../vm/shift-form.vm';
 
 @Component({
@@ -7,9 +7,15 @@ import { ShiftFormVM } from '../vm/shift-form.vm';
   styles: [],
   providers: [ShiftFormVM]
 })
-export class ShiftFormComponent implements OnInit {
-  constructor(public vm: ShiftFormVM) {}
+export class ShiftFormComponent implements OnInit, AfterViewChecked {
+  constructor(
+    public vm: ShiftFormVM,
+    private readonly changeDetectorRef: ChangeDetectorRef) {}
   ngOnInit(): void {
     this.vm.onInit();
+  }
+
+  ngAfterViewChecked(): void {
+    this.changeDetectorRef.detectChanges();
   }
 }

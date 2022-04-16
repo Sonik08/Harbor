@@ -1,6 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["dist", "coverage"],
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2020
   },

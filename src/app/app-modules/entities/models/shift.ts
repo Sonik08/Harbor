@@ -19,6 +19,6 @@ export class Shift extends Model {
   tanks: ShiftFuel[] = [];
 
   gasStationId: string = null;
-
+  gasStationName = '';
   profit = 0;
 }

@@ -1,7 +1,10 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { MockService } from 'src/app/core/services/mock-service';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs/operators';
+import { Data } from 'src/app/pages/models/data';
+import { GasStation } from '../../entities/models/gas-station';
 import { Shift } from '../../entities/models/shift';
 import { ShiftAPIService } from '../services/shift-api.service';
 
@@ -12,18 +15,33 @@ import { ShiftAPIService } from '../services/shift-api.service';
 })
 export class ShiftListComponent implements OnInit {
   tableData: Observable<Shift[]>;
-  tableColumns: Observable<string[]>;
-  url = '';
+  tableColumns$: Observable<string[]>;
+  tableColumns: string[] = ['type', 'date', 'income', 'gasStationName'];
+  url = '/edit';
   constructor(
-    private _mockSrv: MockService,
-    private _shiftService: ShiftAPIService
+    private _shiftService: ShiftAPIService, 
+    private _activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
-    this.tableData = this._shiftService
-      .get()
-      .pipe(map(apiResponse => apiResponse.data));
+    const gasStation$ = (this._activatedRoute.data as Observable<Data<GasStation>>).pipe(
+      map(resolvedData => resolvedData.data)
+    );
 
-    this.tableColumns = this._mockSrv.getShiftsTableColumns();
+    this.tableData = gasStation$.pipe(
+      switchMap(gasStation => {
+        return this._shiftService.get().pipe(
+          map(apiResponse => {
+            apiResponse.data.forEach(shift => {
+              shift.gasStationName = gasStation.name;
+              shift.date = formatDate(Date.now(),'dd-MM-yyyy', 'en-US');
+            });
+            return apiResponse.data;
+          }),
+        )
+      }
+    ));
+
+    this.tableColumns$ = of(this.tableColumns);
   }
 }

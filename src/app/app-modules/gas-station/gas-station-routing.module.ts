@@ -7,6 +7,9 @@ import { GasStationResolver } from './resolvers/gas-station.resolver';
 import { ShiftResolver } from './resolvers/shift.resolver';
 import { ShiftFormComponent } from './shift-form/shift-form.component';
 import { ShiftListComponent } from './shift-list/shift-list.component';
+import { TankLevelTableComponent } from './tank-level/tank-level-table/tank-level-table.component';
+import { TankLevelResolver } from './resolvers/tank-level.resolver';
+import { TankTableComponent } from './tank-table/tank-table.component';
 
 const routes: Routes = [
   {
@@ -28,8 +31,13 @@ const routes: Routes = [
     resolve: { data: GasStationResolver },
     children: [
       {
+        path: 'tanks',
+        component: TankTableComponent
+      },
+      {
         path: 'shifts',
-        component: ShiftListComponent
+        component: ShiftListComponent,
+        resolve: { data: GasStationResolver }
       },
       {
         path: 'shifts/:shiftId/edit',

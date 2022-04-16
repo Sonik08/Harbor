@@ -12,7 +12,13 @@ export class GasStationResolver implements Resolve<GasStation> {
   resolve(
     route: ActivatedRouteSnapshot
   ): Observable<GasStation> | Promise<GasStation> | GasStation {
-    return this._apiService.getById(route.paramMap.get('gasStationId')).pipe(
+    let id = route.paramMap.get('gasStationId');
+
+    if(null === id){
+      id = route.parent.paramMap.get('gasStationId');
+    }
+
+    return this._apiService.getById(id).pipe(
       map(apiResponse => {
         return apiResponse.data[0];
       })

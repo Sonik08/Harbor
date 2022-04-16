@@ -5,6 +5,8 @@ import { GasStationOverviewModule } from './gas-station-overview/gas-station-ove
 import { GasStationRoutingModule } from './gas-station-routing.module';
 import { ShiftFormModule } from './shift-form/shift-form.module';
 import { ShiftListModule } from './shift-list/shift-list.module';
+import { TankLevelTableModule } from './tank-level/tank-level-table/tank-level-table.module';
+import { TankTableModule } from './tank-table/tank-table.module';
 
 @NgModule({
   declarations: [],
@@ -12,9 +14,10 @@ import { ShiftListModule } from './shift-list/shift-list.module';
     GasStationTableModule,
     GasStationOverviewModule,
     GasStationRoutingModule,
+    GasStationFormModule,
+    TankTableModule,
     ShiftFormModule,
-    ShiftListModule,
-    GasStationFormModule
+    ShiftListModule
   ]
 })
 export class GasStationModule {}

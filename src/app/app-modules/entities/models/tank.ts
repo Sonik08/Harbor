@@ -5,5 +5,6 @@ export class Tank extends Model {
   name: string;
   gasStationId: string;
   fuelType: FuelType;
-  maxLitres: number;
+  maxCapacity: number;
+  currentAmount: number;
 }

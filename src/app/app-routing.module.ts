@@ -27,6 +27,11 @@ const routes: Routes = [
           import('./app-modules/checks/check.module').then(m => m.CheckModule)
       },
       {
+        path: 'checks',
+        loadChildren: () =>
+          import('./app-modules/checks/check.module').then(m => m.CheckModule)
+      },
+      {
         path: '',
         loadChildren: () =>
           import('./pages/dashboard/dashboard.module').then(
