@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Check } from '../../entities/models/check';
-import { CheckAPIService } from '../services/check-api.service';
+import { CheckApiService } from '../services/check-api.service';
 
 @Component({
   selector: 'check-table',
@@ -23,7 +23,7 @@ export class CheckTableComponent implements OnInit {
     "sentTo",
   ]
 
-  constructor(private _apiService: CheckAPIService) {}
+  constructor(private _apiService: CheckApiService) {}
 
   ngOnInit(): void {
     this.tableData = this._apiService.get().pipe(

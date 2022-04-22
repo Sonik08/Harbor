@@ -1,8 +1,9 @@
 import { Model } from 'src/app/core/models/model';
-import { FuelType } from './fuel-type';
+import { FuelType } from '../enums/fuel-type';
 
 export class Resupply extends Model {
-  fuelType: FuelType = FuelType.Unknown;
+  gasStationId = '';
+  fuelType: FuelType = FuelType.Unleaded;
   amount = 0;
   shiftId: string;
 }

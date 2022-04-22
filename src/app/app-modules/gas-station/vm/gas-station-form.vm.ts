@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
 import { GasStation } from '../../entities/models/gas-station';
 import { GasStationRelatedData } from '../resolvers/resolve-models/gas-station-related-data';
-import { GasStationAPIService } from '../services/gas-station-api.service';
+import { GasStationApiService } from '../services/gas-station-api.service';
 
 @Injectable()
 export class GasStationVM extends BaseFormVM<
@@ -14,7 +14,7 @@ export class GasStationVM extends BaseFormVM<
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _apiService: GasStationAPIService
+    private _apiService: GasStationApiService
   ) {
     super(_activatedRoute, _apiService);
   }

@@ -27,9 +27,11 @@ const routes: Routes = [
           import('./app-modules/checks/check.module').then(m => m.CheckModule)
       },
       {
-        path: 'checks',
+        path: 'dakouris',
         loadChildren: () =>
-          import('./app-modules/checks/check.module').then(m => m.CheckModule)
+          import('./app-modules/dakouris/dakouris.module').then(
+            m => m.DakourisModule
+          )
       },
       {
         path: '',

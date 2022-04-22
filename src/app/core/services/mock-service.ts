@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Bank } from 'src/app/app-modules/entities/enums/bank-type';
 import { ShiftType } from 'src/app/app-modules/entities/enums/shift-type';
-import { FuelType } from 'src/app/app-modules/entities/models/fuel-type';
+import { FuelType } from 'src/app/app-modules/entities/enums/fuel-type';
 import { Shift } from 'src/app/app-modules/entities/models/shift';
 import { Tank } from 'src/app/app-modules/entities/models/tank';
 import { IListItem } from 'src/app/core/models/UI/list-item';
@@ -21,12 +21,6 @@ export class MockService {
   ];
 
   gasStationsTableColumns: string[] = ['id', 'name'];
-
-  gasStationListItems: IListItem[] = [
-    { title: 'Fuel Tank Levels', icon: 'euro', url: 'tanks' },
-    { title: 'New Shift', icon: 'person', url: 'shifts/new' },
-    { title: 'Shifts', icon: 'groups', url: 'shifts' }
-  ];
 
   // gasStationTanks: Tank[] = [
   //   {
@@ -107,10 +101,6 @@ export class MockService {
     return this.gasStationsTableColumns;
   }
 
-  getGasStationListItems(): IListItem[] {
-    return this.gasStationListItems;
-  }
-
   getShifts(): Observable<Shift[]> {
     return of([]);
     //return of(this.shifts);
@@ -123,13 +113,7 @@ export class MockService {
   }
 
   getExpantionPanelItem(): Observable<IExpantionPanelItem> {
-    return of({
-      title: 'title',
-      description: 'description',
-      icon: 'person',
-      url: './',
-      listItems: this.getGasStationListItems()
-    });
+    return of();
   }
 
   getShiftTypes(): Observable<ShiftType[]> {

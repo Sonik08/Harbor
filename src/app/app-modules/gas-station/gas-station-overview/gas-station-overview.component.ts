@@ -13,10 +13,22 @@ import { GasStation } from '../../entities/models/gas-station';
   styleUrls: ['./gas-station-overview.component.scss']
 })
 export class GasStationOverviewComponent implements OnInit {
-  expantionPanel: Observable<IExpantionPanelItem> = of();
+
+  expantionPanel: Observable<IExpantionPanelItem> = of({
+    title: 'title',
+    description: 'description',
+    icon: 'person',
+    url: './',
+    listItems: [
+      { title: 'Fuel Tank Levels', icon: 'euro', url: 'tanks' },
+      { title: 'New Shift', icon: 'person', url: 'shifts/new' },
+      { title: 'Shifts', icon: 'groups', url: 'shifts' }
+    ]
+  });
+
   gasStation: Observable<GasStation>;
+  
   constructor(
-    private _mockService: MockService,
     private _activatedRoute: ActivatedRoute
   ) {}
 
@@ -24,7 +36,5 @@ export class GasStationOverviewComponent implements OnInit {
     this.gasStation = (this._activatedRoute.data as Observable<Data<GasStation>>).pipe(
       map(resolvedData => resolvedData.data)
     );
-
-    this.expantionPanel = this._mockService.getExpantionPanelItem();
   }
 }

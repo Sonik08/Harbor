@@ -5,7 +5,7 @@ import { EnvService } from 'src/app/core/services/env.service';
 import { TankLevel } from '../../entities/models/tank-level';
 
 @Injectable({ providedIn: 'root' })
-export class TankLevelAPIService extends ApiService<TankLevel> {
+export class TankLevelApiService extends ApiService<TankLevel> {
   apiURL = 'tank-level';
 
   constructor(private httpClient: HttpClient, private envService: EnvService) {

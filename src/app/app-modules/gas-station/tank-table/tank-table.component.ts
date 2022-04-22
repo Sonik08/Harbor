@@ -5,7 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { Tank } from 'src/app/app-modules/entities/models/tank';
 import { Data } from 'src/app/pages/models/data';
 import { GasStation } from '../../entities/models/gas-station';
-import { TankAPIService } from '../services/tank-api.service';
+import { TankApiService } from '../services/tank-api.service';
 
 @Component({
   selector: 'tank-table',
@@ -21,7 +21,7 @@ export class TankTableComponent implements OnInit {
   columns = ['name', 'fuelType', 'currentAmount', 'maxCapacity'];
 
   constructor(
-    private _tankService: TankAPIService,
+    private _tankService: TankApiService,
     private _activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {

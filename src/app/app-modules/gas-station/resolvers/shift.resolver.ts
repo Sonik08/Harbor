@@ -9,8 +9,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
 import { MockService } from 'src/app/core/services/mock-service';
 import { Shift } from '../../entities/models/shift';
-import { ShiftAPIService } from '../services/shift-api.service';
-import { TankAPIService } from '../services/tank-api.service';
+import { ShiftApiService } from '../services/shift-api.service';
+import { TankApiService } from '../services/tank-api.service';
 import { ShiftRelatedData } from './resolve-models/shift-related-data';
 
 @Injectable({ providedIn: 'root' })
@@ -19,8 +19,8 @@ export class ShiftResolver
 {
   constructor(
     private _mockService: MockService,
-    private _shiftService: ShiftAPIService,
-    private _tankService: TankAPIService
+    private _shiftService: ShiftApiService,
+    private _tankService: TankApiService
   ) {}
 
   resolve(

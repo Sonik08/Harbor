@@ -8,7 +8,7 @@
   >
     <mat-toolbar>Διαχείριση</mat-toolbar>
     <mat-nav-list>
-      <div *ngFor="let menuItem of menuItems; index as i; first as isFirst">
+      <div *ngFor="let menuItem of menuItems;">
         <a
           routerLink={{menuItem.routerLink}}
           routerLinkActive="active"

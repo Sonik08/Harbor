@@ -1,5 +1,5 @@
 import { Model } from 'src/app/core/models/model';
-import { FuelType } from './fuel-type';
+import { FuelType } from '../enums/fuel-type';
 
 export class Tank extends Model {
   name: string;

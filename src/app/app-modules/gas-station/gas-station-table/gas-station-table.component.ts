@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MockService } from 'src/app/core/services/mock-service';
 import { GasStation } from '../../entities/models/gas-station';
-import { GasStationAPIService } from '../services/gas-station-api.service';
+import { GasStationApiService } from '../services/gas-station-api.service';
 
 @Component({
   selector: 'gas-station-list',
@@ -17,7 +17,7 @@ export class GasStationTableComponent implements OnInit {
   addUrl = 'new';
   constructor(
     private _mockSrv: MockService,
-    private _apiService: GasStationAPIService
+    private _apiService: GasStationApiService
   ) {}
 
   ngOnInit(): void {

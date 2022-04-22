@@ -9,7 +9,7 @@ import { ShiftType } from '../../entities/enums/shift-type';
 import { Shift } from '../../entities/models/shift';
 import { ShiftFuel } from '../../entities/models/shift-fuel';
 import { ShiftRelatedData } from '../resolvers/resolve-models/shift-related-data';
-import { ShiftAPIService } from '../services/shift-api.service';
+import { ShiftApiService } from '../services/shift-api.service';
 
 @Injectable()
 export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
@@ -18,7 +18,7 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _apiService: ShiftAPIService
+    private _apiService: ShiftApiService
   ) {
     super(_activatedRoute, _apiService);
   }

@@ -6,7 +6,7 @@ import { filter, map, switchMap } from 'rxjs/operators';
 import { Data } from 'src/app/pages/models/data';
 import { GasStation } from '../../entities/models/gas-station';
 import { Shift } from '../../entities/models/shift';
-import { ShiftAPIService } from '../services/shift-api.service';
+import { ShiftApiService } from '../services/shift-api.service';
 
 @Component({
   selector: 'shift-list',
@@ -19,7 +19,7 @@ export class ShiftListComponent implements OnInit {
   tableColumns: string[] = ['type', 'date', 'income', 'gasStationName'];
   url = '/edit';
   constructor(
-    private _shiftService: ShiftAPIService, 
+    private _shiftService: ShiftApiService, 
     private _activatedRoute: ActivatedRoute,
   ) {}
 

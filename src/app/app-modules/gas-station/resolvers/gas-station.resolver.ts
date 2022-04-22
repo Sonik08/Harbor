@@ -3,11 +3,11 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GasStation } from '../../entities/models/gas-station';
-import { GasStationAPIService } from '../services/gas-station-api.service';
+import { GasStationApiService } from '../services/gas-station-api.service';
 
 @Injectable({ providedIn: 'root' })
 export class GasStationResolver implements Resolve<GasStation> {
-  constructor(private _apiService: GasStationAPIService) {}
+  constructor(private _apiService: GasStationApiService) {}
 
   resolve(
     route: ActivatedRouteSnapshot

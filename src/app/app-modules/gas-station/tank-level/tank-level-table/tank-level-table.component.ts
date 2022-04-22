@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TankLevel } from '../../../entities/models/tank-level';
-import { TankLevelAPIService } from '../../services/tank-level-api.service';
+import { TankLevelApiService } from '../../services/tank-level-api.service';
 
 @Component({
   selector: 'tank-level-table',
@@ -26,7 +26,7 @@ export class TankLevelTableComponent implements OnInit {
     "tankId",
   ]
 
-  constructor(private _apiService: TankLevelAPIService) { }
+  constructor(private _apiService: TankLevelApiService) { }
 
   ngOnInit(): void {
     this.tableData = this._apiService.get().pipe(

@@ -5,7 +5,7 @@ import { EnvService } from 'src/app/core/services/env.service';
 import { ShiftFuel } from '../../entities/models/shift-fuel';
 
 @Injectable({ providedIn: 'root' })
-export class ShiftFuelAPIService extends ApiService<ShiftFuel> {
+export class ShiftFuelApiService extends ApiService<ShiftFuel> {
   apiURL = 'shift-fuel';
 
   constructor(private httpClient: HttpClient, private envService: EnvService) {
