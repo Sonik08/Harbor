@@ -26,10 +26,8 @@ export class TankTableComponent implements OnInit {
 
   ngOnInit(): void {
     const gasStationId$ = this._activatedRoute.parent.params.pipe(
-      map(params => {
-        console.log(params);
-        return params['gasStationId'];
-      })
+      map(params => params['gasStationId']
+      )
     )
 
     this.tableData = gasStationId$.pipe(

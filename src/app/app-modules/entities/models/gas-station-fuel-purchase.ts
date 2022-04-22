@@ -8,10 +8,10 @@ export class GasStationFuelPurchases extends Model {
   amountInNaturalTemperature = 0;
   conversionFactor = 0;
   amountIn15 = 0;
-  temeprature = 19;
+  temeprature = 0;
   costPerUnit = 0;
   valueBeforeDiscount = 0;
   discount = 0;
   valueAfterDiscount = this.valueBeforeDiscount - this.discount;
-  VAT = 24;
+  VAT = 0.24;
 }

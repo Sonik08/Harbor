@@ -66,10 +66,8 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
     this._route.data.pipe(
       switchMap(data => {
         const model = data.data.model;
-        console.log(model);
         return this.form$.pipe(
           map(form => {
-            console.log(form);
             for (const property in model) {
               form.controls[property].patchValue(model[property]);
             }
@@ -88,7 +86,6 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   }
 
   private addControls(model): Observable<any> {
-    console.log(model);
     return this.form$.pipe(
       map(form => {
         for (const property in model) {

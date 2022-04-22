@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DakourisRoutingModule } from './dakouris-routing.module';
 import { DakourisOverviewModule } from './dakouris-overview/dakouris-overview.module';
 import { DakourisPurchasesTableModule } from './dakouris-purchases/dakouris-purchases-table/dakouris-purchases-table.module';
+import { DakourisPurchasesFormModule } from './dakouris-purchases/dakouris-purchases-form/dakouris-purchases-form.module';
 
 @NgModule({
   declarations: [],
@@ -10,7 +11,8 @@ import { DakourisPurchasesTableModule } from './dakouris-purchases/dakouris-purc
     DakourisRoutingModule,
     DakourisOverviewModule,
     CommonModule,
-    DakourisPurchasesTableModule
+    DakourisPurchasesTableModule,
+    DakourisPurchasesFormModule
   ]
 })
 export class DakourisModule {}

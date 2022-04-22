@@ -80,14 +80,27 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
 
     return this.form$.pipe(
       map(formGroup => {
-        const x = formGroup.get('tanks') as FormArray;
-        return x.at(index) as FormGroup;
+        const tanks = formGroup.get('tanks') as FormArray;
+        return tanks.at(index) as FormGroup;
       }),
       single()
     );
   }
 
-  public getProfit(){
-    // TODO get profit for each tank plus washes and accessories
+  public getProfit(): Observable<number>{
+    return this.form$.pipe(
+      map(formGroup => {
+        const tanks = formGroup.get('tanks').value as ShiftFuel[];
+
+        const total = tanks.reduce<number>((acc, tank) => {
+          return acc + parseFloat(tank.total.toString());
+        }, 0);
+
+        // Remove Expenseses from Total
+        return total + 
+        parseInt(formGroup.get('washes').value) + 
+        parseInt(formGroup.get('accesories').value);
+      })
+    )
   }
 }

@@ -17,5 +17,5 @@ export class Purchase extends Model {
   totalPriceAfterVAT = 0;
 
   wayOfPayment: '';
-  dateOfPaument = new Date().toLocaleDateString(localLanguage, dateOptions);
+  dateOfPayment = new Date().toLocaleDateString(localLanguage, dateOptions);
 }

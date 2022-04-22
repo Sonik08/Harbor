@@ -8,5 +8,14 @@
   "trailingComma": "none",
   "arrowParens": "avoid",
   "endOfLine": "lf",
-  "parser": "babel-flow"
+  "parser": "babel-ts",
+  "overrides": [
+    {
+      "files": "*.component.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
+  ]
 }

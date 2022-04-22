@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -39,7 +40,7 @@ export class JsonDateInterceptor implements HttpInterceptor {
     for (const key of Object.keys(body)) {
       const value = body[key];
       if (this.isIsoDateString(value)) {
-        body[key] = new Date(value);
+        body[key] = formatDate(new Date(value),  'dd-MM-yyyy', 'en-US');
       } else if (typeof value === 'object') {
         this.convert(value);
       }

@@ -8,7 +8,7 @@ import { Purchase } from '../../entities/models/Purchase';
 
 @Injectable({ providedIn: 'root' })
 export class PurchaseApiService extends ApiService<Purchase> {
-  apiURL = 'purchases';
+  apiURL = 'dakouris/purchases';
   gasStations$: Observable<GasStation>;
 
   constructor(private httpClient: HttpClient, private envService: EnvService) {

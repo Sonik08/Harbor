@@ -1,1 +1,17 @@
-<p>dakouris-purchases-form works!</p>
+<base-form
+  [model]="vm.model$ | async"
+  [saveable]="vm.saveable"
+  [vm]="vm"
+  [form]="vm.form$ | async"
+>
+<form-row>
+  <date-control
+  [form]="vm.form$ | async"
+  [required]="true"
+  name="date"
+  label="Ημερομηνία Αγοράς"
+>
+</date-control>
+
+  </form-row>
+</base-form>

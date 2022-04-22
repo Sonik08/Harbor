@@ -15,8 +15,8 @@ export class DakourisOverviewComponent {
     url: './',
     listItems: [
       { title: 'Purchases', icon: 'shop_two', url: 'purchases' },
-      { title: 'New Purchase', icon: 'shop', url: 'new' },
-      { title: 'Weekly Report', icon: 'date_range', url: 'weekly' }
+      { title: 'New Purchase', icon: 'shop', url: 'purchases/new' },
+      { title: 'Weekly Report', icon: 'date_range', url: 'purchases/weekly' }
     ]
   });
 }

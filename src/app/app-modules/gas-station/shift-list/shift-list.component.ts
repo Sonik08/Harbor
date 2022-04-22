@@ -34,7 +34,6 @@ export class ShiftListComponent implements OnInit {
           map(apiResponse => {
             apiResponse.data.forEach(shift => {
               shift.gasStationName = gasStation.name;
-              shift.date = formatDate(Date.now(),'dd-MM-yyyy', 'en-US');
             });
             return apiResponse.data;
           }),

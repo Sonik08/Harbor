@@ -10,15 +10,16 @@ const routes: Routes = [
     component: DakourisOverviewComponent,
     children: [
       {
-        path: 'purshases',
+        path: 'purchases',
         component: DakourisPurchasesTableComponent
       },
       {
-        path: '/new',
-        component: DakourisPurchasesFormComponent
+        path: 'purchases/new',
+        component: DakourisPurchasesFormComponent,
+        resolve: { data: PurchaseResolver }
       },
       {
-        path: ':purchaseId/edit',
+        path: 'purchases/:purchaseId/edit',
         component: DakourisPurchasesFormComponent,
         resolve: { data: PurchaseResolver }
       },

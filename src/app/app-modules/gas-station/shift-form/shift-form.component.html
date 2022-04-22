@@ -54,7 +54,8 @@
   <form-row>
     <input-control
       [form]="vm.form$ | async"
-      [required]="true"
+      [readonly]="true"
+      [value]="vm.getProfit() | async"
       name="income"
       type="number"
       label="Έσοδα"
