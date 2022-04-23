@@ -1,4 +1,9 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  OnInit
+} from '@angular/core';
 import { PurchaseVM } from '../../vm/purchase-form.vm';
 
 @Component({
@@ -7,9 +12,13 @@ import { PurchaseVM } from '../../vm/purchase-form.vm';
   styles: [],
   providers: [PurchaseVM]
 })
-export class DakourisPurchasesFormComponent implements OnInit, AfterViewChecked {
-  constructor(public vm: PurchaseVM,
-    private readonly changeDetectorRef: ChangeDetectorRef) {}
+export class DakourisPurchasesFormComponent
+  implements OnInit, AfterViewChecked
+{
+  constructor(
+    public vm: PurchaseVM,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.vm.onInit();

@@ -40,21 +40,21 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   }
 
   submit(): void {
-      this.form$
+    this.form$
       .pipe(
         switchMap(form => {
           const formValue = form.getRawValue();
-          return this.isNew() ?  this.apiService.post(formValue) : this.apiService.put(formValue);
+          return this.isNew()
+            ? this.apiService.post(formValue)
+            : this.apiService.put(formValue);
         })
       )
       .subscribe();
-      return;
+    return;
   }
 
   // eslint-disable-next-line prettier/prettier
-  protected  loadResolvedData(
-    model$: Observable<TModel>
-  ): Observable<any> {
+  protected loadResolvedData(model$: Observable<TModel>): Observable<any> {
     return model$;
   }
 
@@ -63,19 +63,21 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   protected abstract isNew(): boolean;
 
   protected updateInitialControlValues(): void {
-    this._route.data.pipe(
-      switchMap(data => {
-        const model = data.data.model;
-        return this.form$.pipe(
-          map(form => {
-            for (const property in model) {
-              form.controls[property].patchValue(model[property]);
-            }
-            return form;
-          })
-        );
-      })
-    ).subscribe();
+    this._route.data
+      .pipe(
+        switchMap(data => {
+          const model = data.data.model;
+          return this.form$.pipe(
+            map(form => {
+              for (const property in model) {
+                form.controls[property].patchValue(model[property]);
+              }
+              return form;
+            })
+          );
+        })
+      )
+      .subscribe();
   }
 
   private getInitialModelState(route: ActivatedRoute) {
@@ -85,7 +87,9 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
     );
   }
 
-  private addControls(model): Observable<any> {
+  // TODO WE NEED TO INFER LOGIC FOR OBJECT IN ARRAY CREATION TO BE REUSABLE
+  // THUS GASSTATIONFUALFORM MAY USE THAT METHOD!!!!!!!
+  private addControls(model): Observable<FormGroup> {
     return this.form$.pipe(
       map(form => {
         for (const property in model) {

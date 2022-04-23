@@ -4,14 +4,101 @@
   [vm]="vm"
   [form]="vm.form$ | async"
 >
-<form-row>
+  <form-row>
+      <date-control
+      [form]="vm.form$ | async"
+      [required]="true"
+      name="date"
+      label="Ημερομηνία Αγοράς"
+      >
+      </date-control>
+      <select-control
+      [form]="vm.form$ | async"
+      [selectItems]="vm.gasStations$"
+      [required]="true"
+      name="gasStationId"
+      label="Πρατήριο"
+      >
+      </select-control>
+  </form-row>
+  <form-row>
+    <input-control
+    [form]="vm.form$ | async"
+    name="wayOfPayment"
+    label="Τρόπος Πληρωμής"
+    >
+  </input-control>
   <date-control
-  [form]="vm.form$ | async"
-  [required]="true"
-  name="date"
-  label="Ημερομηνία Αγοράς"
->
-</date-control>
-
+    [form]="vm.form$ | async"
+    [required]="true"
+    name="dateOfPayment"
+    label="Ημερομηνία Πληρωμής"
+    >
+    </date-control>
+  </form-row>
+  <form-row>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" (click)="vm.addFuelToForm()">Προσθήκη Καυσίμου</button>
+    </div>
+  </form-row>
+  <div *ngFor="let gasStationFuelPurchase of vm.getGasStationFuelPurchases() | async; index as i">
+    <form-row>
+      <!-- <gas-station-fuel-purchase-form
+        [gasStationFuelPurchase]="gasStationFuelPurchase"
+        [form]="vm.getGasStationFuelPurchaseForm(i) | async"
+      >
+      </gas-station-fuel-purchase-form> -->
+    </form-row>
+  <form-row>
+      <input-control
+      [form]="vm.form$ | async"
+      [readonly] = true
+      type="number"
+      name="loadingExpenses"
+      label="Έξοδα Φόρτωσης"
+      >
+      </input-control>
+      <input-control
+      [form]="vm.form$ | async"
+      [readonly] = true
+      type="number"
+      name="totalPriceBeforeDiscounts"
+      label="Αξία Προ Έκπτωσης"
+      >
+      </input-control>
+      <input-control
+      [form]="vm.form$ | async"
+      [readonly] = true
+      type="number"
+      name="totalPriceAfterDiscounts"
+      label="Αξία Με Έκπτωση"
+      >
+      </input-control>
+  </form-row>
+  <form-row>
+      <input-control
+      [form]="vm.form$ | async"
+      [readonly] = true
+      type="number"
+      name="totalPriceBeforeVAT"
+      label="Καθαρή Αξία"
+      >
+      </input-control>
+      <input-control
+      [form]="vm.form$ | async"
+      [readonly] = true
+      type="number"
+      name="vat"
+      label="ΦΠΑ"
+      >
+      </input-control>
+      <input-control
+      [form]="vm.form$ | async"
+      [readonly] = true
+      type="number"
+      name="totalPriceAfterVAT"
+      label="Σύνολο"
+      >
+      </input-control>
   </form-row>
 </base-form>

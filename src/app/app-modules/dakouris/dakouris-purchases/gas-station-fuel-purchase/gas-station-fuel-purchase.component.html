@@ -1,0 +1,92 @@
+<div fxFill fxLayout="row" fxLayoutGap="10px">
+    <form-row>
+        <!-- <enum-control
+        [form]="form"
+        [enums]="getFuelTypes()"
+        [required]="true"
+        name="type"
+        label="Είδος Καυσίμου"
+        >
+        </enum-control> -->
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="amountInNaturalTemperature"
+        type="number"
+        label="Κιλά σε Φ.Θ."
+        ></input-control>
+
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="conversionFactor"
+        type="number"
+        label="Συντελεστής μετατροπής"
+        ></input-control>
+
+        <!-- I will be the result of a multiplication of
+             conversionFactor and amountInNaturalTemperature -->
+        <input-control
+        [form]="form"
+        [required]="true"
+        [readonly]="true"
+        name="amountInNaturalTemperature"
+        type="number"
+        label="Κιλά σε Φ.Θ."
+        ></input-control>
+    </form-row>
+    <form-row>
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="temeprature"
+        type="number"
+        label="Θερμοκρασία"
+        ></input-control>
+
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="costPerUnit"
+        type="number"
+        label="Τιμή Μοναδας"
+        ></input-control>
+
+        <!-- I will be the result of a multiplication of
+        costPerUnit and amountIn15 -->
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="valueBeforeDiscount"
+        type="number"
+        label="Αξία προ εκπτωσης"
+        ></input-control>
+    </form-row>
+    <form-row>
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="discount"
+        type="number"
+        label="Έκπτωση"
+        ></input-control>
+
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="valueAfterDiscount"
+        type="number"
+        label="Αξία μετά την έκπτωση"
+        ></input-control>
+
+        <!-- I will be the result of a multiplication of
+        costPerUnit and amountIn15 -->
+        <input-control
+        [form]="form"
+        [required]="true"
+        name="VAT"
+        type="number"
+        label="ΦΠΑ"
+        ></input-control>
+    </form-row>
+</div>

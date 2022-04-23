@@ -1,6 +1,6 @@
 import {
-  localLanguage,
-  dateOptions
+  dateOptions,
+  localLanguage
 } from 'src/app/core/date-helpers/date-consts';
 import { Model } from 'src/app/core/models/model';
 import { GasStationFuelPurchases } from './gas-station-fuel-purchase';
@@ -14,8 +14,9 @@ export class Purchase extends Model {
   totalPriceBeforeDiscounts = 0;
   totalPriceAfterDiscounts = 0;
   totalPriceBeforeVAT = 0;
+  vat = 0;
   totalPriceAfterVAT = 0;
 
-  wayOfPayment: '';
+  wayOfPayment = '';
   dateOfPayment = new Date().toLocaleDateString(localLanguage, dateOptions);
 }

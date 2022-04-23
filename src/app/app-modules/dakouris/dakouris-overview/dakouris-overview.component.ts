@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IExpantionPanelItem } from 'src/app/core/models/UI/expantion-panel-item';
 
@@ -11,7 +11,7 @@ export class DakourisOverviewComponent {
   expantionPanel: Observable<IExpantionPanelItem> = of({
     title: 'title',
     description: 'description',
-    icon: 'person',
+    icon: '',
     url: './',
     listItems: [
       { title: 'Purchases', icon: 'shop_two', url: 'purchases' },

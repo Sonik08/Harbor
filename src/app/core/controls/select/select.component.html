@@ -1,0 +1,11 @@
+<mat-form-field fxFlex [formGroup]="form" appearance="standard">
+    <mat-label> {{ label }}</mat-label>
+    <mat-select 
+    (selectionChange)="onChangeValue($event)"
+    [disabled]="readonly"
+    formControlName="{{ name }}">
+        <mat-option *ngFor="let selectItem of selectItems | async" [value]="selectItem.value">
+            {{ selectItem.label }}
+        </mat-option>
+      </mat-select>
+</mat-form-field>

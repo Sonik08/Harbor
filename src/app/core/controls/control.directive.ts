@@ -26,10 +26,13 @@ export abstract class ControlDirective {
   required = false;
 
   @Input()
+  disabled = false;
+
+  @Input()
   value;
-  
+
   onInit() {
-    if(this.value){
+    if (this.value) {
       this.form.controls[this.name].setValue(this.value);
     }
   }
