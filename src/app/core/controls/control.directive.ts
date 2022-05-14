@@ -43,14 +43,14 @@ export abstract class ControlDirective {
   get validationMessages(): string[] {
     const messages: string[] = [];
 
-    this.validations.forEach(validation => {
-      if (
-        this.control.hasError(validation.type) &&
-        (this.control.dirty || this.control.touched)
-      ) {
-        messages.push(validation.message);
-      }
-    });
+    // this.validations.forEach(validation => {
+    //   if (
+    //     this.control.hasError(validation.type) &&
+    //     (this.control.dirty || this.control.touched)
+    //   ) {
+    //     messages.push(validation.message);
+    //   }
+    // });
 
     return messages;
   }

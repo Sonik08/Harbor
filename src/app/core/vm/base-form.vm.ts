@@ -1,15 +1,16 @@
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { map, single, switchMap } from 'rxjs/operators';
-import { Data } from 'src/app/pages/models/data';
+import { switchMap } from 'rxjs/operators';
 import { Model } from '../models/model';
+import { ModelProxy } from '../models/model-proxy';
 import { ResolvedData } from '../models/resolved-data';
 import { ApiService } from '../services/api.service';
 
 export abstract class BaseFormVM<TModel extends Model, RelatedData> {
-  form$: Observable<FormGroup> = of(new FormGroup({}));
   model: TModel = null;
+
+  form$: Observable<FormGroup> = of(new FormGroup({}));
   model$: Observable<TModel> = new Observable(observer => {
     observer.next(this.model);
   });
@@ -17,26 +18,30 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   modelInitialized = false;
   saveable = true;
   resolvedData: Observable<ResolvedData<TModel, RelatedData>>;
+  modelProxy: ModelProxy<TModel>;
 
   constructor(
     public _route: ActivatedRoute,
     public apiService: ApiService<TModel>
-  ) {}
+  ) {
+    this.modelProxy = new ModelProxy<TModel>(this.form$);
+  }
 
   onInit(): void {
-    const initialModel = this.initializeModel();
-
-    //this.getInitialModelState(this.route);
-
-    const modelWithResolvedData = this.loadResolvedData(initialModel);
-
-    modelWithResolvedData
-      .pipe(switchMap(model => this.addControls(model)))
+    this.getModel()
+      .pipe(
+        switchMap(_ => this.modelProxy.addControls(this.model)),
+        switchMap(_ => this.patchValuesIfEditing(this.model))
+      )
       .subscribe();
+  }
 
+  private patchValuesIfEditing(model: TModel) {
     if (!this.isNew()) {
-      this.updateInitialControlValues();
+      return this.modelProxy.patchFormValues(model);
     }
+
+    return this.model$;
   }
 
   submit(): void {
@@ -44,6 +49,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
       .pipe(
         switchMap(form => {
           const formValue = form.getRawValue();
+          console.log(formValue);
           return this.isNew()
             ? this.apiService.post(formValue)
             : this.apiService.put(formValue);
@@ -53,69 +59,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
     return;
   }
 
-  // eslint-disable-next-line prettier/prettier
-  protected loadResolvedData(model$: Observable<TModel>): Observable<any> {
-    return model$;
-  }
-
-  protected abstract initializeModel(): Observable<TModel>;
+  protected abstract getModel(): Observable<TModel>;
 
   protected abstract isNew(): boolean;
-
-  protected updateInitialControlValues(): void {
-    this._route.data
-      .pipe(
-        switchMap(data => {
-          const model = data.data.model;
-          return this.form$.pipe(
-            map(form => {
-              for (const property in model) {
-                form.controls[property].patchValue(model[property]);
-              }
-              return form;
-            })
-          );
-        })
-      )
-      .subscribe();
-  }
-
-  private getInitialModelState(route: ActivatedRoute) {
-    this.model$ = (route.data as Observable<Data<TModel>>).pipe(
-      map(resolvedData => resolvedData.data),
-      single()
-    );
-  }
-
-  // TODO WE NEED TO INFER LOGIC FOR OBJECT IN ARRAY CREATION TO BE REUSABLE
-  // THUS GASSTATIONFUALFORM MAY USE THAT METHOD!!!!!!!
-  private addControls(model): Observable<FormGroup> {
-    return this.form$.pipe(
-      map(form => {
-        for (const property in model) {
-          if (model[property] instanceof Array) {
-            const childFormArray = new FormArray([]);
-            const arrayObjects = Object.keys(model[property]).map(index => {
-              return model[property][index];
-            });
-            for (const child of arrayObjects) {
-              const childFormGroup = new FormGroup({});
-              for (const childProperty in child) {
-                childFormGroup.addControl(
-                  childProperty,
-                  new FormControl(child[childProperty])
-                );
-              }
-              childFormArray.push(childFormGroup);
-            }
-            form.addControl(property, childFormArray);
-          } else {
-            const control = new FormControl(model[property]);
-            form.addControl(property, control);
-          }
-        }
-        return form;
-      })
-    );
-  }
 }

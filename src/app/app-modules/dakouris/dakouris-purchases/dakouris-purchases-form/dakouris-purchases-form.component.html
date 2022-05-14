@@ -41,14 +41,12 @@
       <button mat-raised-button color="primary" (click)="vm.addFuelToForm()">Προσθήκη Καυσίμου</button>
     </div>
   </form-row>
-  <div *ngFor="let gasStationFuelPurchase of vm.getGasStationFuelPurchases() | async; index as i">
-    <form-row>
+  <div *ngFor="let gasStationFuelPurchase of vm.getGasStationFuelPurchases() | async; index as i"></div>
       <!-- <gas-station-fuel-purchase-form
         [gasStationFuelPurchase]="gasStationFuelPurchase"
         [form]="vm.getGasStationFuelPurchaseForm(i) | async"
       >
       </gas-station-fuel-purchase-form> -->
-    </form-row>
   <form-row>
       <input-control
       [form]="vm.form$ | async"

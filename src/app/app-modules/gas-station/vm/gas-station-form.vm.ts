@@ -20,11 +20,13 @@ export class GasStationVM extends BaseFormVM<
   }
 
   onInit(): void {
+    this.model = new GasStation();
+
     super.onInit();
   }
 
-  initializeModel(): Observable<GasStation> {
-    this.model = new GasStation();
+  getModel(): Observable<GasStation> {
+    // this.model = new GasStation();
 
     return this.model$;
   }

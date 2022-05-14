@@ -38,8 +38,11 @@ export class ShiftResolver
       switchMap(tanks => {
         return types$.pipe(
           map(types => {
+            let model = new Shift();
+            model.gasStationId = gasStationId;
+
             return {
-              model: new Shift(),
+              model: model,
               relatedData: {
                 tanks: tanks,
                 types: types
@@ -51,9 +54,9 @@ export class ShiftResolver
       switchMap(resolvedData => {
         const isEditing = state.url.includes('/edit');
 
-        if(! isEditing){
+        if (!isEditing) {
           return of(resolvedData);
-        } 
+        }
 
         return this._shiftService.getById(route.paramMap.get('shiftId')).pipe(
           map(shiftApiResponse => {

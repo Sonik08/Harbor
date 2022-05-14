@@ -33,8 +33,8 @@ export class PurchaseVM extends BaseFormVM<Purchase, PurchaseRelatedData> {
     super.onInit();
   }
 
-  initializeModel(): Observable<Purchase> {
-    this.model = new Purchase();
+  getModel(): Observable<Purchase> {
+    // this.model = new Purchase();
 
     return of(new Purchase()).pipe(switchMap(model => this.model$));
   }
@@ -47,7 +47,7 @@ export class PurchaseVM extends BaseFormVM<Purchase, PurchaseRelatedData> {
     console.log('Hello World!');
   }
 
-  public getGasStationFuelPurchases(): Observable<GasStationFuelPurchases> {
+  public getGasStationFuelPurchases(): Observable<GasStationFuelPurchases[]> {
     return of([]);
   }
 

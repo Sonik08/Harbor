@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { GasStationVM } from '../vm/gas-station-form.vm';
 
 @Component({
@@ -8,8 +8,16 @@ import { GasStationVM } from '../vm/gas-station-form.vm';
   providers: [GasStationVM]
 })
 export class GasStationFormComponent implements OnInit {
-  constructor(public vm: GasStationVM) {}
+  constructor(
+    public vm: GasStationVM,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
+
   ngOnInit(): void {
     this.vm.onInit();
+  }
+
+  ngAfterViewChecked(): void {
+    this.changeDetectorRef.detectChanges();
   }
 }
