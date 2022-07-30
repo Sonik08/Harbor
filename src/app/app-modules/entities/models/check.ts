@@ -10,8 +10,8 @@ export class Check extends Model {
   sentFrom = '';
   acquzitionDate = new Date().toLocaleDateString(localLanguage, dateOptions);
   expirationDate = new Date().toLocaleDateString(localLanguage, dateOptions);
-  checkNumber = '';
   amount = 0;
   sentTo = '';
-  sentWhen = new Date().toLocaleDateString(localLanguage, dateOptions);
+  description = '';
+  sealedAt = new Date().toLocaleDateString(localLanguage, dateOptions);
 }

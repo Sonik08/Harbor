@@ -19,7 +19,7 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
     private _router: Router,
     private _apiService: ShiftApiService
   ) {
-    super(_activatedRoute, _apiService);
+    super(_activatedRoute, _router, _apiService);
   }
 
   onInit() {

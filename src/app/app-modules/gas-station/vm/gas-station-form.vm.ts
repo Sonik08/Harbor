@@ -16,7 +16,7 @@ export class GasStationVM extends BaseFormVM<
     private _router: Router,
     private _apiService: GasStationApiService
   ) {
-    super(_activatedRoute, _apiService);
+    super(_activatedRoute, _router, _apiService);
   }
 
   onInit(): void {

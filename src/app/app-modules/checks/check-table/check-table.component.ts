@@ -16,12 +16,14 @@ export class CheckTableComponent implements OnInit {
   addUrl = 'new';
 
   columns = [
-    "id",
-    "bank",
-    "expiratioNDate",
-    "sentFrom",
-    "sentTo",
-  ]
+    'id',
+    'bank',
+    'expirationDate',
+    'sentFrom',
+    'sentTo',
+    'amount',
+    'description'
+  ];
 
   constructor(private _apiService: CheckApiService) {}
 

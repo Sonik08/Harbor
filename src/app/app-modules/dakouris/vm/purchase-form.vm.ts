@@ -17,7 +17,7 @@ export class PurchaseVM extends BaseFormVM<Purchase, PurchaseRelatedData> {
     private _router: Router,
     private _apiService: PurchaseApiService
   ) {
-    super(_activatedRoute, _apiService);
+    super(_activatedRoute, _router, _apiService);
   }
   gasStations$: Observable<SelectItem[]> = of([]);
 
@@ -55,7 +55,7 @@ export class PurchaseVM extends BaseFormVM<Purchase, PurchaseRelatedData> {
     return gasStations.map(gasStation => {
       return {
         label: gasStation.name,
-        value: gasStation.id
+        value: gasStation.id.toString()
       };
     });
   }

@@ -98,9 +98,6 @@ export class ModelProxy<TModel extends Model> {
   }
 
   private patchValuesForArray(arrayOfObjects: TModel[], formArray: FormArray) {
-    console.log(arrayOfObjects);
-    console.log(formArray);
-
     for (const child of arrayOfObjects) {
       let correspondingFormGroup;
 

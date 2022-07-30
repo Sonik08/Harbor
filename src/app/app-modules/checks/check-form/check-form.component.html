@@ -7,25 +7,26 @@
   <form-row>
     <date-control
       [form]="vm.form$ | async"
-      [required]="true"
-      name="acquzitionDate"
-      label="Ημερομηνία Παραλαβής"
+      [required]="false"
+      name="expirationDate"
+      label="Ημερομηνία Λήξης"
     >
     </date-control>
+
     <input-control
       [form]="vm.form$ | async"
       [required]="true"
       type="text"
-      label="Όνομα παραδίδων"
+      label="Είσπραξη από"
       name="sentFrom"
     ></input-control>
   </form-row>
   <form-row>
-      <!-- // TODO check how to handle null values for dates and not submit a form -->
+    <!-- // TODO check how to handle null values for dates and not submit a form -->
     <date-control
       [form]="vm.form$ | async"
       [required]="true"
-      name="sentWhen"
+      name="acquzitionDate"
       label="Ημερομηνία Αποστολής"
     >
     </date-control>
@@ -33,41 +34,41 @@
       [form]="vm.form$ | async"
       [required]="true"
       type="text"
-      label="Όνομα παραλήπτη"
+      label="Εστάλη σε"
       name="sentTo"
     ></input-control>
-    
   </form-row>
   <form-row>
     <enum-control
-    [form]="vm.form$ | async"
-    [enums]="vm.banks$"
-    [required]="false"
-    name="bank"
-    label="Bank">
-  </enum-control>
-  <date-control
-  [form]="vm.form$ | async"
-  [required]="false"
-  name="expirationDate"
-  label="Ημερομηνία Λήξης"
-  >
-  </date-control>
-</form-row>
-<form-row>
-  <input-control
+      [form]="vm.form$ | async"
+      [enums]="vm.banks$"
+      [required]="false"
+      name="bank"
+      label="Τράπεζα"
+    >
+    </enum-control>
+    <input-control
+      [form]="vm.form$ | async"
+      [required]="false"
+      type="number"
+      label="Ποσό"
+      name="amount"
+    ></input-control>
+  </form-row>
+  <form-row>
+    <input-control
       [form]="vm.form$ | async"
       [required]="false"
       type="text"
-      label="Αριθμός επιταγής"
-      name="checkNumber"
+      label="Σχόλια"
+      name="description"
     ></input-control>
-    <input-control
-    [form]="vm.form$ | async"
-    [required]="false"
-    type="number"
-    label="Ποσό"
-    name="amount"
-  ></input-control>
-</form-row>
+
+    <date-control
+      [form]="vm.form$ | async"
+      name="sealedAt"
+      label="Ημερωμηνία Σφραγγίσματος"
+    >
+    </date-control>
+  </form-row>
 </base-form>
