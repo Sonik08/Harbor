@@ -6,7 +6,7 @@ export class EnvService {
   // be overridden by env.js
 
   // API url
-  public baseUrl = 'http://localhost:4000';
+  public baseUrl = 'http://localhost:5290';
 
   // Whether or not to enable debug mode
   public enableDebug = true;

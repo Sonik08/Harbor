@@ -6,7 +6,7 @@ import { Check } from '../../entities/models/Check';
 
 @Injectable({ providedIn: 'root' })
 export class CheckApiService extends ApiService<Check> {
-  apiURL = 'check';
+  apiURL = 'checks';
 
   constructor(private httpClient: HttpClient, private envService: EnvService) {
     super(httpClient, envService);
