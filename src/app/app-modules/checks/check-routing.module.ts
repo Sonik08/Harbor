@@ -2,21 +2,39 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckFormComponent } from './check-form/check-form.component';
 import { CheckTableComponent } from './check-table/check-table.component';
+import { ChecksOverviewComponent } from './checks-overview/checks-overview.component';
+import { ChecksBanksComponent } from './lookups/checks-banks/checks-banks.component';
+import { ChecksCustomersComponent } from './lookups/checks-customers/checks-customers.component';
 import { CheckResolver } from './resolvers/check.resolver';
 
 const routes: Routes = [
   {
-    path: 'new',
-    component: CheckFormComponent
-  },
-  {
-    path: ':checkId/edit',
-    component: CheckFormComponent,
-    resolve: { data: CheckResolver }
-  },
-  {
     path: '',
-    component: CheckTableComponent
+    component: ChecksOverviewComponent,
+    children: [
+      {
+        path: 'checks',
+        component: CheckTableComponent
+      },
+      {
+        path: 'new',
+        component: CheckFormComponent,
+        resolve: { data: CheckResolver }
+      },
+      {
+        path: ':checkId/edit',
+        component: CheckFormComponent,
+        resolve: { data: CheckResolver }
+      },
+      {
+        path: 'customers',
+        component: ChecksCustomersComponent
+      },
+      {
+        path: 'banks',
+        component: ChecksBanksComponent
+      }
+    ]
   }
   // {
   //   path: ':gasStationId/overview',

@@ -8,10 +8,10 @@ import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
 import { MockService } from 'src/app/core/services/mock-service';
+import { Bank } from '../../entities/enums/bank-type';
 import { Check } from '../../entities/models/check';
 import { CheckApiService } from '../services/check-api.service';
 import { CheckRelatedData } from './resolved-data/check-related-data';
-import { Bank } from 'c:/Users/Stanislav/source/repos/Harbor/front/src/app/app-modules/entities/enums/bank-type';
 
 @Injectable({ providedIn: 'root' })
 export class CheckResolver
