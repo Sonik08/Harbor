@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from 'src/app/pages/material.module';
-import { LookupComponent } from './lookup.component';
+import { MaterialLookupComponent } from './material-lookup.component';
 
 @NgModule({
-  declarations: [LookupComponent],
+  declarations: [MaterialLookupComponent],
   imports: [CommonModule, MaterialModule],
-  exports: [LookupComponent]
+  exports: [MaterialLookupComponent]
 })
-export class LookupModule {}
+export class MaterialLookupModule {}

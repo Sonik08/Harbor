@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { LookupModule } from 'src/app/core/lookup/lookup.module';
+import { MaterialLookupModule } from 'src/app/core/material-lookup/material-lookup.module';
 import { ChecksBanksComponent } from './checks-banks.component';
 
 @NgModule({
   declarations: [ChecksBanksComponent],
-  imports: [CommonModule, LookupModule],
+  imports: [CommonModule, MaterialLookupModule],
   exports: [ChecksBanksComponent]
 })
 export class ChecksBanksModule {}

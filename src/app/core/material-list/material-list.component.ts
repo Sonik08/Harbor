@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { MockService } from 'src/app/core/services/mock-service';
 import { IListItem } from '../models/UI/list-item';
 
 @Component({
@@ -15,9 +13,8 @@ export class MaterialListComponent {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _mockSrv: MockService,
     private _router: Router
-  ) { }
+  ) {}
 
   onSelect(listItem: IListItem) {
     this._router.navigate([listItem.url], { relativeTo: this._activatedRoute });
