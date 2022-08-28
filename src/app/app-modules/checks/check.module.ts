@@ -1,3 +1,5 @@
+import { ChecksCustomersModule } from './lookups/checks-customers/checks-customers.module';
+import { ChecksBanksModule } from './lookups/checks-banks/checks-banks.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CheckFormModule } from './check-form/check-form.module';
@@ -12,7 +14,9 @@ import { ChecksOverviewModule } from './checks-overview/checks-overview.module';
     ChecksOverviewModule,
     CommonModule,
     CheckTableModule,
-    CheckFormModule
+    CheckFormModule,
+    ChecksBanksModule,
+    ChecksCustomersModule
   ]
 })
 export class CheckModule {}

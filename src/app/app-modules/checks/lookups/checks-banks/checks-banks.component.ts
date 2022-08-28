@@ -8,8 +8,8 @@ import { LookupModel } from 'src/app/core/models/lookup-model';
   styles: []
 })
 export class ChecksBanksComponent {
-  data = of([
+  data = [
     { id: 1, name: 'Bank1' },
     { id: 2, name: 'Bank2' }
-  ] as LookupModel[]);
+  ] as LookupModel[];
 }

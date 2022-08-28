@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LookupModel } from '../models/lookup-model';
 
 @Component({
   selector: 'material-lookup',
@@ -6,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./material-lookup.component.scss']
 })
 export class MaterialLookupComponent {
-  // @Input() dataSource: Observable<LookupModel[]>;
-  // displayedColumns: string[] = ['id', 'name'];
+  // @Input() dataSource: LookupModel[];
+  displayedColumns: string[] = ['id', 'name'];
+
+  dataSource = [
+    { id: 1, name: 'Bank1' },
+    { id: 2, name: 'Bank2' }
+  ];
 }
