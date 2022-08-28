@@ -13,12 +13,13 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-eslint/builder": "^14.0.3",
     "@angular/animations": "^14.2.0",
     "@angular/cdk": "^14.2.0",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
     "@angular/core": "^14.2.0",
-    "@angular/flex-layout": "^12.0.0-beta.34",
+    "@angular/flex-layout": "^14.0.0-beta.40",
     "@angular/forms": "^14.2.0",
     "@angular/material": "^14.2.0",
     "@angular/platform-browser": "^14.2.0",
@@ -26,13 +27,11 @@
     "@angular/router": "^14.2.0",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.7",
-    "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "8.4.1",
     "@angular-devkit/build-angular": "^14.2.1",
-    "@angular-eslint/builder": "^2.0.0",
     "@angular-eslint/eslint-plugin": "^2.0.0",
     "@angular-eslint/eslint-plugin-template": "^2.0.0",
     "@angular-eslint/schematics": "14.0.3",
@@ -66,6 +65,7 @@
     "pretty-quick": "^3.1.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
+    "tslib": "^2.4.0",
     "tslint": "~6.1.0",
     "typescript": "^4.3.5"
   }
