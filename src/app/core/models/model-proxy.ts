@@ -1,4 +1,4 @@
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Model } from './model';
@@ -10,13 +10,13 @@ import { Model } from './model';
 // Handle the transition between the changes in the model to the form controls
 
 export class ModelProxy<TModel extends Model> {
-  form$: Observable<FormGroup>;
+  form$: Observable<UntypedFormGroup>;
 
-  constructor($form: Observable<FormGroup>) {
+  constructor($form: Observable<UntypedFormGroup>) {
     this.form$ = $form;
   }
 
-  public addControls(model: TModel): Observable<FormGroup> {
+  public addControls(model: TModel): Observable<UntypedFormGroup> {
     return this.form$.pipe(
       map(form => this.addFormControllsFromModel(model, form))
     );
@@ -25,7 +25,7 @@ export class ModelProxy<TModel extends Model> {
   public addObjectToModelsArray(object: TModel, property: string) {
     this.form$.pipe(
       map(formGroup => {
-        const modelsArray = formGroup.get(property) as FormArray;
+        const modelsArray = formGroup.get(property) as UntypedFormArray;
         this.addNewFormGroupToFormArray(object, modelsArray);
       })
     );
@@ -38,7 +38,7 @@ export class ModelProxy<TModel extends Model> {
           if (model[property] instanceof Array) {
             this.patchValuesForArray(
               model,
-              form.controls[property] as FormArray
+              form.controls[property] as UntypedFormArray
             );
           } else {
             this.patchProperty(form, property, model);
@@ -48,7 +48,7 @@ export class ModelProxy<TModel extends Model> {
     );
   }
 
-  private addFormControllsFromModel(model: TModel, form: FormGroup): FormGroup {
+  private addFormControllsFromModel(model: TModel, form: UntypedFormGroup): UntypedFormGroup {
     for (const property in model) {
       if (model[property] instanceof Array) {
         this.addControlsFromModelsArray(model, property, form);
@@ -63,9 +63,9 @@ export class ModelProxy<TModel extends Model> {
   private addControlsFromModelsArray(
     model: TModel,
     property: Extract<keyof TModel, string>,
-    form: FormGroup
+    form: UntypedFormGroup
   ) {
-    const childFormArray = new FormArray([]);
+    const childFormArray = new UntypedFormArray([]);
     const arrayObjects = getObjectsFromArray();
 
     for (const child of arrayObjects) {
@@ -80,8 +80,8 @@ export class ModelProxy<TModel extends Model> {
     }
   }
 
-  private addNewFormGroupToFormArray(child: TModel, childFormArray: FormArray) {
-    const childFormGroup = new FormGroup({});
+  private addNewFormGroupToFormArray(child: TModel, childFormArray: UntypedFormArray) {
+    const childFormGroup = new UntypedFormGroup({});
     for (const childProperty in child) {
       this.addControlFromModelsProperty(child, childProperty, childFormGroup);
     }
@@ -91,18 +91,18 @@ export class ModelProxy<TModel extends Model> {
   private addControlFromModelsProperty(
     model: TModel,
     property: string,
-    form: FormGroup
+    form: UntypedFormGroup
   ) {
-    const control = new FormControl(model[property]);
+    const control = new UntypedFormControl(model[property]);
     form.addControl(property, control);
   }
 
-  private patchValuesForArray(arrayOfObjects: TModel[], formArray: FormArray) {
+  private patchValuesForArray(arrayOfObjects: TModel[], formArray: UntypedFormArray) {
     for (const child of arrayOfObjects) {
       let correspondingFormGroup;
 
       for (let i = 0; i < formArray.length; i++) {
-        const formGroup = formArray.at(i) as FormGroup;
+        const formGroup = formArray.at(i) as UntypedFormGroup;
         if (formGroup.controls['id'].value === child.id) {
           correspondingFormGroup = formGroup;
           break;
@@ -115,7 +115,7 @@ export class ModelProxy<TModel extends Model> {
     }
   }
 
-  private patchProperty(form: FormGroup, property: string, model: any) {
+  private patchProperty(form: UntypedFormGroup, property: string, model: any) {
     form.controls[property].patchValue(model[property]);
   }
 }

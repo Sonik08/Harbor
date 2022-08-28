@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { ApiService } from '../services/api.service';
 export abstract class BaseFormVM<TModel extends Model, RelatedData> {
   model: TModel;
 
-  form$: Observable<FormGroup> = of(new FormGroup({}));
+  form$: Observable<UntypedFormGroup> = of(new UntypedFormGroup({}));
   model$: Observable<TModel> = new Observable(observer => {
     observer.next(this.model);
   });

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Model } from '../models/model';
 import { BaseFormVM } from '../vm/base-form.vm';
 
@@ -11,7 +11,7 @@ import { BaseFormVM } from '../vm/base-form.vm';
 export class BaseFormComponent<TModel extends Model, TRelatedData> {
   @Input() saveable: boolean;
   @Input() model: TModel;
-  @Input() form: FormGroup;
+  @Input() form: UntypedFormGroup;
   @Input() vm: BaseFormVM<TModel, TRelatedData>;
 
   onSubmit() {

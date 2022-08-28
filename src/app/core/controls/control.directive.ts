@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Directive()
 export abstract class ControlDirective {
@@ -11,7 +11,7 @@ export abstract class ControlDirective {
   ];
 
   @Input()
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   @Input()
   name: string;
@@ -36,8 +36,8 @@ export abstract class ControlDirective {
       this.form.controls[this.name].setValue(this.value);
     }
   }
-  get control(): FormControl {
-    return this.form.controls[this.name] as FormControl;
+  get control(): UntypedFormControl {
+    return this.form.controls[this.name] as UntypedFormControl;
   }
 
   get validationMessages(): string[] {

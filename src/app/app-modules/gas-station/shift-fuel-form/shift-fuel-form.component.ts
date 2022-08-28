@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ShiftFuel } from '../../entities/models/shift-fuel';
 
 @Component({
@@ -8,7 +8,7 @@ import { ShiftFuel } from '../../entities/models/shift-fuel';
   styleUrls: ['./shift-fuel.form.scss']
 })
 export class ShiftFuelFormComponent implements OnInit {
-  @Input() form: FormGroup;
+  @Input() form: UntypedFormGroup;
   @Input() shiftFuel: ShiftFuel;
 
   ngOnInit(): void {

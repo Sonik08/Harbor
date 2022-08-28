@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { FuelType } from 'src/app/app-modules/entities/enums/fuel-type';
 import { GasStationFuelPurchases } from 'src/app/app-modules/entities/models/gas-station-fuel-purchase';
@@ -10,7 +10,7 @@ import { GasStationFuelPurchases } from 'src/app/app-modules/entities/models/gas
   styles: []
 })
 export class GasStationFuelPurchaseComponent {
-  @Input() form: FormGroup;
+  @Input() form: UntypedFormGroup;
   @Input() gasStationFuelPurchase: GasStationFuelPurchases;
 
   getFuelTypes(): Observable<FuelType[]> {

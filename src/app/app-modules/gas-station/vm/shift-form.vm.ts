@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { filter, map, single, tap } from 'rxjs/operators';
@@ -54,11 +54,11 @@ export class ShiftFormVM extends BaseFormVM<Shift, ShiftRelatedData> {
     );
   }
 
-  public getShiftFuelForm(index: number): Observable<FormGroup> {
+  public getShiftFuelForm(index: number): Observable<UntypedFormGroup> {
     return this.form$.pipe(
       map(formGroup => {
-        const tanks = formGroup.get('tanks') as FormArray;
-        return tanks.at(index) as FormGroup;
+        const tanks = formGroup.get('tanks') as UntypedFormArray;
+        return tanks.at(index) as UntypedFormGroup;
       }),
       single()
     );
