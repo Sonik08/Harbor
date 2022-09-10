@@ -24,6 +24,6 @@
 
 <mat-dialog-actions>
     <button class="mat-raised-button"(click)="close()">Ακύρωση</button>
-    <button *ngIf="isDeletion" class="mat-raised-button"(click)="confirm()">Αποδοχή</button>
-    <button *ngIf="!isDeletion" [mat-dialog-close]="true" class="mat-raised-button mat-primary"(click)="save()">Αποθήκευση</button>
+    <button *ngIf="isDeletion" class="mat-raised-button mat-primary" (click)="confirm()">Αποδοχή</button>
+    <button *ngIf="!isDeletion" [mat-dialog-close]="true" class="mat-raised-button mat-primary" (click)="save()">Αποθήκευση</button>
 </mat-dialog-actions>

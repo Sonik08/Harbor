@@ -1,11 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CheckBankVM } from '../../vm/checksbank.vm';
-import { MatDialog } from '@angular/material/dialog';
-import { MaterialDialogComponent } from 'src/app/core/material-dialog/material-dialog.component';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { concatMap, filter, tap } from 'rxjs/operators';
-import { UIActionType } from 'src/app/core/models/UI/ui-action-type.enum';
 import { UIAction } from 'src/app/core/models/UI/ui-action';
 import { DialogService } from 'src/app/core/services/dialog.service';
 @Component({
@@ -44,5 +40,9 @@ export class ChecksBanksComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  refresh() {
+    this.vm.refresh();
   }
 }
