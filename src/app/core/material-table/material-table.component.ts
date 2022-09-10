@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Model } from '../models/model';
 import { UIAction } from '../models/UI/ui-action';
+import { UIActionType } from '../models/UI/ui-action-type.enum';
 
 @Component({
   selector: 'material-table',
@@ -28,9 +29,11 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
 
   dataSource: MatTableDataSource<TModel>;
 
-  actions: UIAction<TModel>[] = [];
+  actions: UIAction[] = [];
 
   isLoadingData = true;
+
+  allowActions = true;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -47,18 +50,20 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
     });
   }
 
-  getActions(): UIAction<TModel>[] {
+  getActions(): UIAction[] {
     return [
       {
+        type: UIActionType.Update,
         name: 'Επεξεργασία',
         isAction: true,
-        actionFn: item => true,
+        actionFn$: item => of(true),
         showFn$: item => of(true)
       },
       {
+        type: UIActionType.Delete,
         name: 'Διαγραφή',
         isAction: true,
-        actionFn: item => true,
+        actionFn$: item => of(true),
         showFn$: item => of(true)
       }
     ];
@@ -85,5 +90,8 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
     this._router.navigate([row.id + this.url], {
       relativeTo: this._activatedRoute
     });
+  }
+  Log(logged) {
+    console.log(logged);
   }
 }

@@ -55,7 +55,7 @@ export abstract class BaseFormVM<TModel extends Model, RelatedData> {
             : this.apiService.put(formValue);
         }),
         map(response => {
-          if (response.errors.length > 0) {
+          if (response?.isFaulted) {
             // show the errors
           } else {
             this._baseRouter.navigate(['../'], { relativeTo: this._route });

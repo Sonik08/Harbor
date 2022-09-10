@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ActionApiResponse } from '../models/action-api-response';
 import { ApiResponse } from '../models/api-response';
 export class JsonDateInterceptor implements HttpInterceptor {
   private _isoDateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d*)?Z$/;
@@ -17,8 +18,11 @@ export class JsonDateInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      map((val: HttpEvent<ApiResponse<any>>) => {
+      map(val => {
         if (val instanceof HttpResponse) {
+          if (val.body.isSuccess) {
+            return;
+          }
           const data = val.body.data;
           for (const entry of data) {
             this.convert(entry);

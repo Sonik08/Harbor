@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{description}}</h2>
+
+<div *ngIf="isDeletion; then confirmationBox; else form"></div>
+<ng-template #form>
+    <mat-dialog-content [formGroup]="dialogForm">
+        <mat-form-field
+        class="cdk-visually-hidden" >
+            <input matInput
+                formControlName="id">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                placeholder="Όνομα"
+                formControlName="name">
+        </mat-form-field>
+    </mat-dialog-content>
+</ng-template>
+
+<ng-template #confirmationBox>
+    <div mat-dialog-content>
+        Επιθυμείτε να διαγράψετε {{model.name}}
+      </div>
+</ng-template>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Ακύρωση</button>
+    <button *ngIf="isDeletion" class="mat-raised-button"(click)="confirm()">Αποδοχή</button>
+    <button *ngIf="!isDeletion" [mat-dialog-close]="true" class="mat-raised-button mat-primary"(click)="save()">Αποθήκευση</button>
+</mat-dialog-actions>

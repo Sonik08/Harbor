@@ -1,9 +1,11 @@
 import { Observable } from 'rxjs';
+import { UIActionType } from './ui-action-type.enum';
 
-export class UIAction<TModel> {
+export class UIAction {
+  type: UIActionType;
   name: string;
   isAction: true;
-  actionFn: (model: TModel) => void;
-  showFn?: (model: TModel) => boolean;
-  showFn$?: (model: TModel) => Observable<boolean>;
+  actionFn$: (model) => Observable<any>;
+  showFn?: (model) => boolean;
+  showFn$?: (model) => Observable<boolean>;
 }
