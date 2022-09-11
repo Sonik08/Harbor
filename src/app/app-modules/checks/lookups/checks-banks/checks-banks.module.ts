@@ -7,12 +7,7 @@ import { MaterialLookupModule } from 'src/app/core/material-lookup/material-look
 
 @NgModule({
   declarations: [ChecksBanksComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    MaterialDialogModule,
-    MaterialLookupModule
-  ],
+  imports: [CommonModule, MaterialLookupModule],
   exports: [ChecksBanksComponent]
 })
 export class ChecksBanksModule {}

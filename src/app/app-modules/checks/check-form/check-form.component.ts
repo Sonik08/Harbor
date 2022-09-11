@@ -9,7 +9,7 @@ import { CheckVM } from '../vm/check-form.vm';
 @Component({
   selector: 'check-form',
   templateUrl: './check-form.component.html',
-  styleUrls: ['./check-form.component.scss'],
+  styles: [],
   providers: [CheckVM]
 })
 export class CheckFormComponent implements OnInit, AfterViewChecked {

@@ -7,7 +7,7 @@ import { Bank } from '../enums/bank-type';
 
 export class Check extends Model {
   bank: Bank = Bank.Unknown;
-  sentFrom = '';
+  sentFrom = 0;
   acquzitionDate = new Date().toLocaleDateString(localLanguage, dateOptions);
   expirationDate = new Date().toLocaleDateString(localLanguage, dateOptions);
   amount = 0;

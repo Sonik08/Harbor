@@ -1,1 +1,6 @@
-<p>checks-customers works!</p>
+<material-lookup
+[dataSource$]="vm.data$"
+[actions]="vm.actions"
+[displayedColumns]="vm.displayedColumns"
+(refresh) = "refresh()"
+></material-lookup>

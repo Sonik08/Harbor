@@ -1,5 +1,7 @@
 import { Bank } from 'src/app/app-modules/entities/enums/bank-type';
+import { LookupModel } from 'src/app/core/models/lookup-model';
 
 export class CheckRelatedData {
-  banks: Bank[];
+  banks: LookupModel[];
+  customers: LookupModel[];
 }

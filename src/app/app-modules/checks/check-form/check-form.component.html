@@ -7,25 +7,25 @@
   <form-row>
     <date-control
       [form]="vm.form$ | async"
-      [required]="false"
+      [required]="true"
       name="expirationDate"
       label="Ημερομηνία Λήξης"
     >
     </date-control>
 
-    <input-control
-      [form]="vm.form$ | async"
-      [required]="true"
-      type="text"
-      label="Είσπραξη από"
-      name="sentFrom"
-    ></input-control>
+    <select-control
+    [form]="vm.form$ | async"
+    [selectItems]="vm.customers$"
+    [required]="true"
+    name = "sentFrom"
+    label = "Είσπραξη από">
+    </select-control>
   </form-row>
   <form-row>
     <!-- // TODO check how to handle null values for dates and not submit a form -->
     <date-control
       [form]="vm.form$ | async"
-      [required]="true"
+      [required]="false"
       name="acquzitionDate"
       label="Ημερομηνία Αποστολής"
     >
@@ -39,14 +39,13 @@
     ></input-control>
   </form-row>
   <form-row>
-    <enum-control
-      [form]="vm.form$ | async"
-      [enums]="vm.banks$"
-      [required]="false"
-      name="bank"
-      label="Τράπεζα"
-    >
-    </enum-control>
+    <select-control
+    [form]="vm.form$ | async"
+    [selectItems]="vm.banks$"
+    [required]="true"
+    name="bank"
+    label="Τράπεζα">
+    </select-control>
     <input-control
       [form]="vm.form$ | async"
       [required]="false"

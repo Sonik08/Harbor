@@ -1,12 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, Sort } from '@angular/material/sort';
+import { UIAction } from 'src/app/core/models/UI/ui-action';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { CheckCustomerVM } from '../../vm/check-customer.vm';
 
 @Component({
   selector: 'checks-customers',
   templateUrl: './checks-customers.component.html',
-  styles: []
+  styles: [],
+  providers: [CheckCustomerVM]
 })
 export class ChecksCustomersComponent implements OnInit {
-  constructor() {}
+  constructor(
+    public vm: CheckCustomerVM,
+    private dialogSrv: DialogService,
+    private _liveAnnouncer: LiveAnnouncer
+  ) {}
+  @ViewChild(MatSort) sort: MatSort;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.vm.ngOnInit();
+  }
+
+  ngAfterViewInit() {
+    this.vm.refresh();
+  }
+
+  openDialog(item, action: UIAction) {
+    this.dialogSrv.openDialog(item, action).subscribe(_ => this.vm.refresh());
+  }
+
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  refresh() {
+    this.vm.refresh();
+  }
 }

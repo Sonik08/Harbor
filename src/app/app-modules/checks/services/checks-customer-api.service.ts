@@ -5,7 +5,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { EnvService } from 'src/app/core/services/env.service';
 
 @Injectable({ providedIn: 'root' })
-export class CustomersApiService extends ApiService<LookupModel> {
+export class ChecksCustomersApiService extends ApiService<LookupModel> {
   apiURL = 'customers';
 
   constructor(private httpClient: HttpClient, private envService: EnvService) {

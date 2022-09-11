@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CheckBankVM } from '../../vm/checksbank.vm';
+import { CheckBankVM } from '../../vm/check-bank.vm';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { UIAction } from 'src/app/core/models/UI/ui-action';

@@ -17,12 +17,12 @@ const routes: Routes = [
         component: CheckTableComponent
       },
       {
-        path: 'new',
+        path: 'checks/new',
         component: CheckFormComponent,
         resolve: { data: CheckResolver }
       },
       {
-        path: ':checkId/edit',
+        path: 'checks/:checkId/edit',
         component: CheckFormComponent,
         resolve: { data: CheckResolver }
       },
