@@ -12,7 +12,7 @@ import { GasStationApiService } from '../services/gas-station-api.service';
 })
 export class GasStationTableComponent implements OnInit {
   tableData: Observable<GasStation[]>;
-  tableColumns: Observable<string[]>;
+  tableColumns: string[] = [];
   url = '/overview';
   addUrl = 'new';
   constructor(
@@ -26,7 +26,5 @@ export class GasStationTableComponent implements OnInit {
         return data.data;
       })
     );
-
-    this.tableColumns = of(this._mockSrv.getGasStationTableColumns());
   }
 }

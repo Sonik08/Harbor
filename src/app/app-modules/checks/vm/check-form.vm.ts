@@ -47,11 +47,7 @@ export class CheckVM extends BaseFormVM<Check, CheckRelatedData> {
   }
 
   private initializeCheck(response) {
-    console.log(response);
-    console.log(response.data.model);
-    let check = response.data.model;
-
-    this.model = check;
+    this.model = response.data.model;
     return this.model;
   }
 

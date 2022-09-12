@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Model } from '../models/model';
+import { Column } from '../models/UI/column';
 import { UIAction } from '../models/UI/ui-action';
 import { UIActionType } from '../models/UI/ui-action-type.enum';
 
@@ -21,11 +22,13 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
 
   @Input() dataObjects: Observable<TModel[]>;
 
-  @Input() tableColumns: Observable<string[]>;
+  @Input() tableColumns: Column[];
 
   @Input() url: string;
 
   @Input() addUrl: string;
+
+  // get related data
 
   dataSource: MatTableDataSource<TModel>;
 
@@ -93,5 +96,13 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   }
   Log(logged) {
     console.log(logged);
+  }
+
+  getColumnNames() {
+    return this.tableColumns.map(c => c.propertyName);
+  }
+
+  getpropertyValue(data: TModel, column: Column): string {
+    // map from related data passed to the component
   }
 }

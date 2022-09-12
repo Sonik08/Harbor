@@ -15,18 +15,17 @@ import { ShiftApiService } from '../services/shift-api.service';
 })
 export class ShiftListComponent implements OnInit {
   tableData: Observable<Shift[]>;
-  tableColumns$: Observable<string[]>;
   tableColumns: string[] = ['type', 'date', 'income', 'gasStationName'];
   url = '/edit';
   constructor(
-    private _shiftService: ShiftApiService, 
-    private _activatedRoute: ActivatedRoute,
+    private _shiftService: ShiftApiService,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    const gasStation$ = (this._activatedRoute.data as Observable<Data<GasStation>>).pipe(
-      map(resolvedData => resolvedData.data)
-    );
+    const gasStation$ = (
+      this._activatedRoute.data as Observable<Data<GasStation>>
+    ).pipe(map(resolvedData => resolvedData.data));
 
     this.tableData = gasStation$.pipe(
       switchMap(gasStation => {
@@ -36,11 +35,9 @@ export class ShiftListComponent implements OnInit {
               shift.gasStationName = gasStation.name;
             });
             return apiResponse.data;
-          }),
-        )
-      }
-    ));
-
-    this.tableColumns$ = of(this.tableColumns);
+          })
+        );
+      })
+    );
   }
 }

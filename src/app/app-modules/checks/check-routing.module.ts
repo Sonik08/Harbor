@@ -5,6 +5,7 @@ import { CheckTableComponent } from './check-table/check-table.component';
 import { ChecksOverviewComponent } from './checks-overview/checks-overview.component';
 import { ChecksBanksComponent } from './lookups/checks-banks/checks-banks.component';
 import { ChecksCustomersComponent } from './lookups/checks-customers/checks-customers.component';
+import { CheckTableResolver } from './resolvers/check-table.resolver';
 import { CheckResolver } from './resolvers/check.resolver';
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       {
         path: 'checks',
-        component: CheckTableComponent
+        component: CheckTableComponent,
+        resolve: { data: CheckTableResolver }
       },
       {
         path: 'checks/new',
@@ -36,27 +38,6 @@ const routes: Routes = [
       }
     ]
   }
-  // {
-  //   path: ':gasStationId/overview',
-  //   component: GasStationOverviewComponent,
-  //   resolve: { data: GasStationResolver },
-  //   children: [
-  //     {
-  //       path: 'shifts',
-  //       component: ShiftListComponent
-  //     },
-  //     {
-  //       path: 'shifts/:shiftId/edit',
-  //       component: ShiftFormComponent,
-  //       resolve: { data: ShiftResolver }
-  //     },
-  //     {
-  //       path: 'shifts/new',
-  //       component: ShiftFormComponent,
-  //       resolve: { shifts: ShiftResolver }
-  //     }
-  //   ]
-  // }
 ];
 
 @NgModule({

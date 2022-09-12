@@ -11,16 +11,15 @@ import { PurchaseApiService } from '../../services/purchase-api.service';
 })
 export class DakourisPurchasesTableComponent implements OnInit {
   tableData: Observable<Purchase[]>;
-  tableColumns: Observable<string[]>;
   url = '/edit';
   addUrl = 'new';
 
   columns = [
-    'id', 
-    'date', 
-    'totalPriceBeforeDiscounts', 
-    'totalPriceAfterDiscounts', 
-    'totalPriceBeforeVAT', 
+    'id',
+    'date',
+    'totalPriceBeforeDiscounts',
+    'totalPriceAfterDiscounts',
+    'totalPriceBeforeVAT',
     'totalPriceAfterVAT',
     'dateOfPayment'
   ];
@@ -33,7 +32,5 @@ export class DakourisPurchasesTableComponent implements OnInit {
         return data.data;
       })
     );
-
-    this.tableColumns = of(this.columns);
   }
 }

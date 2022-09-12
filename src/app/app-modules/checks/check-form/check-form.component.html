@@ -5,6 +5,15 @@
   [form]="vm.form$ | async"
 >
   <form-row>
+    <input-control
+        [form]="vm.form$ | async"
+        [required]="true"
+        type="text"
+        label="Αριθμός Επιταγής"
+        name="checkNumber"
+      ></input-control>
+  </form-row>
+  <form-row>
     <date-control
       [form]="vm.form$ | async"
       [required]="true"
@@ -12,12 +21,11 @@
       label="Ημερομηνία Λήξης"
     >
     </date-control>
-
     <select-control
     [form]="vm.form$ | async"
     [selectItems]="vm.customers$"
     [required]="true"
-    name = "sentFrom"
+    name = "fromCustomerId"
     label = "Είσπραξη από">
     </select-control>
   </form-row>
@@ -26,26 +34,27 @@
     <date-control
       [form]="vm.form$ | async"
       [required]="false"
-      name="acquzitionDate"
+      name="dateOfDispatch"
       label="Ημερομηνία Αποστολής"
     >
     </date-control>
-    <input-control
-      [form]="vm.form$ | async"
-      [required]="true"
-      type="text"
-      label="Εστάλη σε"
-      name="sentTo"
-    ></input-control>
+    <select-control
+    [form]="vm.form$ | async"
+    [selectItems]="vm.customers$"
+    [required]="true"
+    label="Εστάλη σε"
+    name="toCustomerId">
+    </select-control>
   </form-row>
   <form-row>
     <select-control
     [form]="vm.form$ | async"
     [selectItems]="vm.banks$"
     [required]="true"
-    name="bank"
+    name="bankId"
     label="Τράπεζα">
     </select-control>
+    
     <input-control
       [form]="vm.form$ | async"
       [required]="false"
@@ -69,5 +78,12 @@
       label="Ημερωμηνία Σφραγγίσματος"
     >
     </date-control>
+    <check-box-control
+    [form]="vm.form$ | async"
+    name = "returnedFromAlek"
+    label="Επιστροφή από Αλέκο"
+    [required]="false">
+
+    </check-box-control>
   </form-row>
 </base-form>

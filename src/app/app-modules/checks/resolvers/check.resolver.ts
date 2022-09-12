@@ -6,10 +6,7 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
-import { LookupModel } from 'src/app/core/models/lookup-model';
 import { ResolvedData } from 'src/app/core/models/resolved-data';
-import { MockService } from 'src/app/core/services/mock-service';
-import { Bank } from '../../entities/enums/bank-type';
 import { Check } from '../../entities/models/check';
 import { CheckApiService } from '../services/check-api.service';
 import { CheckBanksApiService } from '../services/checks-bank-api.service';

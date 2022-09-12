@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Column } from 'src/app/core/models/UI/column';
 import { Check } from '../../entities/models/check';
 import { CheckApiService } from '../services/check-api.service';
 
@@ -11,29 +13,59 @@ import { CheckApiService } from '../services/check-api.service';
 })
 export class CheckTableComponent implements OnInit {
   tableData: Observable<Check[]>;
-  tableColumns: Observable<string[]>;
   url = '/edit';
   addUrl = 'new';
 
-  columns = [
-    'id',
-    'bank',
-    'expirationDate',
-    'sentFrom',
-    'sentTo',
-    'amount',
-    'description'
+  columns: Column[] = [
+    {
+      label: 'ID',
+      propertyName: 'id',
+      isLookup: false
+    },
+    {
+      label: 'Από πελάτη',
+      propertyName: 'fromCustomerId',
+      isLookup: true
+    },
+    {
+      label: 'Αριθμός επιταγής',
+      propertyName: 'checkNumber',
+      isLookup: false
+    },
+    {
+      label: 'Τράπεζα',
+      propertyName: 'bankId',
+      isLookup: true
+    },
+    {
+      label: 'Ημ/νια Αποστολής',
+      propertyName: 'dateOfDispatch',
+      isLookup: false
+    },
+    {
+      label: 'Ημ/νια Λήξης',
+      propertyName: 'expirationDate',
+      isLookup: false
+    },
+    {
+      label: 'Προς πελάτη',
+      propertyName: 'toCustomerId',
+      isLookup: true
+    },
+    {
+      label: 'Ποσό',
+      propertyName: 'amount',
+      isLookup: false
+    }
   ];
 
-  constructor(private _apiService: CheckApiService) {}
+  constructor(private _apiService: CheckApiService, private _router: Router) {}
 
   ngOnInit(): void {
     this.tableData = this._apiService.get().pipe(
-      map(data => {
-        return data.data;
+      map(response => {
+        return response.data;
       })
     );
-
-    this.tableColumns = of(this.columns);
   }
 }
