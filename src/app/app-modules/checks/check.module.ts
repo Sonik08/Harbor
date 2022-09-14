@@ -6,6 +6,8 @@ import { CheckFormModule } from './check-form/check-form.module';
 import { CheckRoutingModule } from './check-routing.module';
 import { CheckTableModule } from './check-table/check-table.module';
 import { ChecksOverviewModule } from './checks-overview/checks-overview.module';
+import { CheckWeeklyReportModule } from './check-weekly-report/check-weekly-report.module';
+import { CheckMonthlyReportModule } from './check-monthly-report/check-monthly-report.module';
 
 @NgModule({
   declarations: [],
@@ -16,7 +18,9 @@ import { ChecksOverviewModule } from './checks-overview/checks-overview.module';
     CheckTableModule,
     CheckFormModule,
     ChecksBanksModule,
-    ChecksCustomersModule
+    ChecksCustomersModule,
+    CheckWeeklyReportModule,
+    CheckMonthlyReportModule
   ]
 })
 export class CheckModule {}

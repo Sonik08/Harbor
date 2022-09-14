@@ -9,11 +9,31 @@ import { UIActionType } from '../models/UI/ui-action-type.enum';
 
 @Injectable({ providedIn: 'root' })
 export class DialogService {
-  constructor(private dialog: MatDialog) {
-  }
+  constructor(private dialog: MatDialog) {}
 
   openDialog(item, action: UIAction): Observable<any> {
     const dialogConfig = this.getDialogConfig(item, action);
+
+    const dialogRef = this.dialog.open(MaterialDialogComponent, dialogConfig);
+
+    return dialogRef.afterClosed().pipe(
+      filter(dialogResponse => dialogResponse !== undefined),
+      concatMap(lookup => action.actionFn$(lookup))
+    );
+  }
+
+  openDialogWithCustomMessage(
+    item,
+    action: UIAction,
+    title: string,
+    text: string
+  ): Observable<any> {
+    const dialogConfig = this.getDialogConfigWithCustomMessage(
+      item,
+      action,
+      title,
+      text
+    );
 
     const dialogRef = this.dialog.open(MaterialDialogComponent, dialogConfig);
 
@@ -32,7 +52,33 @@ export class DialogService {
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.data = model;
+    dialogConfig.data = {
+      model: model
+    };
+
+    return dialogConfig;
+  }
+
+  private getDialogConfigWithCustomMessage(
+    item,
+    action: UIAction,
+    title: string,
+    text: string
+  ) {
+    const model =
+      action.type === UIActionType.New
+        ? this.setupEmptyLookupDialogModel()
+        : item;
+    model.action = action.type;
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {};
+    dialogConfig.data.model = model;
+    dialogConfig.data.message = {
+      title: title,
+      text: text
+    };
 
     return dialogConfig;
   }

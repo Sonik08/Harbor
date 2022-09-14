@@ -78,10 +78,19 @@
       label="Ημερωμηνία Σφραγγίσματος"
     >
     </date-control>
+  </form-row>
+  <form-row>
     <check-box-control
     [form]="vm.form$ | async"
     name = "returnedFromAlek"
     label="Επιστροφή από Αλέκο"
+    [required]="false">
+
+    </check-box-control>
+    <check-box-control
+    [form]="vm.form$ | async"
+    name = "isVoided"
+    label="Σγραφισμένη επιταγή"
     [required]="false">
 
     </check-box-control>

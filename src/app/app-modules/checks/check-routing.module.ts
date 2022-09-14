@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckFormComponent } from './check-form/check-form.component';
+import { CheckMonthlyReportComponent } from './check-monthly-report/check-monthly-report.component';
 import { CheckTableComponent } from './check-table/check-table.component';
+import { CheckWeeklyReportComponent } from './check-weekly-report/check-weekly-report.component';
 import { ChecksOverviewComponent } from './checks-overview/checks-overview.component';
 import { ChecksBanksComponent } from './lookups/checks-banks/checks-banks.component';
 import { ChecksCustomersComponent } from './lookups/checks-customers/checks-customers.component';
@@ -35,6 +37,14 @@ const routes: Routes = [
       {
         path: 'banks',
         component: ChecksBanksComponent
+      },
+      {
+        path: 'weekly-reports',
+        component: CheckWeeklyReportComponent
+      },
+      {
+        path: 'monthly-reports',
+        component: CheckMonthlyReportComponent
       }
     ]
   }

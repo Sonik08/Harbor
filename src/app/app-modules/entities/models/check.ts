@@ -2,6 +2,7 @@ import {
   dateOptions,
   localLanguage
 } from 'src/app/core/date-helpers/date-consts';
+import { LookupModel } from 'src/app/core/models/lookup-model';
 import { Model } from 'src/app/core/models/model';
 
 export class Check extends Model {
@@ -15,4 +16,9 @@ export class Check extends Model {
   description = '';
   sealedAt = new Date().toLocaleDateString(localLanguage, dateOptions);
   returnedFromAlek: boolean = false;
+  isVoided: boolean = false;
+
+  bank: LookupModel;
+  fromCustomer: LookupModel;
+  toCustomer: LookupModel;
 }

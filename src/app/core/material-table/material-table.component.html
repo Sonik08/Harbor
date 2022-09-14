@@ -28,10 +28,37 @@
             <!-- {{ profile[column.propertyName]}} -->
           </td>
     </ng-container>
-
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="actions">Actions</th>
+      <td *matCellDef="let profile" class="actions" mat-cell>
+        <button
+          type="button"
+          mat-icon-button
+          [matMenuTriggerFor]="actionsMenu"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu
+          #actionsMenu="matMenu"
+          yPosition="below"
+          xPosition="before"
+        >
+          <ng-container *ngFor="let action of actions">
+              <button
+                (click)="openDialog(profile, action)"
+                mat-menu-item
+              >
+                {{ action.name }}
+              </button>
+            </ng-container>
+        </mat-menu>
+      </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="getColumnNames()"></tr>
     <tr
       mat-row
+      matRipple 
       *matRowDef="let row; columns: getColumnNames()"
       (click)="onSelect(row)"
     ></tr>

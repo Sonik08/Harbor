@@ -1,6 +1,6 @@
-<h2 mat-dialog-title>{{description}}</h2>
+<h2 mat-dialog-title>{{title}}</h2>
 
-<div *ngIf="isDeletion; then confirmationBox; else form"></div>
+<div *ngIf="isConfirmation; then confirmationBox; else form"></div>
 <ng-template #form>
     <mat-dialog-content [formGroup]="dialogForm">
         <mat-form-field
@@ -18,12 +18,12 @@
 
 <ng-template #confirmationBox>
     <div mat-dialog-content>
-        Επιθυμείτε να διαγράψετε {{model.name}}
+        {{ description }} {{model.name}}
       </div>
 </ng-template>
 
 <mat-dialog-actions>
     <button class="mat-raised-button"(click)="close()">Ακύρωση</button>
-    <button *ngIf="isDeletion" class="mat-raised-button mat-primary" (click)="confirm()">Αποδοχή</button>
-    <button *ngIf="!isDeletion" [mat-dialog-close]="true" class="mat-raised-button mat-primary" (click)="save()">Αποθήκευση</button>
+    <button *ngIf="isConfirmation" class="mat-raised-button mat-primary" (click)="confirm()">Αποδοχή</button>
+    <button *ngIf="!isConfirmation" [mat-dialog-close]="true" class="mat-raised-button mat-primary" (click)="save()">Αποθήκευση</button>
 </mat-dialog-actions>

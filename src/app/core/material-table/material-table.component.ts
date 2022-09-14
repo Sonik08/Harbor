@@ -9,6 +9,7 @@ import { Model } from '../models/model';
 import { Column } from '../models/UI/column';
 import { UIAction } from '../models/UI/ui-action';
 import { UIActionType } from '../models/UI/ui-action-type.enum';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'material-table',
@@ -16,60 +17,32 @@ import { UIActionType } from '../models/UI/ui-action-type.enum';
   styleUrls: ['./material-table.component.scss']
 })
 export class MaterialTableComponent<TModel extends Model> implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-
+  @Input() actions: UIAction[];
   @Input() dataObjects: Observable<TModel[]>;
-
   @Input() tableColumns: Column[];
-
   @Input() url: string;
-
   @Input() addUrl: string;
 
-  // get related data
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   dataSource: MatTableDataSource<TModel>;
-
-  actions: UIAction[] = [];
-
   isLoadingData = true;
-
   allowActions = true;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
-    this.actions = this.getActions();
     this.dataObjects.pipe(filter(values => !!values)).subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.isLoadingData = false;
     });
-  }
-
-  getActions(): UIAction[] {
-    return [
-      {
-        type: UIActionType.Update,
-        name: 'Επεξεργασία',
-        isAction: true,
-        actionFn$: item => of(true),
-        showFn$: item => of(true)
-      },
-      {
-        type: UIActionType.Delete,
-        name: 'Διαγραφή',
-        isAction: true,
-        actionFn$: item => of(true),
-        showFn$: item => of(true)
-      }
-    ];
   }
 
   isIdColumns(columnName: string): boolean {
@@ -94,15 +67,48 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
       relativeTo: this._activatedRoute
     });
   }
+
   Log(logged) {
     console.log(logged);
   }
 
   getColumnNames() {
-    return this.tableColumns.map(c => c.propertyName);
+    let columns = this.tableColumns.map(c => c.propertyName);
+    columns.push('actions');
+
+    return columns;
   }
 
   getpropertyValue(data: TModel, column: Column): string {
-    // map from related data passed to the component
+    if (typeof data[column.propertyName] === 'object') {
+      return data[column.propertyName].name;
+    }
+
+    return data[column.propertyName];
+  }
+
+  openDialog(item, action: UIAction) {
+    if (action.type === UIActionType.Delete) {
+      console.log(action);
+      this._dialogService
+        .openDialogWithCustomMessage(
+          item,
+          action,
+          action.name,
+          'Διαγραφή εγγραφής '
+        )
+        .subscribe();
+    } else if (action.type === UIActionType.VoidCheck) {
+      this._dialogService
+        .openDialogWithCustomMessage(
+          item,
+          action,
+          action.name,
+          'Σγράγισμα της επιταγής '
+        )
+        .subscribe();
+    } else {
+      action.actionFn$(item);
+    }
   }
 }

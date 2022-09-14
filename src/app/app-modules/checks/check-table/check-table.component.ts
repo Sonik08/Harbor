@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { Column } from 'src/app/core/models/UI/column';
+import { UIAction } from 'src/app/core/models/UI/ui-action';
+import { UIActionType } from 'src/app/core/models/UI/ui-action-type.enum';
 import { Check } from '../../entities/models/check';
+import { CheckRelatedData } from '../resolvers/resolved-data/check-related-data';
 import { CheckApiService } from '../services/check-api.service';
 
 @Component({
@@ -24,7 +27,7 @@ export class CheckTableComponent implements OnInit {
     },
     {
       label: 'Από πελάτη',
-      propertyName: 'fromCustomerId',
+      propertyName: 'fromCustomer',
       isLookup: true
     },
     {
@@ -34,7 +37,7 @@ export class CheckTableComponent implements OnInit {
     },
     {
       label: 'Τράπεζα',
-      propertyName: 'bankId',
+      propertyName: 'bank',
       isLookup: true
     },
     {
@@ -49,7 +52,7 @@ export class CheckTableComponent implements OnInit {
     },
     {
       label: 'Προς πελάτη',
-      propertyName: 'toCustomerId',
+      propertyName: 'toCustomer',
       isLookup: true
     },
     {
@@ -59,13 +62,78 @@ export class CheckTableComponent implements OnInit {
     }
   ];
 
-  constructor(private _apiService: CheckApiService, private _router: Router) {}
+  actions: UIAction[] = [
+    {
+      type: UIActionType.Update,
+      name: 'Επεξεργασία',
+      isAction: true,
+      actionFn$: item => this.put(item)
+    },
+    {
+      type: UIActionType.Delete,
+      name: 'Διαγραφή',
+      isAction: true,
+      actionFn$: item => this.delete(item)
+    },
+    {
+      type: UIActionType.VoidCheck,
+      name: 'Σφραγισμα',
+      isAction: true,
+      actionFn$: item => this.void(item)
+    }
+  ];
+
+  constructor(
+    private _apiService: CheckApiService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.tableData = this._apiService.get().pipe(
       map(response => {
         return response.data;
+      }),
+      switchMap((checks: Check[]) => {
+        return this._activatedRoute.data.pipe(
+          map(resolvedData => {
+            console.log(resolvedData);
+            return resolvedData.data as CheckRelatedData;
+          }),
+          map((relatedData: CheckRelatedData) => {
+            // this data can and probably should come from the backend.
+            for (let check of checks) {
+              check.bank = relatedData.banks.find(b => b.id === check.bankId);
+              check.toCustomer = relatedData.customers.find(
+                c => c.id === check.toCustomerId
+              );
+              check.fromCustomer = relatedData.customers.find(
+                c => c.id === check.fromCustomerId
+              );
+            }
+
+            return checks;
+          })
+        );
       })
     );
+  }
+
+  put(check: Check) {
+    this._router.navigate([check.id + this.url], {
+      relativeTo: this._activatedRoute
+    });
+
+    return of();
+  }
+
+  delete(check: Check) {
+    return this._apiService
+      .delete(check.id)
+      .pipe(filter(response => response.isSuccess));
+  }
+
+  void(check: Check) {
+    return this._apiService.voidCheck(check);
   }
 }
