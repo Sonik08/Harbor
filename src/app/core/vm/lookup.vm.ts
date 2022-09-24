@@ -1,4 +1,3 @@
-import { MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, of, Subject } from 'rxjs';
 import { filter, map, single, switchMap, tap } from 'rxjs/operators';

@@ -1,3 +1,18 @@
+<div class="filterAndActionsRow">
+  <mat-form-field class="filter" appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Προσθήκη"
+    class="actionButton"
+    (click)="addNew()"
+  >
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+</div>
 <table mat-table [dataSource]="dataSource" matSort matSortDisableClear (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Id">Id</th>

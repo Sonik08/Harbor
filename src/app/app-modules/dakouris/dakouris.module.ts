@@ -4,15 +4,16 @@ import { DakourisOverviewModule } from './dakouris-overview/dakouris-overview.mo
 import { DakourisPurchasesFormModule } from './dakouris-purchases/dakouris-purchases-form/dakouris-purchases-form.module';
 import { DakourisPurchasesTableModule } from './dakouris-purchases/dakouris-purchases-table/dakouris-purchases-table.module';
 import { DakourisRoutingModule } from './dakouris-routing.module';
+import { DakourisGasStationsModule } from './lookups/dakouris-gas-stations/dakouris-gas-stations.module';
 
 @NgModule({
-  declarations: [],
   imports: [
     DakourisRoutingModule,
     DakourisOverviewModule,
     CommonModule,
     DakourisPurchasesTableModule,
-    DakourisPurchasesFormModule
+    DakourisPurchasesFormModule,
+    DakourisGasStationsModule
   ]
 })
 export class DakourisModule {}

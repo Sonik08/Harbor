@@ -14,9 +14,9 @@ export class ChecksOverviewComponent {
     icon: '',
     url: './',
     listItems: [
-      { title: 'Checks', icon: 'receipt_long', url: 'checks' },
-      { title: 'Customers', icon: 'groups', url: 'customers' },
-      { title: 'Banks', icon: 'account_balance', url: 'banks' },
+      { title: 'Επιταγές', icon: 'receipt_long', url: 'checks' },
+      { title: 'Πελάτες', icon: 'groups', url: 'customers' },
+      { title: 'Τράπεζες', icon: 'account_balance', url: 'banks' },
       {
         title: 'Εβδομαδιες αναφορες',
         icon: 'assignment',

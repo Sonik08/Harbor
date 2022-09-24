@@ -6,3 +6,20 @@ table {
   right: 0;
   width: 5%;
 }
+
+.filter {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.filterAndActionsRow {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.actionButton {
+  justify-self: end;
+}

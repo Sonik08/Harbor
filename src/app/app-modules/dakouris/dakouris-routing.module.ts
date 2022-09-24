@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DakourisOverviewComponent } from './dakouris-overview/dakouris-overview.component';
 import { DakourisPurchasesFormComponent } from './dakouris-purchases/dakouris-purchases-form/dakouris-purchases-form.component';
 import { DakourisPurchasesTableComponent } from './dakouris-purchases/dakouris-purchases-table/dakouris-purchases-table.component';
+import { DakourisGasStationsComponent } from './lookups/dakouris-gas-stations/dakouris-gas-stations.component';
 import { PurchaseResolver } from './resolvers/purchase.resolver';
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
         path: 'purchases/new',
         component: DakourisPurchasesFormComponent,
         resolve: { data: PurchaseResolver }
+      },
+      {
+        path: 'gas-stations',
+        component: DakourisGasStationsComponent
       },
       {
         path: 'purchases/:purchaseId/edit',

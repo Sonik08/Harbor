@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { LookupModel } from '../models/lookup-model';
 import { UIAction } from '../models/UI/ui-action';
+import { UIActionType } from '../models/UI/ui-action-type.enum';
 import { DialogService } from '../services/dialog.service';
 
 @Component({
@@ -58,5 +59,20 @@ export class MaterialLookupComponent implements OnInit {
     this.dialogService
       .openDialog(item, action)
       .subscribe(_ => this.refresh.emit());
+  }
+
+  addNew() {
+    const action = this.actions.find(a => a.type === UIActionType.New);
+
+    this.openDialog(new LookupModel(), action);
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
