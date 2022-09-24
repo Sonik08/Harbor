@@ -93,23 +93,9 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
 
   openDialog(item, action: UIAction) {
     if (action.type === UIActionType.Delete) {
-      this._dialogService
-        .openDialogWithCustomMessage(
-          item,
-          action,
-          action.name,
-          'Διαγραφή εγγραφής '
-        )
-        .subscribe();
+      this._dialogService.openDialog(item, action).subscribe();
     } else if (action.type === UIActionType.VoidCheck) {
-      this._dialogService
-        .openDialogWithCustomMessage(
-          item,
-          action,
-          action.name,
-          'Σγράγισμα της επιταγής '
-        )
-        .subscribe();
+      this._dialogService.openDialog(item, action).subscribe();
     } else {
       action.actionFn$(item);
     }

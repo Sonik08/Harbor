@@ -66,19 +66,22 @@ export class CheckTableComponent implements OnInit {
     {
       type: UIActionType.Update,
       name: 'Επεξεργασία',
-      isAction: true,
+      message: 'Επεξεργασία επιταγής',
+      isConfirmation: false,
       actionFn$: item => this.put(item)
     },
     {
       type: UIActionType.Delete,
       name: 'Διαγραφή',
-      isAction: true,
+      message: 'Θέλετε να διαγράψετε την επιταγή?',
+      isConfirmation: true,
       actionFn$: item => this.delete(item)
     },
     {
       type: UIActionType.VoidCheck,
       name: 'Σφραγισμα',
-      isAction: true,
+      message: 'Θέλετε να σφραγίσετε την επιταγή',
+      isConfirmation: true,
       actionFn$: item => this.void(item)
     }
   ];

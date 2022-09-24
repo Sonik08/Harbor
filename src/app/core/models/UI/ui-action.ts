@@ -4,7 +4,8 @@ import { UIActionType } from './ui-action-type.enum';
 export class UIAction {
   type: UIActionType;
   name: string;
-  isAction: true;
+  message: string;
+  isConfirmation: boolean = false;
   actionFn$: (model) => Observable<any>;
   showFn?: (model) => boolean;
   showFn$?: (model) => Observable<boolean>;

@@ -22,62 +22,38 @@ export class DialogService {
     );
   }
 
-  openDialogWithCustomMessage(
-    item,
-    action: UIAction,
-    title: string,
-    text: string
-  ): Observable<any> {
-    const dialogConfig = this.getDialogConfigWithCustomMessage(
-      item,
-      action,
-      title,
-      text
-    );
+  // openDialogWithCustomMessage(
+  //   item,
+  //   action: UIAction,
+  //   title: string,
+  //   text: string
+  // ): Observable<any> {
+  //   const dialogConfig = this.getDialogConfigWithCustomMessage(
+  //     item,
+  //     action,
+  //     title,
+  //     text
+  //   );
 
-    const dialogRef = this.dialog.open(MaterialDialogComponent, dialogConfig);
+  //   const dialogRef = this.dialog.open(MaterialDialogComponent, dialogConfig);
 
-    return dialogRef.afterClosed().pipe(
-      filter(dialogResponse => dialogResponse !== undefined),
-      concatMap(lookup => action.actionFn$(lookup))
-    );
-  }
+  //   return dialogRef.afterClosed().pipe(
+  //     filter(dialogResponse => dialogResponse !== undefined),
+  //     concatMap(lookup => action.actionFn$(lookup))
+  //   );
+  // }
 
-  private getDialogConfig(item, action: UIAction) {
+  private getDialogConfig(item: LookupModel, action: UIAction) {
     const model =
-      action.type === UIActionType.New
+      item === null || item === undefined
         ? this.setupEmptyLookupDialogModel()
         : item;
-    model.action = action.type;
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      model: model
-    };
-
-    return dialogConfig;
-  }
-
-  private getDialogConfigWithCustomMessage(
-    item,
-    action: UIAction,
-    title: string,
-    text: string
-  ) {
-    const model =
-      action.type === UIActionType.New
-        ? this.setupEmptyLookupDialogModel()
-        : item;
-    model.action = action.type;
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {};
-    dialogConfig.data.model = model;
-    dialogConfig.data.message = {
-      title: title,
-      text: text
+      model: model,
+      action: action
     };
 
     return dialogConfig;

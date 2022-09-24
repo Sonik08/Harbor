@@ -51,20 +51,16 @@ export abstract class LookupVM {
       {
         type: UIActionType.Update,
         name: 'Επεξεργασία',
-        isAction: true,
+        message: 'Επεξεργασία εγγραφής',
+        isConfirmation: false,
         actionFn$: item => this.put(item)
       },
       {
         type: UIActionType.Delete,
         name: 'Διαγραφή',
-        isAction: true,
+        message: 'Θέλετε να διαγράψετε την εγγραφή?',
+        isConfirmation: true,
         actionFn$: item => this.delete(item)
-      },
-      {
-        type: UIActionType.New,
-        name: 'Προσθηκη νέου',
-        isAction: true,
-        actionFn$: item => this.post(item)
       }
     ];
   }
