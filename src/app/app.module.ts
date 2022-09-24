@@ -6,8 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JsonDateInterceptor } from './core/interceptors/json-date.interceptor';
 import { LayoutModule } from './pages/layout/layout.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,7 +15,7 @@ import { LayoutModule } from './pages/layout/layout.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     FormBuilder,

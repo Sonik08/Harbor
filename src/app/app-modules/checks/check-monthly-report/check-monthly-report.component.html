@@ -1,1 +1,34 @@
-<p>check-monthly-report works!</p>
+<form-row>
+    <mat-form-field appearance="fill">
+        <mat-label>Εισάγετε Έτος και Μήνα</mat-label>
+        <input matInput [(ngModel)]="monthAndYear"
+                        [matDatepicker]="picker" />
+        <mat-hint>MM/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker [startView]="'year'"
+                        (monthSelected)="monthChanged($event, picker)">
+        </mat-datepicker>
+      </mat-form-field>
+</form-row>
+
+
+
+
+<form-row>
+    <button mat-raised-button color="primary" (click)="onSubmit()" >Προβολή</button>
+    <button mat-flat-button color="accent" (click)="SavePDF()">Αποθήκευση σε pdf</button>
+  </form-row>
+    <material-table
+    #materialTable
+    [dataObjects]="data$"
+    [tableColumns]="columns"
+    [isLoadingData]="false"
+    [allowActions]="false"
+  ></material-table>
+  <form-row>
+    
+  </form-row>
+  

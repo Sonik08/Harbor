@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Model } from '../models/model';
 import { Column } from '../models/UI/column';
@@ -22,13 +22,12 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   @Input() tableColumns: Column[];
   @Input() url: string;
   @Input() addUrl: string;
-
+  @Input() isLoadingData = true;
+  @Input() allowActions = true;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   dataSource: MatTableDataSource<TModel>;
-  isLoadingData = true;
-  allowActions = true;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -44,6 +43,8 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
       this.isLoadingData = false;
     });
   }
+
+  @ViewChild('tableContent') tableContent!: ElementRef;
 
   isIdColumns(columnName: string): boolean {
     return columnName === 'id';
@@ -74,7 +75,10 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
 
   getColumnNames() {
     let columns = this.tableColumns.map(c => c.propertyName);
-    columns.push('actions');
+
+    if (this.allowActions) {
+      columns.push('actions');
+    }
 
     return columns;
   }
@@ -89,7 +93,6 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
 
   openDialog(item, action: UIAction) {
     if (action.type === UIActionType.Delete) {
-      console.log(action);
       this._dialogService
         .openDialogWithCustomMessage(
           item,
@@ -110,5 +113,9 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
     } else {
       action.actionFn$(item);
     }
+  }
+
+  private isDate(value: string) {
+    return Date.parse(value);
   }
 }

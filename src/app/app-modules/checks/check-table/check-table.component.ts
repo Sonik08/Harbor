@@ -97,7 +97,6 @@ export class CheckTableComponent implements OnInit {
       switchMap((checks: Check[]) => {
         return this._activatedRoute.data.pipe(
           map(resolvedData => {
-            console.log(resolvedData);
             return resolvedData.data as CheckRelatedData;
           }),
           map((relatedData: CheckRelatedData) => {
@@ -113,6 +112,20 @@ export class CheckTableComponent implements OnInit {
             }
 
             return checks;
+          }),
+          map(checks => {
+            return checks.map(c => {
+              c.dateOfDispatch = c.dateOfDispatch.substring(
+                0,
+                c.dateOfDispatch.length - 9
+              );
+              c.expirationDate = c.expirationDate.substring(
+                0,
+                c.expirationDate.length - 9
+              );
+
+              return c;
+            });
           })
         );
       })

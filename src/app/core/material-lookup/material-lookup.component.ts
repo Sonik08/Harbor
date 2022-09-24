@@ -1,6 +1,5 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -12,7 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { share, tap } from 'rxjs/operators';
+import { share } from 'rxjs/operators';
 import { LookupModel } from '../models/lookup-model';
 import { UIAction } from '../models/UI/ui-action';
 import { DialogService } from '../services/dialog.service';
@@ -22,7 +21,7 @@ import { DialogService } from '../services/dialog.service';
   templateUrl: './material-lookup.component.html',
   styleUrls: ['./material-lookup.component.scss']
 })
-export class MaterialLookupComponent implements OnInit, AfterViewInit {
+export class MaterialLookupComponent implements OnInit {
   @Input() dataSource$: Observable<MatTableDataSource<LookupModel>>;
   @Input() actions: UIAction[];
   @Input() displayedColumns: string[];
@@ -46,21 +45,8 @@ export class MaterialLookupComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    // this.dataSource$.pipe(share()).subscribe(dataSource => {
-    //   dataSource.sort = this.sort;
-    //   dataSource.paginator = this.paginator;
-    // });
-  }
-
   // /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {
-    console.log('sorting');
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    console.log(sortState);
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {

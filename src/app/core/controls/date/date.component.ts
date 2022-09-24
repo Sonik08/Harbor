@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ControlDirective } from '../control.directive';
+import * as _moment from 'moment';
 
 @Component({
   selector: 'date-control',
   templateUrl: './date.component.html',
-  styleUrls: ['./date.component.scss']
+  styleUrls: ['./date.component.scss'],
 })
 export class DateComponent extends ControlDirective {
   checkDate = (d: Date | null): boolean => {
