@@ -45,11 +45,7 @@ export class MaterialTableComponent<TModel extends Model> implements OnInit {
   }
 
   @ViewChild('tableContent') tableContent!: ElementRef;
-
-  isIdColumns(columnName: string): boolean {
-    return columnName === 'id';
-  }
-
+  
   addNew() {
     this._router.navigate([this.addUrl], { relativeTo: this._activatedRoute });
   }

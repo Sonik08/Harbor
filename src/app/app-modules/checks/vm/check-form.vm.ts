@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { LookupModel } from 'src/app/core/models/lookup-model';
+import { LookupModel } from 'src/app/core/models/lookups/lookup-model';
+
 import { SelectItem } from 'src/app/core/models/UI/select-item';
 import { BaseFormVM } from 'src/app/core/vm/base-form.vm';
 import { Check } from '../../entities/models/check';

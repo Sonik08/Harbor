@@ -41,12 +41,15 @@
         xPosition="before"
       >
         <ng-container *ngFor="let action of actions">
+          <ng-template [ngIf]="action.isShown">
+
             <button
               (click)="openDialog(profile, action)"
               mat-menu-item
             >
               {{ action.name }}
             </button>
+          </ng-template>
           </ng-container>
       </mat-menu>
     </td>
@@ -55,4 +58,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100, 200]" aria-label="Select page of users"></mat-paginator>

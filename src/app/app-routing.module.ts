@@ -14,13 +14,13 @@ const routes: Routes = [
     path: '',
     component: SidenavComponent,
     children: [
-      {
-        path: 'gas-stations',
-        loadChildren: () =>
-          import('./app-modules/gas-station/gas-station.module').then(
-            m => m.GasStationModule
-          )
-      },
+      // {
+      //   path: 'gas-stations',
+      //   loadChildren: () =>
+      //     import('./app-modules/gas-station/gas-station.module').then(
+      //       m => m.GasStationModule
+      //     )
+      // },
       {
         path: 'checks',
         loadChildren: () =>

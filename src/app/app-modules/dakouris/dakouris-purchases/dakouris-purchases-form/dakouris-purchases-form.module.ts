@@ -5,7 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { BaseFormModule } from 'src/app/core/base-form/base-form.module';
 import { FormControlsModule } from 'src/app/core/controls/form-controls.module';
 import { FormRowModule } from 'src/app/core/form-row/form-row.module';
-import { GasStationFuelPurchaseModule } from '../gas-station-fuel-purchase/gas-station-fuel-purchase.module';
 import { DakourisPurchasesFormComponent } from './dakouris-purchases-form.component';
 
 @NgModule({
@@ -16,8 +15,7 @@ import { DakourisPurchasesFormComponent } from './dakouris-purchases-form.compon
     BaseFormModule,
     FormRowModule,
     MatButtonModule,
-    MatIconModule,
-    GasStationFuelPurchaseModule
+    MatIconModule
   ],
   exports: [DakourisPurchasesFormComponent]
 })

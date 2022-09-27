@@ -68,6 +68,7 @@ export class CheckTableComponent implements OnInit {
       name: 'Επεξεργασία',
       message: 'Επεξεργασία επιταγής',
       isConfirmation: false,
+      isShown: true,
       actionFn$: item => this.put(item)
     },
     {
@@ -75,6 +76,7 @@ export class CheckTableComponent implements OnInit {
       name: 'Διαγραφή',
       message: 'Θέλετε να διαγράψετε την επιταγή?',
       isConfirmation: true,
+      isShown: true,
       actionFn$: item => this.delete(item)
     },
     {
@@ -82,6 +84,7 @@ export class CheckTableComponent implements OnInit {
       name: 'Σφραγισμα',
       message: 'Θέλετε να σφραγίσετε την επιταγή',
       isConfirmation: true,
+      isShown: true,
       actionFn$: item => this.void(item)
     }
   ];

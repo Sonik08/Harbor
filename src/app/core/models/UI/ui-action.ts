@@ -6,6 +6,7 @@ export class UIAction {
   name: string;
   message: string;
   isConfirmation: boolean = false;
+  isShown: boolean = false;
   actionFn$: (model) => Observable<any>;
   showFn?: (model) => boolean;
   showFn$?: (model) => Observable<boolean>;

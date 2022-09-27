@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IExpantionPanelItem } from 'src/app/core/models/UI/expantion-panel-item';
-import { MockService } from 'src/app/core/services/mock-service';
 import { Data } from 'src/app/pages/models/data';
 import { GasStation } from '../../entities/models/gas-station';
 
@@ -13,7 +12,6 @@ import { GasStation } from '../../entities/models/gas-station';
   styleUrls: ['./gas-station-overview.component.scss']
 })
 export class GasStationOverviewComponent implements OnInit {
-
   expantionPanel: Observable<IExpantionPanelItem> = of({
     title: 'title',
     description: 'description',
@@ -27,14 +25,12 @@ export class GasStationOverviewComponent implements OnInit {
   });
 
   gasStation: Observable<GasStation>;
-  
-  constructor(
-    private _activatedRoute: ActivatedRoute
-  ) {}
+
+  constructor(private _activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.gasStation = (this._activatedRoute.data as Observable<Data<GasStation>>).pipe(
-      map(resolvedData => resolvedData.data)
-    );
+    this.gasStation = (
+      this._activatedRoute.data as Observable<Data<GasStation>>
+    ).pipe(map(resolvedData => resolvedData.data));
   }
 }

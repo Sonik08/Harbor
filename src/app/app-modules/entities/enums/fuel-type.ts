@@ -1,6 +1,8 @@
 export enum FuelType {
-  Diesel = 'Diesel',
-  Ultimate = 'Ultimate',
-  Unleaded = 'Super',
-  LPG = 'LGP'
+  Diesel,
+  LPG,
+  Unleaded,
+  Super,
+  BioDiesel,
+  Unknown
 }

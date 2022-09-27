@@ -2,7 +2,8 @@ import {
   dateOptions,
   localLanguage
 } from 'src/app/core/date-helpers/date-consts';
-import { LookupModel } from 'src/app/core/models/lookup-model';
+import { LookupModel } from 'src/app/core/models/lookups/lookup-model';
+
 import { Model } from 'src/app/core/models/model';
 
 export class Check extends Model {

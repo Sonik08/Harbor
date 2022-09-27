@@ -19,11 +19,6 @@ import { LayoutModule } from './pages/layout/layout.module';
   ],
   providers: [
     FormBuilder,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: JsonDateInterceptor,
-    //   multi: true
-    // },
     { provide: MAT_DATE_LOCALE, useValue: 'el-GR' }
   ],
   bootstrap: [AppComponent]

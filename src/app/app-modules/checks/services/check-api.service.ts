@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActionApiResponse } from 'src/app/core/models/action-api-response';
-import { ApiResponse } from 'src/app/core/models/api-response';
+import { ActionApiResponse } from 'src/app/core/models/api/action-api-response';
+import { ApiResponse } from 'src/app/core/models/api/api-response';
 import { DateRange } from 'src/app/core/models/date-range';
 import { ApiService } from 'src/app/core/services/api.service';
 import { EnvService } from 'src/app/core/services/env.service';

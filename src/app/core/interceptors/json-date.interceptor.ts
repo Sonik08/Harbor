@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ActionApiResponse } from '../models/action-api-response';
+import { ActionApiResponse } from '../models/api/action-api-response';
 import { ApiResponse } from '../models/api-response';
 export class JsonDateInterceptor implements HttpInterceptor {
   private _isoDateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d*)?Z$/;

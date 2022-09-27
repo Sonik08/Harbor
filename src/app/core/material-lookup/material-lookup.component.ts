@@ -12,7 +12,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { LookupModel } from '../models/lookup-model';
+import { LookupModel } from '../models/lookups/lookup-model';
 import { UIAction } from '../models/UI/ui-action';
 import { UIActionType } from '../models/UI/ui-action-type.enum';
 import { DialogService } from '../services/dialog.service';
@@ -63,7 +63,6 @@ export class MaterialLookupComponent implements OnInit {
 
   addNew() {
     const action = this.actions.find(a => a.type === UIActionType.New);
-
     this.openDialog(new LookupModel(), action);
   }
 

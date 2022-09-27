@@ -1,7 +1,7 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LookupModel } from '../models/lookup-model';
+import { LookupModel } from '../models/lookups/lookup-model';
 
 @Component({
   selector: 'material-dialog',
@@ -40,9 +40,7 @@ export class MaterialDialogComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   save() {
     this.dialogRef.close(this.dialogForm.value);

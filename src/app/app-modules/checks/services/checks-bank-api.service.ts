@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LookupModel } from 'src/app/core/models/lookup-model';
+import { LookupModel } from 'src/app/core/models/lookups/lookup-model';
+
 import { ApiService } from 'src/app/core/services/api.service';
 import { EnvService } from 'src/app/core/services/env.service';
 

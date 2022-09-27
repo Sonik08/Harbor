@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ActionApiResponse } from '../models/action-api-response';
-import { ApiResponse } from '../models/api-response';
+import { ActionApiResponse } from '../models/api/action-api-response';
+import { ApiResponse } from '../models/api/api-response';
 import { Model } from '../models/model';
 import { EnvService } from './env.service';
 
@@ -31,8 +31,10 @@ export abstract class ApiService<T extends Model> {
   }
 
   put(entity: T): Observable<ActionApiResponse> {
-    return this._httpClient
-      .put<ActionApiResponse>(this.getUrl() + '/' + entity.id, entity)
+    return this._httpClient.put<ActionApiResponse>(
+      this.getUrl() + '/' + entity.id,
+      entity
+    );
   }
 
   delete(id: number): Observable<ActionApiResponse> {

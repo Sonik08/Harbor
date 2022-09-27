@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { DakourisFuelsModule } from './dakouris-fuels/dakouris-fuel-lookup/dakouris-fuels.module';
 import { DakourisOverviewModule } from './dakouris-overview/dakouris-overview.module';
-import { DakourisPurchasesFormModule } from './dakouris-purchases/dakouris-purchases-form/dakouris-purchases-form.module';
-import { DakourisPurchasesTableModule } from './dakouris-purchases/dakouris-purchases-table/dakouris-purchases-table.module';
 import { DakourisRoutingModule } from './dakouris-routing.module';
 import { DakourisGasStationsModule } from './lookups/dakouris-gas-stations/dakouris-gas-stations.module';
+import { DakourisFuelDialogComponent } from './dakouris-fuels/dakouris-fuel-dialog/dakouris-fuel-dialog.component';
 
 @NgModule({
   imports: [
     DakourisRoutingModule,
     DakourisOverviewModule,
     CommonModule,
-    DakourisPurchasesTableModule,
-    DakourisPurchasesFormModule,
-    DakourisGasStationsModule
+    DakourisGasStationsModule,
+    DakourisFuelsModule
   ]
 })
 export class DakourisModule {}
